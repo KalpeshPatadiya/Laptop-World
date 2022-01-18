@@ -4,6 +4,7 @@ use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Frontend\FrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,14 @@ use App\Http\Controllers\Admin\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [FrontendController::class, 'index']);
+Route::get('category',[FrontendController::class, 'category']);
+Route::get('category/{slug}', [FrontendController::class, 'viewcategory']);
+Route::get('category/{c_slug}/{p_slug}',[FrontendController::class, 'productview']);
 
 Auth::routes();
 
