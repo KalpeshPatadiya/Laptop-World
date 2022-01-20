@@ -18,32 +18,32 @@ class FrontendController extends Controller
 
     public function category()
     {
-        $category = Category::where('status', '0')->get();
+        $category = Category::where('status', '1')->get();
         return view('frontend.category', compact('category'));
     }
 
-    // public function viewcategory($slug)
-    // {
-    //     if (Category::where('slug', $slug)->exists()) {
-    //         $category = Category::where('slug', $slug)->first();
-    //         $products = Product::where('cat_id', $category->id)->where('status', '0')->get();
-    //         return view('frontend.products.index', compact('category', 'products'));
-    //     } else {
-    //         return redirect('/')->with('status', "Slug doesn't exist");
-    //     }
-    // }
+    public function viewcategory($slug)
+    {
+        if (Category::where('slug', $slug)->exists()) {   // if category exists
+            $category = Category::where('slug', $slug)->first();
+            $products = Product::where('cat_id', $category->id)->where('status', '1')->get();
+            return view('frontend.products.index', compact('category', 'products'));
+        } else {    // if category does not exist
+            return redirect('/')->with('status', "Slug doesn't exist");
+        }
+    }
 
-    // public function productview($c_slug, $p_slug)
-    // {
-    //     if (Category::where('slug', $c_slug)->exists()) {
-    //         if (Product::where('slug', $p_slug)->exists()) {
-    //             $products = Product::where('slug', $p_slug)->first();
-    //             return view('frontend.products.product-view', compact('products'));
-    //         } else {
-    //             return redirect('/')->with('status', "The link was broken");
-    //         }
-    //     } else {
-    //         return redirect('/')->with('status', "No such category found");
-    //     }
-    // }
+    public function productview($cat_slug, $prod_slug)
+    {
+        if (Category::where('slug', $cat_slug)->exists()) {  // if category exists
+            if (Product::where('slug', $prod_slug)->exists()) { // if product exists
+                $products = Product::where('slug', $prod_slug)->first();
+                return view('frontend.products.view', compact('products'));
+            } else {    // if product does not exist
+                return redirect('/')->with('status', "The link was broken or the product doesn't exist :/");
+            }
+        } else {    // if category does not exist
+            return redirect('/')->with('status', "No such category found :/");
+        }
+    }
 }

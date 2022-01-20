@@ -72,9 +72,9 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::find($id);
-        if ($category->image) {
+        if ($category->image) {     // if category has image
             $path = 'assets/uploads/category/' . $category->image;
-            if (File::exists($path)) {
+            if (File::exists($path)) {      // if image exists
                 File::delete($path);
             }
         }

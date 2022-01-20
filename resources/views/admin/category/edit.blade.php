@@ -40,7 +40,7 @@
                         <input type="file" name="image" class="form-control">
                     </div>
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary">Edit</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </div>
             </form>
