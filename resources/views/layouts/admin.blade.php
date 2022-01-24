@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
+    {{-- CSRF Token --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Admin Panel') }}</title>
@@ -17,10 +17,15 @@
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
-    <!-- Font Awesome Icons -->
+    {{-- Font Awesome Icons --}}
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 
-    <!-- Styles -->
+    {{-- Google Font --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+
+    {{-- Styles --}}
     <link id="pagestyle" href="../assets/css/material-dashboard.css" rel="stylesheet" />
     <link href="{{ asset('admin/css/material-dashboard.css') }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -42,7 +47,7 @@
             @include('layouts.include.adminfooter')
         </div>
     </main>
-    <!-- Scripts -->
+    {{-- Scripts --}}
     <script src="{{ asset('admin/js/material-dashboard.min.js') }}" defer></script>
     <script src="{{ asset('admin/js/popper.min.js') }}" defer></script>
     <script src="{{ asset('admin/js/bootstrap.min.js') }}" defer></script>

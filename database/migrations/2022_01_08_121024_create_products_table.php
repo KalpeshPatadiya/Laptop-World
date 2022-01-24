@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('MRP');
             $table->string('price');
             $table->string('image');
-            $table->string('quantity');
+            $table->integer('quantity');
             $table->tinyInteger('status');
             $table->tinyInteger('trending');
             $table->timestamps();

@@ -30,8 +30,8 @@
                                     alt="product image">
                                 <div class="card-body">
                                     <h5>{{ $prod->name }}</h5>
-                                    <span class="float-start"><b>₹</b>{{ $prod->price }}</span>
-                                    <span class="float-end"><b>₹</b><s>{{ $prod->MRP }}</s></span>
+                                    <span class="float-start"><b>₹</b> {{ $prod->price }}</span>
+                                    <span class="float-end"><b>₹</b><s> {{ $prod->MRP }}</s></span>
                                 </div>
                             </a>
                         </div>

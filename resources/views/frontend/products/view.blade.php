@@ -35,8 +35,8 @@
                             @endif
                         </h2>
                         <hr>
-                        <label class="fw-bold">PRICE : ₹{{ $products->price }}</label>&nbsp;&nbsp;&nbsp;
-                        <label class="me-3">MRP : <s>₹{{ $products->MRP }}</s></label>
+                        <label class="fw-bold">PRICE : ₹ {{ $products->price }}</label>&nbsp;&nbsp;&nbsp;
+                        <label class="me-3">MRP : <s>₹ {{ $products->MRP }}</s></label>
                         <p class="mt-3">
                             {!! $products->description !!}
                         </p>
@@ -58,10 +58,12 @@
                             </div>
                             <div class="col-md-10">
                                 <br>
+                                @if ($products->quantity > 0)
+                                    <button type="button" class="btn btn-primary me-3 addToCartBtn float-start">Add to Cart
+                                        <i class="fa fa-shopping-cart"></i></button>
+                                @endif
                                 <button type="button" class="btn btn-success me-3 float-start">Add to Wishlist <i
                                         class="fa fa-heart"></i></button>
-                                <button type="button" class="btn btn-primary me-3 addToCartBtn float-start">Add to Cart <i
-                                        class="fa fa-shopping-cart"></i></button>
                             </div>
                         </div>
                     </div>

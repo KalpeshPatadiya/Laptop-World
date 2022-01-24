@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">Laptop World</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -20,19 +20,19 @@
 
             </ul>
             @guest
-            <ul class="navbar-nav ml-auto">
-                @if (Route::has('login'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                @endif
+                <ul class="navbar-nav ml-auto">
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                    @endif
 
-                @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
-                @endif
-            </ul>
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                    @endif
+                </ul>
             @else
                 <li class="nav-link dropdown dropdown-menu-right">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
@@ -41,11 +41,14 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li class="nav-item">
+                            <a href="{{ url('my-orders') }}" class="dropdown-item">My Orders</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="#" class="dropdown-item">My Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
                             <form action="{{ route('logout') }}" id="logout-form" method="POST" class="d-none">
