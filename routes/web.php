@@ -10,6 +10,8 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\Frontend\WishlistController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,8 @@ Route::post('add-to-cart', [CartController::class, 'addToCart']);
 Route::post('delete-cart-item', [CartController::class, 'deleteCartItem']);
 Route::post('update-cart', [CartController::class, 'updateCart']);
 
+Route::post('add-to-wishlist',[WishlistController::class,'add']);
+
 Route::middleware(['auth'])->group(function () {
     Route::get('cart', [CartController::class, 'viewcart']);
     Route::get('checkout', [CheckoutController::class, 'index']);
@@ -46,6 +50,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('my-orders', [UserController::class, 'index']);
     Route::get('view-order/{id}', [UserController::class, 'vieworder']);
+
+    Route::get('wishlist',[WishlistController::class,'index']);
+
 });
 
 Route::middleware(['auth', 'isAdmin'])->group( function () {
