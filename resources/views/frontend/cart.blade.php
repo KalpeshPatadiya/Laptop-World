@@ -22,7 +22,7 @@
         <div class="col-md-12">
             <h3><strong>My Cart</strong></h3>
         </div>
-        <div class="card shadhow">
+        <div class="card shadhow cartitemsR">
             @if ($cartItems->count() > 0)
                 <div class="card-body">
                     @php

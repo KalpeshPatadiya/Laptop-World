@@ -5,17 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Wishlist extends Model
+class Rating extends Model
 {
     use HasFactory;
-    protected $table = 'wishlists';
+    protected $table = 'ratings';
     protected $fillable = [
         'user_id',
         'prod_id',
-    ]; 
-
-    public function products()
-    {
-        return $this->belongsTo(Product::class, 'prod_id', 'id', 'price');
-    }
+        'stars_rated',
+    ];
 }
