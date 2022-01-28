@@ -39,9 +39,11 @@
 
     @include('layouts.include.frontnav')
 
-    <div class="content py-2">
+    <div class="content">
         @yield('content')
     </div>
+
+    @include('layouts.include.frontfooter')
 
     <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>

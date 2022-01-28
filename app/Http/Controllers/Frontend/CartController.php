@@ -64,10 +64,16 @@ class CartController extends Controller
             if(Cart::where('prod_id', $prod_id)->where('user_id', Auth::id())->exists()){        // if product already in cart
                 $cartItem = Cart::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
                 $cartItem->delete();
-                return response()->json(['status' => "Product Remove Successfully!"]);
+                return response()->json(['status' => "Product Removed Successfully!"]);
             }
         } else {
             return response()->json(['status' => "Please login to delete product from cart"]);
         }
+    }
+
+    public function cartcount()
+    {
+        $cartcount = Cart::where('user_id', Auth::id())->count();
+        return response()->json(['count'=> $cartcount]);
     }
 }
