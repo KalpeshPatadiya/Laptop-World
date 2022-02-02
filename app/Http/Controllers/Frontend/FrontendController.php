@@ -45,15 +45,12 @@ class FrontendController extends Controller
                 $rating_sum = Rating::where('prod_id', $products->id)->sum('stars_rated');
                 $user_rating = Rating::where('prod_id', $products->id)->where('user_id', Auth::id())->first();
                 $reviews = Review::where('prod_id', $products->id)->get();
-                if($ratings->count()>0)
-                {
-                    $rating_value = $rating_sum/$ratings->count();
-                }
-                else 
-                {
+                if ($ratings->count() > 0) {
+                    $rating_value = $rating_sum / $ratings->count();
+                } else {
                     $rating_value = 0;
                 }
-                return view('frontend.products.view', compact('products','ratings','rating_value','user_rating','reviews'));
+                return view('frontend.products.view', compact('products', 'ratings', 'rating_value', 'user_rating', 'reviews'));
             } else {    // if product does not exist
                 return redirect('/')->with('status', "The link was broken or the product doesn't exist :/");
             }

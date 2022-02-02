@@ -16,6 +16,7 @@
     <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
     {{-- Font Awesome Icons --}}
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>

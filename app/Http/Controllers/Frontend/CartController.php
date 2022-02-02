@@ -47,7 +47,7 @@ class CartController extends Controller
         $prod_id = $request->input('prod_id');
         $product_qty = $request->input('prod_qty');
 
-        if(Auth::check()){   // if user is logged in
+        if (Auth::check()) {   // if user is logged in
             if (Cart::where('prod_id', $prod_id)->where('user_id', Auth::id())->exists()) {   // if product already in cart
                 $cart = Cart::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
                 $cart->prod_qty = $product_qty;
@@ -61,7 +61,7 @@ class CartController extends Controller
     {
         if (Auth::check()) {    // if user is logged in
             $prod_id = $request->input('prod_id');
-            if(Cart::where('prod_id', $prod_id)->where('user_id', Auth::id())->exists()){        // if product already in cart
+            if (Cart::where('prod_id', $prod_id)->where('user_id', Auth::id())->exists()) {        // if product already in cart
                 $cartItem = Cart::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
                 $cartItem->delete();
                 return response()->json(['status' => "Product Removed Successfully!"]);
@@ -74,6 +74,6 @@ class CartController extends Controller
     public function cartcount()
     {
         $cartcount = Cart::where('user_id', Auth::id())->count();
-        return response()->json(['count'=> $cartcount]);
+        return response()->json(['count' => $cartcount]);
     }
 }

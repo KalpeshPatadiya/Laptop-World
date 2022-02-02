@@ -30,15 +30,15 @@
                     </div>
                     <div class="form-group col-md-4 mb-3">
                         <label for="">MRP</label>
-                        <input type="number"  value="{{ $products->MRP }}" name="MRP" class="form-control">
+                        <input type="number" value="{{ $products->MRP }}" name="MRP" class="form-control">
                     </div>
                     <div class="form-group col-md-4 mb-3">
                         <label for="">Price</label>
-                        <input type="number"  value="{{ $products->price }}" name="price" class="form-control">
+                        <input type="number" value="{{ $products->price }}" name="price" class="form-control">
                     </div>
                     <div class="form-group col-md-4 mb-3">
                         <label for="">Quantity</label>
-                        <input type="number"  value="{{ $products->quantity }}" name="quantity" class="form-control">
+                        <input type="number" value="{{ $products->quantity }}" name="quantity" class="form-control">
                     </div>
                     <div class="form-group col-md-6 mb-3">
                         <input class="form-check-input form-control" {{ $products->status == '1' ? 'checked' : '' }}
