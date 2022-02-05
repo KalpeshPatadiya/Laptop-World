@@ -39,6 +39,24 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link text-white {{ Request::is('sub-category') ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ url('sub-category') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">category</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Sub Category</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ Request::is('add-sub-category') ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ url('add-sub-category') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">category</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Add Sub Category</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link text-white {{ Request::is('products') ? 'active bg-gradient-primary' : '' }}"
                     href="{{ url('products') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">

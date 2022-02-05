@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Rating;
+use App\Models\SubCategory;
 use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -29,36 +30,70 @@ class FrontendController extends Controller
     {
         if (Category::where('slug', $slug)->exists()) {   // if category exists
             $category = Category::where('slug', $slug)->first();
-            $products = Product::where('cat_id', $category->id)->where('status', '1')->get();
-            return view('frontend.products.index', compact('category', 'products'));
+            // $category_id = $category->id;
+            $subcategory = SubCategory::where('cat_id', $category->id)->where('status', '1')->get();
+            return view('frontend.subcategory', compact('category', 'subcategory'));
         } else {    // if category does not exist
             return redirect('/')->with('status', "Slug doesn't exist");
         }
     }
 
-    public function productview($cat_slug, $prod_slug)
+    public function productview($cat_slug, $subcat_slug,$prod_slug)
     {
-        if (Category::where('slug', $cat_slug)->exists()) {  // if category exists
-            if (Product::where('slug', $prod_slug)->exists()) { // if product exists
-                $products = Product::where('slug', $prod_slug)->first();
-                $ratings = Rating::where('prod_id', $products->id)->get();
-                $rating_sum = Rating::where('prod_id', $products->id)->sum('stars_rated');
-                $user_rating = Rating::where('prod_id', $products->id)->where('user_id', Auth::id())->first();
-                $reviews = Review::where('prod_id', $products->id)->get();
-                if($ratings->count()>0)
-                {
-                    $rating_value = $rating_sum/$ratings->count();
-                }
+        if (Category::where('slug', $cat_slug)->exists()) 
+        {  // if category exists
+            if(SubCategory::where('slug', $subcat_slug)->exists()) 
+            { 
+                if (Product::where('slug', $prod_slug)->exists()) 
+                { // if product exists
+                    $products = Product::where('slug', $prod_slug)->first();
+                    $ratings = Rating::where('prod_id', $products->id)->get();
+                    $rating_sum = Rating::where('prod_id', $products->id)->sum('stars_rated');
+                    $user_rating = Rating::where('prod_id', $products->id)->where('user_id', Auth::id())->first();
+                    $reviews = Review::where('prod_id', $products->id)->get();
+                    if($ratings->count()>0)
+                    {
+                        $rating_value = $rating_sum/$ratings->count();
+                    }
+                    else 
+                    {
+                        $rating_value = 0;
+                    }
+                    return view('frontend.products.view', compact('products','ratings','rating_value','user_rating','reviews'));
+                } 
                 else 
-                {
-                    $rating_value = 0;
+                {    // if product does not exist
+                    return redirect('/')->with('status', "The link was broken or the product doesn't exist :/");
                 }
-                return view('frontend.products.view', compact('products','ratings','rating_value','user_rating','reviews'));
-            } else {    // if product does not exist
+            }
+            else 
+            {
                 return redirect('/')->with('status', "The link was broken or the product doesn't exist :/");
             }
-        } else {    // if category does not exist
+        } 
+        else 
+        {    // if category does not exist
             return redirect('/')->with('status', "No such category found :/");
+        }
+    }
+    public function subcatview($cat_slug,$subcat_slug)
+    {
+        if(Category::where('slug', $cat_slug)->exists()) 
+        {
+            if (SubCategory::where('slug', $subcat_slug)->exists()) 
+            {   // if category exists
+                $subcategory = SubCategory::where('slug', $subcat_slug)->first();
+                $products = Product::where('subcat_id', $subcategory->id)->where('status', '1')->get();
+                return view('frontend.products.index', compact('subcategory', 'products'));
+            } 
+            else 
+            {    // if sub category does not exist
+            return redirect('/')->with('status', "Sub Cat Slug doesn't exist");
+            }
+        }
+        else 
+        {
+            return redirect('/')->with('status', "Sub Cat Slug doesn't exist");
         }
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.front')
 
 @section('title')
-    {{ $category->name }}
+    {{ $subcategory->name }}
 @endsection
 
 @section('content')
@@ -9,11 +9,8 @@
         <div class="container">
             <h6 class="mb-0">
                 <a href="{{ url('category') }}">
-                    Collaction
+                    Collection
                 </a> /
-                <a href="{{ url('category/' . $category->slug) }}">
-                    {{ $category->name }}
-                </a>
             </h6>
         </div>
     </div>
@@ -21,11 +18,11 @@
     <div class="py-5">
         <div class="container">
             <div class="row">
-                <h2>{{ $category->name }}</h2>
+                <h2>{{ $subcategory->name }}</h2>
                 @foreach ($products as $prod)
                     <div class="col-md-3 mb-3">
                         <div class="card">
-                            <a href="{{ url('category/' . $category->slug . '/' . $prod->slug) }}">
+                            <a href="{{ url('category/' . $prod->category->slug . '/' . $prod->subcategory->slug . '/' . $prod->slug) }}">
                                 <img class="card-img-top" src="{{ asset('assets/uploads/products/' . $prod->image) }}"
                                     alt="product image">
                                 <div class="card-body">
