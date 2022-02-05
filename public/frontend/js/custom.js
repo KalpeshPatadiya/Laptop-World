@@ -188,3 +188,8 @@ $(function () {
         // options here
     });
 });
+
+$(window).on('load', function () {
+    $('.loader').fadeOut(500);
+    $('.content').fadeIn(1500);
+});

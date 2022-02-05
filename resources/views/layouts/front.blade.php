@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>
-        @yield('title')
+        @yield('title') | Laptop World
     </title>
 
     <link rel="stylesheet" type="text/css"
@@ -40,6 +40,10 @@
 <body>
 
     @include('layouts.include.frontnav')
+
+    <div class="loader">
+        <div></div>
+    </div>
 
     <div class="content">
         @yield('content')

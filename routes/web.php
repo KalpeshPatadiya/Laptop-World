@@ -96,4 +96,6 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 
     Route::get('users', [DashboardController::class, 'users']);
     Route::get('view-user/{id}', [DashboardController::class, 'viewuser']);
+
+    Route::get('admin-profile', [UserController::class, 'adminprofile']);
 });

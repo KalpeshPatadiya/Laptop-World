@@ -66,7 +66,7 @@
             </h6>
         </div>
     </div>
-    
+
     <div class="container pb-4">
         <div class="card shadow product_data">
             <div class="card-body">
@@ -118,9 +118,9 @@
                                 <input type="hidden" value="{{ $products->id }}" class="prod_id">
                                 <label for="Quantity">Quantity</label>
                                 <div class="input-group text-center mb-3">
-                                    <button class="input-group-text decrement-btn">-</button>
+                                    <button class="btn input-group-text decrement-btn">-</button>
                                     <input type="text" name="quantity" value="1" class="form-control qty-input">
-                                    <button class="input-group-text increment-btn">+</button>
+                                    <button class="btn input-group-text increment-btn">+</button>
                                 </div>
                             </div>
                             <div class="col-md-10">

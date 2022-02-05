@@ -8,7 +8,6 @@
                     </script>,
                     made with <i class="fa fa-heart"></i> by
                     <a href="/dashboard" class="font-weight-bold text-muted" target="_blank">Laptop-World Team</a>
-                    for a better web.
                 </div>
             </div>
             <div class="col-lg-6">

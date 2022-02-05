@@ -1,7 +1,7 @@
 @extends('layouts.front')
 
 @section('title')
-    Welcome to LaptopWorld
+    Welcome
 @endsection
 
 @section('content')
@@ -10,10 +10,10 @@
         <div class="container">
             <div class="row">
                 <h2>Featured Products</h2>
-                <div class="owl-carousel featured-carousel owl-theme">
+                <div class="owl-carousel featured-carousel owl-theme carousel-shadow">
                     @foreach ($featured_products as $prod)
                         <div class="item">
-                            <div class="card card-none mb-1">
+                            <div class="card card-none card-shadow m-2">
                                 <a href="{{ url('category/' . $prod->category->slug . '/' . $prod->slug) }}">
                                     <img class="card-img-top zoom-in"
                                         src="{{ asset('assets/uploads/products/' . $prod->image) }}" alt="product image">

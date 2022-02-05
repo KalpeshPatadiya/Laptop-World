@@ -15,14 +15,14 @@
                     <a class="nav-link" href="{{ url('category') }}">Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('cart') }}">Cart
+                    <button class="btn p-0"><a class="nav-link" href="{{ url('cart') }}">Cart
                         <span class="badge badge-pill cart-count">0</span>
-                    </a>
+                    </a></button>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('wishlist') }}">Wishlist
+                    <button class="btn p-0"><a class="nav-link" href="{{ url('wishlist') }}">Wishlist
                         <span class="badge badge-pill wishlist-count">0</span>
-                    </a>
+                    </a></button>
                 </li>
             </ul>
             @guest

@@ -79,7 +79,7 @@
                 <a class="nav-link text-white {{ Request::is('admin-profile') ? 'active bg-gradient-primary' : '' }}"
                     href="{{ url('admin-profile') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="bi bi-person-circle fs-5"></i>
+                        <i class="material-icons opacity-10">person</i>
                     </div>
                     <span class="nav-link-text ms-1">Profile</span>
                 </a>

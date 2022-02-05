@@ -53,4 +53,10 @@ class UserController extends Controller
         $profile->save();
         return redirect('my-profile')->with('status', 'Profile updated Successfully');
     }
+
+    public function adminprofile()
+    {
+        $profile = User::find(Auth::id());
+        return view('admin.profile.index', compact('profile'));
+    }
 }
