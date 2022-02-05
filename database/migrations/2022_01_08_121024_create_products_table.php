@@ -15,16 +15,32 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('cat_id');
+            $table->bigInteger('subcat_id');
             $table->string('name');
             $table->string('slug');
+            $table->longText('small_description');
+            $table->string('image');
+
+            $table->string('high_heading');
+            $table->longText('highlights');
+            $table->string('des_heading');
             $table->longText('description');
+            $table->string('det_heading');
+            $table->longText('details');
+
+
             $table->string('MRP');
             $table->string('price');
-            $table->string('image');
             $table->integer('quantity');
             $table->tinyInteger('status');
             $table->tinyInteger('trending');
+
+            $table->tinyInteger('new_arrivals');
+            $table->tinyInteger('offers_pr');
+
+            $table->mediumText('meta_title');
+            $table->mediumText('meta_description');
+            $table->mediumText('meta_keyword');
             $table->timestamps();
         });
     }

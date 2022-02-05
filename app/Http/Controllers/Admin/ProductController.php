@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\SubCategory;
 use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
@@ -18,8 +18,8 @@ class ProductController extends Controller
 
     public function add()
     {
-        $category = Category::all();
-        return view('admin.product.add', compact('category'));
+        $subcategory = SubCategory::all();
+        return view('admin.product.add', compact('subcategory'));
     }
 
     public function insert(Request $request)
@@ -32,10 +32,18 @@ class ProductController extends Controller
             $file->move('assets/uploads/products/', $filename);
             $products->image = $filename;
         }
-        $products->cat_id = $request->input('cat_id');
+        $products->subcat_id = $request->input('subcat_id');
         $products->name = $request->input('name');
         $products->slug = $request->input('slug');
+        $products->small_description = $request->input('small_description');
+        $products->high_heading = $request->input('high_heading');
+        $products->highlights = $request->input('highlights');
+        $products->des_heading = $request->input('des_heading');
         $products->description = $request->input('description');
+        $products->det_heading = $request->input('det_heading');
+        $products->details = $request->input('details');
+        $products->new_arrivals = $request->input('new_arrivals');
+        $products->offers_pr = $request->input('offers_pr');
         $products->MRP = $request->input('MRP');
         $products->price = $request->input('price');
         $products->quantity = $request->input('quantity');
@@ -67,7 +75,15 @@ class ProductController extends Controller
         }
         $products->name = $request->input('name');
         $products->slug = $request->input('slug');
+        $products->small_description = $request->input('small_description');
+        $products->high_heading = $request->input('high_heading');
+        $products->highlights = $request->input('highlights');
+        $products->des_heading = $request->input('des_heading');
         $products->description = $request->input('description');
+        $products->det_heading = $request->input('det_heading');
+        $products->details = $request->input('details');
+        $products->new_arrivals = $request->input('new_arrivals');
+        $products->offers_pr = $request->input('offers_pr');
         $products->MRP = $request->input('MRP');
         $products->price = $request->input('price');
         $products->quantity = $request->input('quantity');
