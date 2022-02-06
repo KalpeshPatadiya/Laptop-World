@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">
+        <div class="card-header pb-0">
+            <a href="{{ url('products') }}" class="btn btn-warning float-end">Back</a>
             <h4>Add Product</h4>
         </div>
         <div class="card-body">

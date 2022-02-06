@@ -26,10 +26,10 @@ class FrontendController extends Controller
         return view('frontend.category', compact('category'));
     }
 
-    public function viewcategory($slug)
+    public function viewcategory($cat_slug)
     {
-        if (Category::where('slug', $slug)->exists()) {   // if category exists
-            $category = Category::where('slug', $slug)->first();
+        if (Category::where('slug', $cat_slug)->exists()) {   // if category exists
+            $category = Category::where('slug', $cat_slug)->first();
             // $category_id = $category->id;
             $subcategory = SubCategory::where('cat_id', $category->id)->where('status', '1')->get();
             return view('frontend.subcategory', compact('category', 'subcategory'));
@@ -38,11 +38,26 @@ class FrontendController extends Controller
         }
     }
 
+    public function subcatview($cat_slug, $subcat_slug)
+    {
+        if (Category::where('slug', $cat_slug)->exists()) {
+            if (SubCategory::where('slug', $subcat_slug)->exists()) {    // if category exists
+                $subcategory = SubCategory::where('slug',  $subcat_slug)->first();
+                $products = Product::where('subcat_id', $subcategory->id)->where('status', '1')->get();
+                return view('frontend.products.index', compact('subcategory', 'products'));
+            } else {    // if sub category does not exist
+                return redirect('/')->with('status', " Sub Cat Slug doesn't exist");
+            }
+        } else {
+            return redirect('/')->with('status', "Sub Cat Slug doesn't exist");
+        }
+    }
+
     public function productview($cat_slug, $subcat_slug, $prod_slug)
     {
-        if (Category::where('slug', $cat_slug)->exists()) {  // if category exists
-            if (SubCategory::where('slug', $subcat_slug)->exists()) {
-                if (Product::where('slug', $prod_slug)->exists()) { // if product exists
+        if (Category::where('slug', $cat_slug)->exists()) {         // if category exists
+            if (SubCategory::where('slug', $subcat_slug)->exists()) {     // if sub category exists
+                if (Product::where('slug', $prod_slug)->exists()) {      // if product exists
                     $products = Product::where('slug', $prod_slug)->first();
                     $ratings = Rating::where('prod_id', $products->id)->get();
                     $rating_sum = Rating::where('prod_id', $products->id)->sum('stars_rated');
@@ -62,20 +77,6 @@ class FrontendController extends Controller
             }
         } else {    // if category does not exist
             return redirect(' /')->with('sta tus', "No such category found :/");
-        }
-    }
-    public function subcatview($cat_slug, $subcat_slug)
-    {
-        if (Category::where('slug', $cat_slug)->exists()) {
-            if (SubCategory::where('slug', $subcat_slug)->exists()) {    // if category exists
-                $subcategory = SubCategory::where('slug',  $subcat_slug)->first();
-                $products = Product::where('subcat_id', $subcategory->id)->where('status', '1')->get();
-                return view('frontend.products.index', compact('subcategory', 'products'));
-            } else {    // if sub category does not exist
-                return redirect('/')->with('status', " Sub Cat Slug doesn't exist");
-            }
-        } else {
-            return redirect('/')->with('status', "Sub Cat Slug doesn't exist");
         }
     }
 }

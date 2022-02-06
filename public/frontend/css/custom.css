@@ -94,9 +94,9 @@ a:hover {
     text-shadow: 0 0 5px rgba(100, 148, 237, 0.5);
 }
 
-a:active {
+/* a:active {
     color: #666;
-}
+} */
 
 .cart-img {
     width: 190px;
@@ -114,6 +114,12 @@ a:active {
 
 .carousel-shadow {
     box-shadow: #696969 0px 0px 20px 7px !important;
+}
+
+.card-shadow:hover {
+    /* box-shadow: #696969 0px 0px 20px 7px !important; */
+    box-shadow: inset 4px 4px 12px #c5c5c5,
+        inset -4px -4px 12px #ffffff;
 }
 
 /* rating */

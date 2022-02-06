@@ -2,33 +2,32 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">
-            <div>
-                <h5>Sub Category Page</h5>
-            </div>
+        <div class="card-header pb-0">
+            <a href="{{ url('add-sub-category') }}" class="btn btn-warning float-end">Add SubCategory</a>
+            <h5>Sub Category Page</h5>
         </div>
         <div class="card-body">
-        <table class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Category Name</th>
                         <th>Name</th>
-                        <th>Category ID</th>
                         <th>Description</th>
                         <th>Image</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($subcategory as $item)
+                    @foreach ($subcategory as $item)
                         <tr>
                             <td>{{ $item->id }}</td>
+                            <td>{{ $item->category->name }}</td>
                             <td>{{ $item->name }}</td>
-                            <td>{{ $item->cat_id }}</td>
                             <td>{{ $item->description }}</td>
                             <td>
-                                <img src="{{ asset('assets/uploads/sub-category/' . $item->image) }}" class="cate-img"
-                                    alt="">
+                                <img src="{{ asset('assets/uploads/sub-category/' . $item->image) }}"
+                                    class="cate-img" alt="">
                             </td>
                             <td>
                                 <a href="{{ url('edit-sub-category/' . $item->id) }}" class="btn btn-primary">Edit</a>
@@ -37,7 +36,7 @@
                         </tr>
                     @endforeach
                 </tbody>
-        </table>
+            </table>
         </div>
     </div>
 @endsection

@@ -8,8 +8,8 @@
     <div class="py-3 mb-4 shadow-sm bg-info border-top">
         <div class="container">
             <h6 class="mb-0">
-                <a href="{{ url('category') }}">
-                    Categories
+                <a href="{{ url('collection') }}">
+                    Collection
                 </a>
             </h6>
         </div>
@@ -23,7 +23,7 @@
                     <div class="row">
                         @foreach ($category as $cate)
                             <div class="col-md-3 mb-3">
-                                <a href="{{ url('category/' . $cate->slug) }}">
+                                <a href="{{ url('collection/' . $cate->slug) }}">
                                     <div class="card">
                                         <img class="card-img-top"
                                             src="{{ asset('assets/uploads/category/' . $cate->image) }}"

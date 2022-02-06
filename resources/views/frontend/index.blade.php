@@ -7,14 +7,15 @@
 @section('content')
     @include('layouts.include.slider')
     <div class="py-5">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <h2>Featured Products</h2>
+                <h2 class="mx-5">Featured Products</h2>
                 <div class="owl-carousel featured-carousel owl-theme carousel-shadow">
                     @foreach ($featured_products as $prod)
                         <div class="item">
                             <div class="card card-none card-shadow m-2">
-                                <a href="{{ url('category/' . $prod->category->slug . '/' . $prod->subcategory->slug . '/' . $prod->slug) }}">
+                                <a
+                                    href="{{ url('collection/' . $prod->subcategory->category->slug . '/' . $prod->subcategory->slug . '/' . $prod->slug) }}">
                                     <img class="card-img-top zoom-in"
                                         src="{{ asset('assets/uploads/products/' . $prod->image) }}" alt="product image">
                                     <div class="card-body">
@@ -38,7 +39,7 @@
                 <div class="owl-carousel trending-carousel owl-theme">
                     @foreach ($trending_category as $tcategory)
                         <div class="item">
-                            <a href="{{ url('category/' . $tcategory->slug) }}">
+                            <a href="{{ url('collection/' . $tcategory->slug) }}">
                                 <div class="card">
                                     <img class="card-img-top zoom-in"
                                         src="{{ asset('assets/uploads/category/' . $tcategory->image) }}"
@@ -77,7 +78,7 @@
                     items: 3
                 },
                 1000: {
-                    items: 4
+                    items: 5
                 }
             }
         });

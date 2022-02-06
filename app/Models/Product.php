@@ -29,10 +29,6 @@ class Product extends Model
         'new_arrivals',
     ];
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class, 'cat_id', 'id', 'slug');
-    }
     public function subcategory()
     {
         return $this->belongsTo(SubCategory::class, 'subcat_id', 'id', 'slug');

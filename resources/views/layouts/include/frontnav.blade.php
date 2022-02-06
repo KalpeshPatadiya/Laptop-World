@@ -12,7 +12,7 @@
                     <a class="nav-link" href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('category') }}">Category</a>
+                    <a class="nav-link" href="{{ url('collection') }}">Collection</a>
                 </li>
                 <li class="nav-item">
                     <button class="btn p-0"><a class="nav-link" href="{{ url('cart') }}">Cart

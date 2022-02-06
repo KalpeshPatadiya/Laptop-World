@@ -54,13 +54,18 @@
     <div class="py-3 mb-4 shadow-sm bg-info border-top">
         <div class="container">
             <h6 class="mb-0">
-                <a href="{{ url('category') }}">
-                    Categories
+                <a href="{{ url('collection') }}">
+                    Collection
                 </a> /
-                <a href="{{ url('category/' . $products->category->slug) }}">
-                    {{ $products->category->name }}
+                <a href="{{ url('collection/' . $products->subcategory->category->slug) }}">
+                    {{ $products->subcategory->category->name }}
                 </a> /
-                <a href="{{ url('category/' . $products->category->slug . '/' . $products->slug) }}">
+                <a
+                    href="{{ url('collection/' . $products->subcategory->category->slug . '/' . $products->subcategory->slug) }}">
+                    {{ $products->subcategory->name }}
+                </a> /
+                <a
+                    href="{{ url('collection/' . $products->subcategory->category->slug . '/' . $products->subcategory->slug . '/' . $products->slug) }}">
                     {{ $products->name }}
                 </a>
             </h6>
@@ -105,7 +110,7 @@
                         <label class="fw-bold fs-5">PRICE : ₹ {{ $products->price }}</label>&nbsp;&nbsp;&nbsp;
                         <label class="me-3">MRP : <s>₹ {{ $products->MRP }}</s></label>
                         <p class="mt-3">
-                            {!! $products->description !!}
+                            {!! $products->small_description !!}
                         </p>
                         <hr>
                         @if ($products->quantity > 0)
@@ -118,9 +123,9 @@
                                 <input type="hidden" value="{{ $products->id }}" class="prod_id">
                                 <label for="Quantity">Quantity</label>
                                 <div class="input-group text-center mb-3">
-                                    <button class="btn input-group-text decrement-btn">-</button>
+                                    <button class="input-group-text decrement-btn">-</button>
                                     <input type="text" name="quantity" value="1" class="form-control qty-input">
-                                    <button class="btn input-group-text increment-btn">+</button>
+                                    <button class="input-group-text increment-btn">+</button>
                                 </div>
                             </div>
                             <div class="col-md-10">

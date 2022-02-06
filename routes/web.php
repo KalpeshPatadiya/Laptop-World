@@ -32,10 +32,10 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 Route::get('/', [FrontendController::class, 'index']);
-Route::get('category', [FrontendController::class, 'category']);
-Route::get('category/{slug}', [FrontendController::class, 'viewcategory']);
-Route::get('category/{cat_slug}/{subcat_slug}', [FrontendController::class, 'subcatview']);
-Route::get('category/{cat_slug}/{subcat_slug}/{prod_slug}', [FrontendController::class, 'productview']);
+Route::get('collection', [FrontendController::class, 'category']);
+Route::get('collection/{cat_slug}', [FrontendController::class, 'viewcategory']);
+Route::get('collection/{cat_slug}/{subcat_slug}', [FrontendController::class, 'subcatview']);
+Route::get('collection/{cat_slug}/{subcat_slug}/{prod_slug}', [FrontendController::class, 'productview']);
 
 Auth::routes();
 
@@ -76,35 +76,35 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', 'Admin\FrontendController@index');
 
-    Route::get('categories', 'Admin\CategoryController@index');
-    Route::get('add-category', 'Admin\CategoryController@add');
+    Route::get('categories', 'Admin\CategoryController@index')->name('categories');
+    Route::get('add-category', 'Admin\CategoryController@add')->name('add-category');
     Route::post('insert-category', 'Admin\CategoryController@insert');
-    Route::get('edit-category/{id}', [CategoryController::class, 'edit']);
+    Route::get('edit-category/{id}', [CategoryController::class, 'edit'])->name('edit-category');
     Route::put('update-category/{id}', [CategoryController::class, 'update']);
     Route::get('delete-category/{id}', [CategoryController::class, 'destroy']);
 
-    Route::get('sub-category', [SubCategoryController::class, 'index']);
-    Route::get('add-sub-category', [SubCategoryController::class, 'add']);
+    Route::get('sub-category', [SubCategoryController::class, 'index'])->name('subcategory');
+    Route::get('add-sub-category', [SubCategoryController::class, 'add'])->name('addsubcategory');
     Route::post('insert-sub-category', [SubCategoryController::class, 'insert']);
-    Route::get('edit-sub-category/{id}', [SubCategoryController::class, 'edit']);
+    Route::get('edit-sub-category/{id}', [SubCategoryController::class, 'edit'])->name('editsubcategory');
     Route::put('update-sub-category/{id}', [SubCategoryController::class, 'update']);
     Route::get('delete-sub-category/{id}', [SubCategoryController::class, 'destroy']);
 
-    Route::get('products', [ProductController::class, 'index']);
-    Route::get('add-product', [ProductController::class, 'add']);
+    Route::get('products', [ProductController::class, 'index'])->name('products');
+    Route::get('add-product', [ProductController::class, 'add'])->name('add-product');
     Route::post('insert-product', [ProductController::class, 'insert']);
 
-    Route::get('edit-product/{id}', [ProductController::class, 'edit']);
+    Route::get('edit-product/{id}', [ProductController::class, 'edit'])->name('edit-product');
     Route::put('update-product/{id}', [ProductController::class, 'update']);
     Route::get('delete-product/{id}', [ProductController::class, 'destroy']);
 
-    Route::get('orders', [OrderController::class, 'index']);
-    Route::get('admin/view-order/{id}', [OrderController::class, 'view']);
+    Route::get('orders', [OrderController::class, 'index'])->name('orders');
+    Route::get('admin/view-order/{id}', [OrderController::class, 'view'])->name('view-order');
     Route::put('update-order/{id}', [OrderController::class, 'updateorder']);
-    Route::get('order-history', [OrderController::class, 'orderhistory']);
+    Route::get('order-history', [OrderController::class, 'orderhistory'])->name('order-history');
 
-    Route::get('users', [DashboardController::class, 'users']);
-    Route::get('view-user/{id}', [DashboardController::class, 'viewuser']);
+    Route::get('users', [DashboardController::class, 'users'])->name('users');
+    Route::get('view-user/{id}', [DashboardController::class, 'viewuser'])->name('viewuser');
 
     Route::get('admin-profile', [UserController::class, 'adminprofile']);
 });

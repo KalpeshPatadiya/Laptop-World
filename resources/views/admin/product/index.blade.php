@@ -2,10 +2,9 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">
-            <div>
-                <h5>Product Page</h5>
-            </div>
+        <div class="card-header pb-0">
+            <a href="{{ url('add-product') }}" class="btn btn-warning float-end">Add Product</a>
+            <h5>Product Page</h5>
         </div>
         <div class="card-body">
             <table class="table table-bordered table-striped">
@@ -23,7 +22,7 @@
                     @foreach ($products as $item)
                         <tr>
                             <td>{{ $item->id }}</td>
-                            <td>{{ $item->category->name }}</td>
+                            <td>{{ $item->subcategory->name }}</td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->price }}</td>
                             <td>

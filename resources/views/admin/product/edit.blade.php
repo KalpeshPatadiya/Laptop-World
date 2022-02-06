@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">
+        <div class="card-header pb-0">
+            <a href="{{ url('products') }}" class="btn btn-warning float-end">Back</a>
             <h4>Edit/Update Product</h4>
         </div>
         <div class="card-body">
@@ -90,18 +91,6 @@
                                 class="form-control">
                         </div>
                         <div class="form-group col-md-4 mb-3">
-                            <<<<<<< HEAD <label for="">MRP</label>
-                                <input type="number" value="{{ $products->MRP }}" name="MRP" class="form-control">
-                        </div>
-                        <div class="form-group col-md-4 mb-3">
-                            <label for="">Price</label>
-                            <input type="number" value="{{ $products->price }}" name="price" class="form-control">
-                        </div>
-                        <div class="form-group col-md-4 mb-3">
-                            <label for="">Quantity</label>
-                            <input type="number" value="{{ $products->quantity }}" name="quantity"
-                                class="form-control">
-                            =======
                             <label for="">Product Description</label>
                             <input type="text" name="des_heading" value="{{ $products->des_heading }}"
                                 class="form-control">
@@ -115,7 +104,6 @@
                             <label for="">Product Details/Specifications</label>
                             <input type="text" name="det_heading" value="{{ $products->det_heading }}"
                                 class="form-control">
-                            >>>>>>> 8041c023bdbcb630c9afaf7607eeeef80cff352f
                         </div>
                         <div class="form-group col-md-12 mb-3">
                             <label for="">Product Details/Specifications</label>
