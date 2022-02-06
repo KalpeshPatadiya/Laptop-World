@@ -28,7 +28,6 @@ class CreateProductsTable extends Migration
             $table->string('det_heading');
             $table->longText('details');
 
-
             $table->string('MRP');
             $table->string('price');
             $table->integer('quantity');
@@ -36,11 +35,6 @@ class CreateProductsTable extends Migration
             $table->tinyInteger('trending');
 
             $table->tinyInteger('new_arrivals');
-            $table->tinyInteger('offers_pr');
-
-            $table->mediumText('meta_title');
-            $table->mediumText('meta_description');
-            $table->mediumText('meta_keyword');
             $table->timestamps();
         });
     }

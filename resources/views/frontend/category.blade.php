@@ -9,7 +9,7 @@
         <div class="container">
             <h6 class="mb-0">
                 <a href="{{ url('category') }}">
-                    Collection
+                    Categories
                 </a>
             </h6>
         </div>

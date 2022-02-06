@@ -15,7 +15,7 @@ class SubCategoryController extends Controller
     {
         $category = Category::all();
         $subcategory = SubCategory::where('status', '1')->get();
-        return view('admin.subcategory.index', compact('category','subcategory'));
+        return view('admin.subcategory.index', compact('category', 'subcategory'));
     }
     public function add()
     {
@@ -40,7 +40,7 @@ class SubCategoryController extends Controller
         $subcategory->popular = $request->input('popular') == TRUE ? '1' : '0';
         $subcategory->save();
 
-        return redirect('/dashboard')->with('status',"Sub-Category Added Successfully");
+        return redirect('/dashboard')->with('status', "Sub-Category Added Successfully");
     }
     public function edit($id)
     {

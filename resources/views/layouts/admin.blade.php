@@ -10,12 +10,10 @@
 
     <title>Laptop World</title>
 
-    <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
-
     <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
     {{-- Font Awesome Icons --}}
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
@@ -33,16 +31,17 @@
     <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/cate-img.css') }}" rel="stylesheet">
 
+    <link href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" rel="stylesheet">
+
 </head>
 
-<body class="g-sidenav-show  bg-gray-200">
+<body class="g-sidenav-show bg-gray-200">
     @include('layouts.include.sidebar')
 
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         @include('layouts.include.adminnav')
 
         <div class="container-fluid py-4">
-
             @yield('content')
             @include('layouts.include.adminfooter')
         </div>
@@ -54,6 +53,9 @@
     <script src="{{ asset('admin/js/perfect-scrollbar.min.js') }}" defer></script>
     <script src="{{ asset('admin/js/smooth-scrollbar.min.js') }}" defer></script>
     <script src="{{ asset('admin/js/chartjs.min.js') }}" defer></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @if (session('status'))

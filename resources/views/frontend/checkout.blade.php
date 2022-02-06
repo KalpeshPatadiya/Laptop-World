@@ -18,10 +18,13 @@
         </div>
     </div>
 
-    <div class="container mt-5">
+    <div class="container pb-5">
         <form action="{{ url('place-order') }}" method="POST">
             {{ csrf_field() }}
             <div class="row">
+                <div class="bg-white mb-3">
+                    <a href="{{ url('cart') }}" class="btn btn-warning float-end">Back</a>
+                </div>
                 <div class="col-md-7">
                     <div class="card">
                         <div class="card-body">

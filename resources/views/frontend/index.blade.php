@@ -1,7 +1,7 @@
 @extends('layouts.front')
 
 @section('title')
-    Welcome to LaptopWorld
+    Welcome
 @endsection
 
 @section('content')
@@ -10,17 +10,17 @@
         <div class="container">
             <div class="row">
                 <h2>Featured Products</h2>
-                <div class="owl-carousel featured-carousel owl-theme">
+                <div class="owl-carousel featured-carousel owl-theme carousel-shadow">
                     @foreach ($featured_products as $prod)
                         <div class="item">
-                            <div class="card">
-                                <a href="{{ url('category/' . $prod->category->slug . '/' . $prod->slug) }}">
-                                    <img class="card-img-top"
+                            <div class="card card-none card-shadow m-2">
+                                <a href="{{ url('category/' . $prod->category->slug . '/' . $prod->subcategory->slug . '/' . $prod->slug) }}">
+                                    <img class="card-img-top zoom-in"
                                         src="{{ asset('assets/uploads/products/' . $prod->image) }}" alt="product image">
                                     <div class="card-body">
                                         <h5>{{ $prod->name }}</h5>
                                         <span class="float-start"><b>₹</b> {{ $prod->price }}</span>
-                                        <span class="float-end"><b>₹</b><s> {{ $prod->MRP }}</s></span>
+                                        <span class="float-end"><b>₹ </b><s>{{ $prod->MRP }}</s></span>
                                     </div>
                                 </a>
                             </div>
@@ -40,7 +40,7 @@
                         <div class="item">
                             <a href="{{ url('category/' . $tcategory->slug) }}">
                                 <div class="card">
-                                    <img class="card-img-top"
+                                    <img class="card-img-top zoom-in"
                                         src="{{ asset('assets/uploads/category/' . $tcategory->image) }}"
                                         alt="product image">
                                     <div class="card-body">
@@ -95,7 +95,7 @@
                     items: 3
                 },
                 1000: {
-                    items: 4
+                    items: 3
                 }
             }
         });

@@ -21,14 +21,14 @@
                 <h2>{{ $subcategory->name }}</h2>
                 @foreach ($products as $prod)
                     <div class="col-md-3 mb-3">
-                        <div class="card">
+                        <div class="card card-none">
                             <a href="{{ url('category/' . $prod->category->slug . '/' . $prod->subcategory->slug . '/' . $prod->slug) }}">
                                 <img class="card-img-top" src="{{ asset('assets/uploads/products/' . $prod->image) }}"
                                     alt="product image">
                                 <div class="card-body">
                                     <h5>{{ $prod->name }}</h5>
                                     <span class="float-start"><b>₹</b> {{ $prod->price }}</span>
-                                    <span class="float-end"><b>₹</b><s> {{ $prod->MRP }}</s></span>
+                                    <span class="float-end"><b>₹ </b><s>{{ $prod->MRP }}</s></span>
                                 </div>
                             </a>
                         </div>

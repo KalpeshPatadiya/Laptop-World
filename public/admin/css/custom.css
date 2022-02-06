@@ -6,7 +6,13 @@
     width: 150px;
 }
 
-table td, th {
+.nav-visit {
+    margin-left: 30px;
+    text-decoration: none;
+}
+
+table td,
+th {
     text-align: center;
 }
 
