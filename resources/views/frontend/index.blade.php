@@ -14,7 +14,7 @@
                     @foreach ($featured_products as $prod)
                         <div class="item">
                             <div class="card card-none card-shadow m-2">
-                                <a href="{{ url('category/' . $prod->category->slug . '/' . $prod->slug) }}">
+                                <a href="{{ url('category/' . $prod->category->slug . '/' . $prod->subcategory->slug . '/' . $prod->slug) }}">
                                     <img class="card-img-top zoom-in"
                                         src="{{ asset('assets/uploads/products/' . $prod->image) }}" alt="product image">
                                     <div class="card-body">

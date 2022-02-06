@@ -34,8 +34,8 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('category', [FrontendController::class, 'category']);
 Route::get('category/{slug}', [FrontendController::class, 'viewcategory']);
-Route::get('category/{cat_slug}/{subcat_slug}',[FrontendController::class,'subcatview']);
-Route::get('category/{cat_slug}/{subcat_slug}/{prod_slug}',[FrontendController::class, 'productview']);
+Route::get('category/{cat_slug}/{subcat_slug}', [FrontendController::class, 'subcatview']);
+Route::get('category/{cat_slug}/{subcat_slug}/{prod_slug}', [FrontendController::class, 'productview']);
 
 Auth::routes();
 
@@ -83,6 +83,13 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::put('update-category/{id}', [CategoryController::class, 'update']);
     Route::get('delete-category/{id}', [CategoryController::class, 'destroy']);
 
+    Route::get('sub-category', [SubCategoryController::class, 'index']);
+    Route::get('add-sub-category', [SubCategoryController::class, 'add']);
+    Route::post('insert-sub-category', [SubCategoryController::class, 'insert']);
+    Route::get('edit-sub-category/{id}', [SubCategoryController::class, 'edit']);
+    Route::put('update-sub-category/{id}', [SubCategoryController::class, 'update']);
+    Route::get('delete-sub-category/{id}', [SubCategoryController::class, 'destroy']);
+
     Route::get('products', [ProductController::class, 'index']);
     Route::get('add-product', [ProductController::class, 'add']);
     Route::post('insert-product', [ProductController::class, 'insert']);
@@ -101,11 +108,3 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 
     Route::get('admin-profile', [UserController::class, 'adminprofile']);
 });
-
-// Sub Category
-Route::get('sub-category',[SubCategoryController::class,'index']);
-Route::get('add-sub-category',[SubCategoryController::class,'add']);
-Route::post('insert-sub-category',[SubCategoryController::class,'insert']);
-Route::get('edit-sub-category/{id}',[SubCategoryController::class,'edit']);
-Route::put('update-sub-category/{id}',[SubCategoryController::class,'update']);
-Route::get('delete-sub-category/{id}',[SubCategoryController::class,'destroy']);
