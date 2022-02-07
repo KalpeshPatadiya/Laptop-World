@@ -34,9 +34,8 @@
                                 <img src="{{ asset('assets/uploads/products/' . $item->products->image) }}" alt=""
                                     class="cart-img">
                             </div>
-                            <div class="col-md-5 my-auto">
+                            <div class="col-md-4 my-auto">
                                 <h4>{{ $item->products->name }}</h4>
-                                <p>{{ $item->products->description }}</p>
                             </div>
                             <div class="col-md-1 my-auto">
                                 <h6><strong>₹ {{ $item->products->price }}</strong></h6>
@@ -58,6 +57,12 @@
                                     <h5>Out of Stock</h5>
                                 @endif
                             </div>
+                            <div class="col-md-1 my-auto">
+                                @php
+                                    $prod_total = $item->products->price * $item->prod_qty;
+                                @endphp
+                                <h6><strong>₹ {{ $prod_total }}</strong></h6>
+                            </div>
                             <div class="col-md-auto my-auto">
                                 <button class="btn btn-danger delete-cart-item"><i class="fa fa-trash"></i>
                                     Remove</button>
@@ -73,7 +78,7 @@
             @else
                 <div class="card-body text-center">
                     <h2>Your <i class="fa fa-shopping-cart"></i> Cart is empty</h2>
-                    <a href="{{ url('category') }}" class="btn btn-outline-primary float-end">Continue Shopping</a>
+                    <a href="{{ url('collection') }}" class="btn btn-outline-primary float-end">Continue Shopping</a>
                 </div>
             @endif
         </div>

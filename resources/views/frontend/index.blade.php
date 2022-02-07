@@ -9,7 +9,7 @@
     <div class="py-5">
         <div class="container-fluid">
             <div class="row">
-                <h2 class="mx-5">Featured Products</h2>
+                <h2 class="px-5">Featured Products</h2>
                 <div class="owl-carousel featured-carousel owl-theme carousel-shadow">
                     @foreach ($featured_products as $prod)
                         <div class="item">

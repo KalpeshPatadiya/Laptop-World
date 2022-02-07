@@ -7,13 +7,18 @@
     <div class="py-3 mb-4 shadow-sm bg-info border-top">
         <div class="container">
             <h6 class="mb-0">
-                <a href="{{ url('category') }}">
-                    Categories
+                <a href="{{ url('collection') }}">
+                    Collection
                 </a> /
-                <a href="{{ url('category/' . $product->category->slug) }}">
-                    {{ $product->category->name }}
+                <a href="{{ url('collection/' . $product->subcategory->category->slug) }}">
+                    {{ $product->subcategory->category->name }}
                 </a> /
-                <a href="{{ url('category/' . $product->category->slug . '/' . $product->slug) }}">
+                <a
+                    href="{{ url('collection/' . $product->subcategory->category->slug . '/' . $product->subcategory->slug) }}">
+                    {{ $product->subcategory->name }}
+                </a> /
+                <a
+                    href="{{ url('collection/' . $product->subcategory->category->slug . '/' . $product->subcategory->slug . '/' . $product->slug) }}">
                     {{ $product->name }}
                 </a>
             </h6>
@@ -35,7 +40,7 @@
                                 <button class="btn btn-primary mt-3">Submit Review</button>
                             </form>
                         @else
-                            <h4 class="text-danger">You are not eligible to review this product</h4>
+                            <h4 class="text-danger">You are not eligible to review {{ $product->name }}</h4>
                             <p>
                                 For the trust worthiness of the reviews, only customers who purchased
                                 the product can write a review about the product
