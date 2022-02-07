@@ -48,7 +48,7 @@
                             <a href="{{ url('my-orders') }}" class="dropdown-item">My Orders</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="dropdown-item">My Profile</a>
+                            <a href="{{ url('my-profile') }}" class="dropdown-item">My Profile</a>
                         </li>
                         <li class="nav-item">
                             <a class="dropdown-item" href="{{ route('logout') }}"
