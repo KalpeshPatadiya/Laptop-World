@@ -27,18 +27,10 @@ class Product extends Model
         'status',
         'trending',
         'new_arrivals',
-        'offers_pr',
-        'meta_title',
-        'meta_description',
-        'meta_keyword',
     ];
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class, 'subcat_id', 'id', 'slug');
-    }
     public function subcategory()
     {
-        return $this->belongsTo(SubCategory::class,'subcat_id','id','slug');
+        return $this->belongsTo(SubCategory::class, 'subcat_id', 'id', 'slug');
     }
 }

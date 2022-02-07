@@ -1,9 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">Laptop World</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
@@ -11,16 +12,17 @@
                     <a class="nav-link" href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('category') }}">Category</a>
+                    <a class="nav-link" href="{{ url('collection') }}">Collection</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('cart') }}">Cart 
-                    <span class="badge badge-pill bg-primary cart-count">0</span></a>
-                    
+                    <button class="btn p-0"><a class="nav-link" href="{{ url('cart') }}">Cart
+                        <span class="badge badge-pill cart-count">0</span>
+                    </a></button>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('wishlist') }}">Wishlist
-                    <span class="badge badge-pill bg-success wishlist-count">0</span></a>
+                    <button class="btn p-0"><a class="nav-link" href="{{ url('wishlist') }}">Wishlist
+                        <span class="badge badge-pill wishlist-count">0</span>
+                    </a></button>
                 </li>
             </ul>
             @guest
@@ -38,18 +40,25 @@
                     @endif
                 </ul>
             @else
-                <li class="nav-link dropdown dropdown-menu-right">
+                <li class="nav-link dropdown dropdown-menu-right py-0 ml-auto">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         {{ Auth::user()->name }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li class="nav-item">
-                            <a href="{{ url('my-orders') }}" class="dropdown-item">My Orders</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('my-profile') }}" class="dropdown-item">My Profile</a>
-                        </li>
+                        @if (Auth::user()->role_as == '0')
+                            <li class="nav-item">
+                                <a href="{{ url('my-profile') }}" class="dropdown-item">My Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('my-orders') }}" class="dropdown-item">My Orders</a>
+                            </li>
+                        @endif
+                        @if (Auth::user()->role_as == '1')
+                            <li class="nav-item">
+                                <a class="dropdown-item" href="{{ url('dashboard') }}">Dashboard</a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

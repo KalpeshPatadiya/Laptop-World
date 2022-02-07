@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header bg-secondary">
+                    <div class="card-header pb-0 bg-secondary">
                         <h3 class="text-white">Order View
                             <a href="{{ url('orders') }}" class="btn btn-warning float-end">Back</a>
                         </h3>
@@ -54,12 +54,13 @@
                                     <tbody>
                                         @foreach ($orders->orderitems as $item)
                                             <tr>
-                                                <td>{{ $item->products->name }}</td>
+                                                <td>{{ $item->products ? $item->products->name : '' }}</td>
                                                 <td>{{ $item->qty }}</td>
                                                 <td>{{ $item->price }}</td>
                                                 <td>
-                                                    <img src="{{ asset('assets/uploads/products/' . $item->products->image) }}"
-                                                        alt="product img" width="100">
+                                                    <img src="{{ asset('assets/uploads/products/' . $item->products ? @$item->products->image : '') }}"
+                                                        alt="product img" width="100"
+                                                        onerror="this.src='https://via.placeholder.com/150/FF0000/FFFFFF?Text=noimage'" />
                                                 </td>
                                             </tr>
                                         @endforeach

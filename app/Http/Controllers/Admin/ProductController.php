@@ -43,7 +43,6 @@ class ProductController extends Controller
         $products->det_heading = $request->input('det_heading');
         $products->details = $request->input('details');
         $products->new_arrivals = $request->input('new_arrivals');
-        $products->offers_pr = $request->input('offers_pr');
         $products->MRP = $request->input('MRP');
         $products->price = $request->input('price');
         $products->quantity = $request->input('quantity');
@@ -83,7 +82,6 @@ class ProductController extends Controller
         $products->det_heading = $request->input('det_heading');
         $products->details = $request->input('details');
         $products->new_arrivals = $request->input('new_arrivals');
-        $products->offers_pr = $request->input('offers_pr');
         $products->MRP = $request->input('MRP');
         $products->price = $request->input('price');
         $products->quantity = $request->input('quantity');

@@ -2,11 +2,13 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">
+        <div class="card-header pb-0">
+            <a href="{{ url('sub-category') }}" class="btn btn-warning float-end">Back</a>
             <h4>Edit/Update Sub Category</h4>
         </div>
         <div class="card-body">
-            <form action="{{ url('update-sub-category/  ' . $subcategory->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ url('update-sub-category/  ' . $subcategory->id) }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="row">

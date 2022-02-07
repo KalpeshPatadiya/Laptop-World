@@ -21,7 +21,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('categories') ? 'active bg-gradient-primary' : '' }}"
+                <a class="nav-link text-white {{ areActiveRoutes(['categories', 'add-category', 'edit-category']) }}"
                     href="{{ url('categories') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">category</i>
@@ -30,16 +30,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('add-category') ? 'active bg-gradient-primary' : '' }}"
-                    href="{{ url('add-category') }}">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">assignment</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Add Category</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('sub-category') ? 'active bg-gradient-primary' : '' }}"
+                <a class="nav-link text-white {{ areActiveRoutes(['subcategory', 'addsubcategory', 'editsubcategory']) }}"
                     href="{{ url('sub-category') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">category</i>
@@ -48,16 +39,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('add-sub-category') ? 'active bg-gradient-primary' : '' }}"
-                    href="{{ url('add-sub-category') }}">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">category</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Add Sub Category</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('products') ? 'active bg-gradient-primary' : '' }}"
+                <a class="nav-link text-white {{ areActiveRoutes(['products', 'add-product', 'edit-product']) }}"
                     href="{{ url('products') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">badge</i>
@@ -66,16 +48,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('add-product') ? 'active bg-gradient-primary' : '' }}"
-                    href="{{ url('add-product') }}">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">assignment</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Add Product</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('orders') ? 'active bg-gradient-primary' : '' }}"
+                <a class="nav-link text-white {{ areActiveRoutes(['orders', 'order-history', 'view-order']) }}"
                     href="{{ url('orders') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">content_paste</i>
@@ -84,13 +57,35 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('users') ? 'active bg-gradient-primary' : '' }}"
+                <a class="nav-link text-white {{ areActiveRoutes(['users', 'viewuser']) }}"
                     href="{{ url('users') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">group</i>
                     </div>
                     <span class="nav-link-text ms-1">Users</span>
                 </a>
+            </li>
+            <hr class="horizontal light mt-0 mb-2">
+            <li class="nav-item">
+                <a class="nav-link text-white {{ Request::is('admin-profile') ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ url('admin-profile') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">person</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Profile</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();" {{ __('Logout') }}>
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">logout</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Logout</span>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </li>
         </ul>
     </div>

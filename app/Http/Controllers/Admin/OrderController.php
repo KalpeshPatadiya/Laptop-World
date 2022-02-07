@@ -16,8 +16,8 @@ class OrderController extends Controller
 
     public function view($id)
     {
-        $orders = Order::where('id', $id)->first();
-        return view('admin.orders.view' , compact('orders'));
+        $orders = Order::where(['id' => $id])->first();
+        return view('admin.orders.view', compact('orders'));
     }
 
     public function updateorder(Request $request, $id)

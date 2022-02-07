@@ -2,10 +2,9 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">
-            <div>
-                <h5>Category Page</h5>
-            </div>
+        <div class="card-header pb-0">
+            <a href="{{ url('add-category') }}" class="btn btn-warning float-end">Add Category</a>
+            <h5>Category Page</h5>
         </div>
         <div class="card-body">
             <table class="table table-bordered table-striped">
