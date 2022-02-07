@@ -41,8 +41,8 @@
                                 <input type="text" value="{{ $products->slug }}" name="slug" class="form-control">
                             </div>
                             <div class="form-group col-md-12 mb-3">
-                                <label for="">Description</label>
-                                <textarea name="small_description" rows="3"
+                                <label for="">Small Description</label>
+                                <textarea name="small_description" id="sumnote_desc" rows="3"
                                     class="form-control"> {{ $products->small_description }} </textarea>
                             </div>
                             <div class="form-group col-md-4 mb-3">
@@ -87,7 +87,7 @@
                         </div>
                         <div class="form-group col-md-12 mb-3">
                             <label for="">Highlights Description</label>
-                            <input type="text" name="highlights" value="{{ $products->highlights }}"
+                            <input type="text" name="highlights" id="sumnote_highlight" value="{{ $products->highlights }}"
                                 class="form-control">
                         </div>
                         <div class="form-group col-md-4 mb-3">
@@ -97,7 +97,7 @@
                         </div>
                         <div class="form-group col-md-12 mb-3">
                             <label for="">Product Description</label>
-                            <textarea name="description" rows="3"
+                            <textarea name="description" id="sumnote_prod_desc" rows="3"
                                 class="form-control">{{ $products->description }}</textarea>
                         </div>
                         <div class="form-group col-md-4 mb-3">
@@ -107,7 +107,7 @@
                         </div>
                         <div class="form-group col-md-12 mb-3">
                             <label for="">Product Details/Specifications</label>
-                            <textarea name="details" rows="3" class="form-control">{{ $products->details }}</textarea>
+                            <textarea name="details" id="sumnote_detail" rows="3" class="form-control">{{ $products->details }}</textarea>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="contact-tab">
@@ -125,4 +125,15 @@
             </form>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $("#sumnote_desc").summernote();
+            $("#sumnote_highlight").summernote();
+            $("#sumnote_prod_desc").summernote();
+            $("#sumnote_detail").summernote();
+        });
+    </script>
 @endsection

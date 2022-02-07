@@ -15,35 +15,39 @@
                     <a class="nav-link" href="{{ url('collection') }}">Collection</a>
                 </li>
                 <li class="nav-item">
-                    <button class="btn p-0"><a class="nav-link" href="{{ url('cart') }}">Cart
+                    <a class="nav-link" href="{{ url('cart') }}"><i class="fas fa-shopping-cart"></i> Cart
                         <span class="badge badge-pill cart-count">0</span>
-                    </a></button>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <button class="btn p-0"><a class="nav-link" href="{{ url('wishlist') }}">Wishlist
+                    <a class="nav-link" href="{{ url('wishlist') }}"><i class="fas fa-heart"></i> Wishlist
                         <span class="badge badge-pill wishlist-count">0</span>
-                    </a></button>
+                    </a>
                 </li>
             </ul>
             @guest
                 <ul class="navbar-nav ml-auto">
                     @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <button class="btn p-0"><a class="nav-link" href="{{ route('login') }}">
+                                    <i class="fas fa-sign-in-alt"></i> {{ __('Login') }}
+                                </a></button>
                         </li>
                     @endif
 
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <button class="btn p-0"><a class="nav-link" href="{{ route('register') }}">
+                                    <i class="fas fa-user-plus"></i> {{ __('Register') }}
+                                </a></button>
                         </li>
                     @endif
                 </ul>
             @else
                 <li class="nav-link dropdown dropdown-menu-right py-0 ml-auto">
-                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        {{ Auth::user()->name }}
+                    <a href="#" class="btn nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i> {{ Auth::user()->name }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         @if (Auth::user()->role_as == '0')
@@ -62,7 +66,7 @@
                         <li class="nav-item">
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
                             </a>
                             <form action="{{ route('logout') }}" id="logout-form" method="POST" class="d-none">
                                 @csrf

@@ -11,20 +11,20 @@
                 @csrf
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-                            type="button" role="tab" aria-controls="home" aria-selected="true">Product</button>
+                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                            role="tab">Product</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
-                            type="button" role="tab" aria-controls="profile" aria-selected="false">Description</button>
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                            role="tab">Description</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#other"
-                            type="button" role="tab" aria-controls="other" aria-selected="false">Other</button>
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#other" type="button"
+                            role="tab">Other</button>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel">
                         <div class="row">
                             <div class="col-md-12 form-group mt-3 mb-3">
                                 <select class="form-select" name="subcat_id">
@@ -43,8 +43,9 @@
                                 <input type="text" name="slug" class="form-control">
                             </div>
                             <div class="form-group col-md-12 mb-3">
-                                <label for="">Description</label>
-                                <textarea name="small_description" rows="3" class="form-control"></textarea>
+                                <label for="">Small Description</label>
+                                <textarea name="small_description" id="sumnote_desc" rows="4"
+                                    class="form-control"></textarea>
                             </div>
                             <div class="form-group col-md-4 mb-3">
                                 <label for="">MRP</label>
@@ -74,14 +75,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="tab-pane fade" id="profile" role="tabpanel">
                         <div class="form-group col-md-6 mt-3 mb-3">
                             <label for="name">Highlights</label>
                             <input type="text" name="high_heading" class="form-control">
                         </div>
                         <div class="form-group col-md-12 mb-3">
                             <label for="">Highlights Description</label>
-                            <input type="text" name="highlights" class="form-control">
+                            <textarea name="highlights" id="sumnote_highlight" rows="4" class="form-control"></textarea>
                         </div>
                         <div class="form-group col-md-4 mb-3">
                             <label for="">Product Description</label>
@@ -89,7 +90,7 @@
                         </div>
                         <div class="form-group col-md-12 mb-3">
                             <label for="">Product Description</label>
-                            <textarea name="description" rows="3" class="form-control"></textarea>
+                            <textarea name="description" id="sumnote_prod_desc" rows="4" class="form-control"></textarea>
                         </div>
                         <div class="form-group col-md-4 mb-3">
                             <label for="">Product Details/Specifications</label>
@@ -97,10 +98,10 @@
                         </div>
                         <div class="form-group col-md-12 mb-3">
                             <label for="">Product Details/Specifications</label>
-                            <textarea name="details" rows="3" class="form-control"></textarea>
+                            <textarea name="details" id="sumnote_detail" rows="4" class="form-control"></textarea>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="contact-tab">
+                    <div class="tab-pane fade" id="other" role="tabpanel">
                         <div class="form-group col-md-4 mt-3 mb-3">
                             <label for="">New Arrival</label>
                             <input name="new_arrivals" rows="3" class="form-control">
@@ -114,4 +115,15 @@
             </form>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $("#sumnote_desc").summernote();
+            $("#sumnote_highlight").summernote();
+            $("#sumnote_prod_desc").summernote();
+            $("#sumnote_detail").summernote();
+        });
+    </script>
 @endsection

@@ -9,7 +9,8 @@ use App\Models\Rating;
 use App\Models\SubCategory;
 use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+use Request;
 
 class FrontendController extends Controller
 {
@@ -43,7 +44,18 @@ class FrontendController extends Controller
         if (Category::where('slug', $cat_slug)->exists()) {
             if (SubCategory::where('slug', $subcat_slug)->exists()) {    // if category exists
                 $subcategory = SubCategory::where('slug',  $subcat_slug)->first();
-                $products = Product::where('subcat_id', $subcategory->id)->where('status', '1')->get();
+                $sort = Request::get('sort');
+                if ($sort == 'price_asc') {
+                    $products = Product::where('subcat_id', $subcategory->id)->orderBy('price', 'asc')->where('status', '1')->get();
+                } elseif ($sort == 'price_asc') {
+                    $products = Product::where('subcat_id', $subcategory->id)->orderBy('price', 'desc')->where('status', '1')->get();
+                } elseif ($sort == 'newest') {
+                    $products = Product::where('subcat_id', $subcategory->id)->orderBy('created_at', 'desc')->where('status', '1')->get();
+                } elseif ($sort == 'trending') {
+                    $products = Product::where('subcat_id', $subcategory->id)->orderBy('trending', 'desc')->where('status', '1')->get();
+                } else {
+                    $products = Product::where('subcat_id', $subcategory->id)->where('status', '1')->get();
+                }
                 return view('frontend.products.index', compact('subcategory', 'products'));
             } else {    // if sub category does not exist
                 return redirect('/')->with('status', " Sub Cat Slug doesn't exist");

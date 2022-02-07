@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="py-3 mb-4 shadow-sm bg-info border-top">
+    <div class="py-2 shadow-lg bg-info">
         <div class="container">
             <h6 class="mb-0">
                 <a href="{{ url('collection') }}">
@@ -22,19 +22,19 @@
         <div class="container">
             <div class="row">
                 <h2>Sub Categories</h2>
-                @foreach($subcategory as $item)
-                <div class="col-md-3 mb-3">
+                @foreach ($subcategory as $item)
+                    <div class="col-md-3 mb-3">
                         <div class="card">
                             <a href="{{ url('collection/' . $item->category->slug . '/' . $item->slug . '/') }}">
-                                <img class="card-img-top" src="{{ asset('assets/uploads/sub-category/' . $item->image) }}"
-                                    alt="product image">
+                                <img class="card-img-top"
+                                    src="{{ asset('assets/uploads/sub-category/' . $item->image) }}" alt="product image">
                                 <div class="card-body">
                                     <h5>{{ $item->name }}</h5>
                                     <p class="card-text">{{ $item->description }}</p>
                                 </div>
                             </a>
                         </div>
-                </div>
+                    </div>
                 @endforeach
             </div>
         </div>

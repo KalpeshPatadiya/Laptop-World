@@ -141,12 +141,36 @@
                     </div>
                     <div class="col-md-12">
                         <hr>
-                        <details open>
-                            <summary class="fs-3">Description</summary>
-                            <p class="mt-3">
-                                {!! $products->description !!}
-                            </p>
-                        </details>
+                        @if ($products->high_heading != 'NULL' && $products->high_heading != 'NULL')
+                            <div class="card my-3">
+                                <details open>
+                                    <summary class="card-header fs-3">{{ $products->high_heading }}</summary>
+                                    <div class="card-body">
+                                        {!! $products->highlights !!}
+                                    </div>
+                                </details>
+                            </div>
+                        @endif
+                        @if ($products->des_heading != 'NULL' && $products->description != 'NULL')
+                            <div class="card my-3">
+                                <details>
+                                    <summary class="card-header fs-3">{{ $products->des_heading }}</summary>
+                                    <div class="card-body">
+                                        {!! $products->description !!}
+                                    </div>
+                                </details>
+                            </div>
+                        @endif
+                        @if ($products->det_heading != 'NULL' && $products->details != 'NULL')
+                            <div class="card my-3">
+                                <details>
+                                    <summary class="card-header fs-3">{{ $products->det_heading }}</summary>
+                                    <div class="card-body">
+                                        {!! $products->details !!}
+                                    </div>
+                                </details>
+                            </div>
+                        @endif
                     </div>
                     <hr>
                 </div>
