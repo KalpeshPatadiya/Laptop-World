@@ -23,6 +23,7 @@
                                         <th>Total Price</th>
                                         <th>Status</th>
                                         <th>Action</th>
+                                        <th>Invoice</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -36,6 +37,7 @@
                                                 <a href="{{ url('view-order/' . $item->id) }}"
                                                     class="btn btn-primary">View</a>
                                             </td>
+                                            <td><a href="{{ url('generate-invoice/' . $item->id) }}" class="btn btn-success">Generate Invoice</a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

@@ -35,6 +35,13 @@
         href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
         integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <style>
+        .ui-widget {
+            z-index: 2024;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -55,6 +62,31 @@
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
+    <!-- Auto Complete -->
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script>
+       $(document).ready(function() { 
+        src = "{{ route('searchproductajax') }}";
+        $("#search_text").autocomplete({
+            source: function(request, response) {
+                $.ajax ({
+                    url: src,
+                    data: {
+                        term: request.term
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        response(data);
+                    }
+                });
+            },
+            minLength: 1,
+            });
+            $(document).on('click','.ui-menu-item', function() {
+                $('#search-form').submit();
+            });
+       }); 
+    </script>
 
     {{-- product zoom --}}
     <script src="{{ asset('frontend/js/jquery.exzoom.js') }}"></script>

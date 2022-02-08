@@ -7,7 +7,8 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Product;
 class UserController extends Controller
 {
     public function index()
@@ -58,5 +59,63 @@ class UserController extends Controller
     {
         $profile = User::find(Auth::id());
         return view('admin.profile.index', compact('profile'));
+    }
+
+    public function invoice($order_id)
+    {
+        if(Order::where('id',$order_id)->exists())
+        {
+            $orders = Order::find($order_id);
+            $data = [
+                'orders' => $orders,
+            ];
+            $pdf = PDF::loadView('frontend.orders.invoice', $data);
+    
+            return $pdf->download('invoice.pdf');
+        }
+    }
+    public function SearchautoComplete(Request $request)
+    {
+        $query = $request->get('term','');
+        $products = Product::where('name','LIKE','%'.$query.'%')->where('status','1')->get();
+
+        $data = [];
+        foreach ($products as $items)
+        {
+            $data[] = [
+                'value'=>$items->name,
+                'id'=>$items->id
+            ];
+        }
+        if(count($data))
+        {
+            return $data;
+        }
+        else 
+        {
+            return ['value'=>'No result found','id'=>''];
+        }
+    }
+    public function result(Request $request)
+    {
+        $searchingdata = $request->input('search_product');
+        $products = Product::where('name','LIKE','%'.$searchingdata.'%')->where('status','1')->first();
+        if($products)
+        {
+            if(isset($_POST['searchbtn']))
+            {
+                return redirect('collection/'.$products->subcategory->category->slug.'/'.
+                $products->subcategory->slug);
+            }
+            else 
+            {
+                return redirect('collection/'.$products->subcategory->category->slug.'/'.
+                $products->subcategory->slug.'/'.$products->slug);
+            }
+        }
+        else 
+        {
+            return redirect('/')->with('status',"Product Not Available");
+        }
     }
 }

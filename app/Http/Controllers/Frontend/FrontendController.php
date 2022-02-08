@@ -9,7 +9,7 @@ use App\Models\Rating;
 use App\Models\SubCategory;
 use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
-// use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use Request;
 
 class FrontendController extends Controller
@@ -91,4 +91,6 @@ class FrontendController extends Controller
             return redirect(' /')->with('sta tus', "No such category found :/");
         }
     }
+
+    
 }
