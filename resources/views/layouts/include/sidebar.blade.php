@@ -21,7 +21,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ areActiveRoutes(['categories', 'add-category', 'edit-category']) }}"
+                <a class="nav-link text-white"
                     href="{{ url('categories') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">category</i>
@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ areActiveRoutes(['subcategory', 'addsubcategory', 'editsubcategory']) }}"
+                <a class="nav-link text-white"
                     href="{{ url('sub-category') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">category</i>
@@ -39,7 +39,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ areActiveRoutes(['products', 'add-product', 'edit-product']) }}"
+                <a class="nav-link text-white"
                     href="{{ url('products') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">badge</i>
@@ -48,7 +48,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ areActiveRoutes(['orders', 'order-history', 'view-order']) }}"
+                <a class="nav-link text-white"
                     href="{{ url('orders') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">content_paste</i>
@@ -57,7 +57,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ areActiveRoutes(['users', 'viewuser']) }}"
+                <a class="nav-link text-white}}"
                     href="{{ url('users') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">group</i>

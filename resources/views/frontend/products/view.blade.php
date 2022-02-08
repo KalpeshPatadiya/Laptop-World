@@ -224,4 +224,31 @@
             </div>
         </div>
     </div>
+
+    <section class="py-5  container">
+        <div class="row">
+            <div class="col-md 12">
+                <h4 class="fw-bold">Related Products</h4>
+                <hr>
+                <div class="row">
+                    @foreach ($products->subcategory->products as $item)
+                        <div class="col-md-3">
+                            <div class="card card-none card-shadow m-2">
+                                <a
+                                    href="{{ url('collection/' . $item->subcategory->category->slug . '/' . $item->subcategory->slug . '/' . $item->slug) }}">
+                                    <img class="card-img-top zoom-in"
+                                        src="{{ asset('assets/uploads/products/' . $item->image) }}" alt="product image">
+                                    <div class="card-body">
+                                        <h5>{{ $item->name }}</h5>
+                                        <span class="float-start"><b>₹</b> {{ $item->price }}</span>
+                                        <span class="float-end"><b>₹ </b><s>{{ $item->MRP }}</s></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

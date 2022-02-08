@@ -1,5 +1,5 @@
 <!-- Home Page - Footer Page  -->
-<footer class="text-center text-lg-start bg-light text-muted">
+<footer class="text-center text-lg-start bg-light text-muted mt-5">
     <!-- Section: Links  -->
     <section class="d-flex justify-content-center justify-content-lg-between p-4">
         <div class="container text-center text-md-start mt-2">

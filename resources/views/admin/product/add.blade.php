@@ -20,7 +20,7 @@
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" data-bs-toggle="tab" data-bs-target="#other" type="button"
-                            role="tab">Other</button>
+                            role="tab">Product Status</button>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
@@ -59,15 +59,7 @@
                                 <label for="">Quantity</label>
                                 <input type="number" name="quantity" class="form-control">
                             </div>
-                            <div class="form-group col-md-6 mb-3">
-                                <input class="form-check-input" type="checkbox" name="status" class="form-control">
-                                <label class="form-check-label" for="">Status</label>
-                            </div>
-                            <div class="form-group col-md-6 mb-3">
-                                <input class="form-check-input" type="checkbox" name="trending" class="form-control">
-                                <label class="form-check-label" for="">Trending</label>
-                            </div>
-                            <div class="form-group col-md-12 mb-3">
+                            <div class="form-group col-md-12 my-3">
                                 <input type="file" name="image" class="form-control">
                             </div>
                             <div class="col-md-12">
@@ -102,13 +94,17 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="other" role="tabpanel">
-                        <div class="form-group col-md-4 mt-3 mb-3">
-                            <label for="">New Arrival</label>
-                            <input name="new_arrivals" rows="3" class="form-control">
+                        <div class="form-group col-md-4 mb-3">
+                            <input class="form-check-input" type="checkbox" name="status" class="form-control">
+                            <label class="form-check-label" for="">Status</label>
                         </div>
                         <div class="form-group col-md-4 mb-3">
-                            <label for="">Offers</label>
-                            <input name="offers_pr" rows="3" class="form-control">
+                            <input class="form-check-input" type="checkbox" name="trending" class="form-control">
+                            <label class="form-check-label" for="">Trending</label>
+                        </div>
+                        <div class="form-group col-md-4 mb-3">
+                            <input class="form-check-input" type="checkbox" name="new_arrivals" class="form-control">
+                            <label class="form-check-label" for="">New Arrival</label>
                         </div>
                     </div>
                 </div>

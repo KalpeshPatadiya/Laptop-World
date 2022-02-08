@@ -9,7 +9,7 @@ use App\Models\Rating;
 use App\Models\SubCategory;
 use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
-// use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use Request;
 
 class FrontendController extends Controller
@@ -18,7 +18,9 @@ class FrontendController extends Controller
     {
         $featured_products = Product::where('trending', '1')->take(15)->get();
         $trending_category = Category::where('popular', '1')->take(15)->get();
-        return view('frontend.index', compact('featured_products', 'trending_category'));
+        $new_products = Product::where('new_arrivals', '1')->orderBy('created_at', 'desc')->take(15)->get();
+        $popular_brand = SubCategory::where('popular', '1')->take(15)->get();
+        return view('frontend.index', compact('featured_products', 'trending_category', 'new_products', 'popular_brand'));
     }
 
     public function category()
@@ -91,4 +93,6 @@ class FrontendController extends Controller
             return redirect(' /')->with('sta tus', "No such category found :/");
         }
     }
+
+    
 }

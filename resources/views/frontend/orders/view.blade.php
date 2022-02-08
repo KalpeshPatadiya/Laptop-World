@@ -65,7 +65,10 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <h4 class="px-2">Grand Total: <span class="float-end"><b>₹ {{ $orders->total_price }}</b></span></h4>
+                                <h4 class="px-2">Grand Total: <span class="float-end">
+                                        <b>₹ {{ $orders->total_price }}</b></span></h4>
+                                <a href="{{ url('generate-invoice/' . $orders->id) }}"
+                                    class="btn btn-outline-success float-end">Generate Invoice</a>
                             </div>
                         </div>
                     </div>
