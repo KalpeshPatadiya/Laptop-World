@@ -118,6 +118,7 @@
         .float-right {
             float: right;
         }
+
     </style>
 </head>
 
@@ -142,19 +143,19 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-md-6">
-                        <h2 class="heading">Invoice No. : {{$orders->id}}</h2>
-                        <p class="sub-heading">Tracking No. : {{$orders->tracking_no}} </p>
-                        <p class="sub-heading">Order Date : {{$orders->created_at->format('d-m-Y')}} </p>
-                        <p class="sub-heading">Email Address : {{$orders->email}} </p>
+                        <h2 class="heading">Invoice No. : {{ $orders->id }}</h2>
+                        <p class="sub-heading">Tracking No. : {{ $orders->tracking_no }} </p>
+                        <p class="sub-heading">Order Date : {{ $orders->created_at->format('d-m-Y') }} </p>
+                        <p class="sub-heading">Email Address : {{ $orders->email }} </p>
                     </div>
                     <div class="col-md-6">
                         <p class="sub-heading">Full Name : {{ $orders->fname }} {{ $orders->lname }}</p>
                         <p class="sub-heading">Address : {{ $orders->address1 }} {{ $orders->address2 }}</p>
                         <p class="sub-heading">Phone Number : {{ $orders->phone }}</p>
                         <p class="sub-heading">City, State, Pincode :
-                            {{$orders->city}},
-                            {{$orders->state}},
-                            {{$orders->pincode}}
+                            {{ $orders->city }},
+                            {{ $orders->state }},
+                            {{ $orders->pincode }}
                         </p>
                     </div>
                 </div>
@@ -170,17 +171,20 @@
                         <th>Product</th>
                         <th class="w-20">Price</th>
                         <th class="w-20">Quantity</th>
-                        <th class="w-20">Grandtotal</th>
+                        <th class="w-20">SubTotal</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($orders->orderitems as $item)
-                    <tr>
-                        <td>{{ $item->products->name }}</td>
-                        <td>{{ $item->price }}</td>
-                        <td>{{ $item->qty }}</td>
-                        <td>{{ $orders->total_price }}</td>
-                    </tr>
+                        <tr>
+                            <td>{{ $item->products->name }}</td>
+                            <td>{{ $item->price }}</td>
+                            <td>{{ $item->qty }}</td>
+                            @php
+                                $prod_total = $item->price * $item->qty;
+                            @endphp
+                            <td>{{ $prod_total }}</td>
+                        </tr>
                     @endforeach
                     <tr>
                         <td colspan="3" class="text-right">Grand Total</td>
@@ -190,7 +194,7 @@
             </table>
             <br>
             <h3 class="heading">Payment Status : {{ $orders->status == '0' ? 'Pending...' : 'Completed' }}
-            <h3 class="heading">Payment Mode : COD </h3>
+                <h3 class="heading">Payment Mode : COD </h3>
         </div>
 
         <div class="body-section">
