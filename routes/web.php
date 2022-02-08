@@ -39,6 +39,9 @@ Route::get('collection/{cat_slug}/{subcat_slug}/{prod_slug}', [FrontendControlle
 
 Auth::routes();
 
+Route::get('/searchajax','Frontend\UserController@SearchautoComplete')->name('searchproductajax');
+Route::post('/searching', 'Frontend\UserController@result');
+
 Route::get('load-cart-data', [CartController::class, 'cartcount']);
 Route::get('load-wishlist-data', [WishlistController::class, 'wishlistcount']);
 
@@ -58,7 +61,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('my-orders', [UserController::class, 'index']);
     Route::get('view-order/{id}', [UserController::class, 'vieworder']);
-    Route::get('generate-invoice/{id}', [UserController::class, 'invoice']);
+    Route::get('generate-invoice/{order_id}',[UserController::class, 'invoice']);
 
     Route::post('add-rating', [RatingController::class, 'add']);
 
