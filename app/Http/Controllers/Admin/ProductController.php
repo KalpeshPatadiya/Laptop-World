@@ -87,6 +87,7 @@ class ProductController extends Controller
         $products->quantity = $request->input('quantity');
         $products->status = $request->input('status') == TRUE ? '1' : '0';
         $products->trending = $request->input('trending') == TRUE ? '1' : '0';
+        $products->new_arrivals = $request->input('new_arrivals') == TRUE ? '1' : '0';
         $products->update();
         return redirect('products')->with('status', "Product Updated Successfully");
     }

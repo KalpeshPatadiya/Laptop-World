@@ -22,6 +22,12 @@ class UserController extends Controller
         return view('frontend.orders.view', compact('orders'));
     }
 
+    public function invoice($id)
+    {
+        $orders = Order::where('id', $id)->where('user_id', Auth::id())->first();
+        return view('frontend.orders.invoice', compact('orders'));
+    }
+
     public function myprofile()
     {
         $profile = Auth::user();

@@ -58,6 +58,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('my-orders', [UserController::class, 'index']);
     Route::get('view-order/{id}', [UserController::class, 'vieworder']);
+    Route::get('generate-invoice/{id}', [UserController::class, 'invoice']);
 
     Route::post('add-rating', [RatingController::class, 'add']);
 
