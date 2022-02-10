@@ -32,7 +32,15 @@
                                             <td>{{ date('d-m-y', strtotime($item->created_at)) }}</td>
                                             <td>{{ $item->tracking_no }}</td>
                                             <td>{{ $item->total_price }}</td>
-                                            <td>{{ $item->status == '0' ? 'Pending...' : 'Completed' }}
+                                            @if($item->order_status == '0')
+                                            <td>Pending</td>
+                                            @elseif($item->order_status == '1')
+                                            <td>Shipped</td>
+                                            @elseif($item->order_status == '2')
+                                            <td>Completed</td>
+                                            @else
+                                            <td>Cancelled</td>
+                                            @endif
                                             <td>
                                                 <a href="{{ url('view-order/' . $item->id) }}"
                                                     class="btn btn-primary">View</a>

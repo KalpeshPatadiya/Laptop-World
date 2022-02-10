@@ -26,6 +26,7 @@
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->role_as == '1' ? 'Admin' : 'User' }}</td>
                             <td>
+                                <a href="{{ url('edit-user/' . $item->id) }}" class="btn btn-primary">Edit</a>
                                 <a href="{{ url('view-user/' . $item->id) }}" class="btn btn-primary">View</a>
                             </td>
                         </tr>
