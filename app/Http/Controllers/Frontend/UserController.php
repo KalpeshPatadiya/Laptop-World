@@ -18,7 +18,7 @@ class UserController extends Controller
         return view('frontend.orders.index', compact('orders'));
     }
 
-    public function vieworder($id)
+    public function vieworder(Request $request, $id)
     {
         $orders = Order::where('id', $id)->where('user_id', Auth::id())->first();
         return view('frontend.orders.view', compact('orders'));
@@ -109,5 +109,19 @@ class UserController extends Controller
         } else {
             return redirect('/')->with('status', "Product Not Available");
         }
+    }
+
+    public function cancelorder(Request $request, $id)
+    {
+        // $orders = Order::find($id);
+        // $orders->cancellation_reason = $request->input('cancel_reason');
+        // $orders->order_status = "3";
+        $prod_id = $request->input('prod_id');
+        $products = Product::where('id', $prod_id)->get();
+        $new_qty = $request->input('quantity1');
+        $products->quantity =  $new_qty;
+        // $orders->save();
+        $products->update();
+        return redirect('my-orders')->with('status', 'Order Cancelled');
     }
 }

@@ -24,8 +24,8 @@ class Order extends Model
         'country',
         'pincode',
         'total_price',
-        'status',
-        'message',
+        'order_status',
+        'cancellation_reason',
         'tracking_no',
     ];
 

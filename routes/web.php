@@ -61,6 +61,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('my-orders', [UserController::class, 'index']);
     Route::get('view-order/{id}', [UserController::class, 'vieworder']);
+    Route::put('cancel-order/{id}', [UserController::class, 'cancelorder']);
     Route::get('generate-invoice/{order_id}', [UserController::class, 'invoice']);
 
     Route::post('add-rating', [RatingController::class, 'add']);
@@ -109,6 +110,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 
     Route::get('users', [DashboardController::class, 'users'])->name('users');
     Route::get('view-user/{id}', [DashboardController::class, 'viewuser'])->name('viewuser');
+    Route::get('edit-user/{id}', [DashboardController::class, 'edituser'])->name('edituser');
+    Route::put('update-users/{id}', [DashboardController::class, 'updateuser'])->name('updateuser');
 
     Route::get('admin-profile', [UserController::class, 'adminprofile']);
 });
