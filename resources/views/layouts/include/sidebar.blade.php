@@ -21,8 +21,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white"
-                    href="{{ url('categories') }}">
+                <a class="nav-link text-white" @if (Request::is(['categories'] || ['add-actegory'])) class="active bg-gradient-primary" @endif href="{{ url('categories') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">category</i>
                     </div>
@@ -30,8 +29,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white"
-                    href="{{ url('sub-category') }}">
+                <a class="nav-link text-white" href="{{ url('sub-category') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">category</i>
                     </div>
@@ -39,8 +37,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white"
-                    href="{{ url('products') }}">
+                <a class="nav-link text-white" href="{{ url('products') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">badge</i>
                     </div>
@@ -48,8 +45,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white"
-                    href="{{ url('orders') }}">
+                <a class="nav-link text-white" href="{{ url('orders') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">content_paste</i>
                     </div>
@@ -57,8 +53,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white}}"
-                    href="{{ url('users') }}">
+                <a class="nav-link text-white}}" href="{{ url('users') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">group</i>
                     </div>
