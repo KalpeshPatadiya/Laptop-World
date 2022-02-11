@@ -14,6 +14,9 @@ use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\RatingController;
 use App\Http\Controllers\Frontend\ReviewController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+use App\Mail\WelcomeMail;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -37,7 +40,7 @@ Route::get('collection/{cat_slug}', [FrontendController::class, 'viewcategory'])
 Route::get('collection/{cat_slug}/{subcat_slug}', [FrontendController::class, 'subcatview']);
 Route::get('collection/{cat_slug}/{subcat_slug}/{prod_slug}', [FrontendController::class, 'productview']);
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/searchajax', 'Frontend\UserController@SearchautoComplete')->name('searchproductajax');
 Route::post('/searching', 'Frontend\UserController@result');
@@ -46,6 +49,25 @@ Route::get('load-cart-data', [CartController::class, 'cartcount']);
 Route::get('load-wishlist-data', [WishlistController::class, 'wishlistcount']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// mail
+Route::get('/email', [WelcomeMail::class, 'welcome']);
+
+//email verification
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/home')->with('status', 'verification success.!');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('status', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 Route::post('add-to-cart', [CartController::class, 'addToCart']);
 Route::post('delete-cart-item', [CartController::class, 'deleteCartItem']);
@@ -114,4 +136,6 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::put('update-users/{id}', [DashboardController::class, 'updateuser'])->name('updateuser');
 
     Route::get('admin-profile', [UserController::class, 'adminprofile']);
+    Route::get('admin-profile/edit', [UserController::class, 'editadminprofile']);
+    Route::put('update-admin-profile', [UserController::class, 'updateadminprofile']);
 });

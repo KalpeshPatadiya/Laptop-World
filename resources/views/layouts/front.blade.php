@@ -11,6 +11,7 @@
     <title>
         @yield('title') | Laptop World
     </title>
+    <link rel="shortcut icon" href="{{ asset('assets/uploads/logo/transFavicon.png') }}" type="image/png">
 
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -40,6 +41,7 @@
         .ui-widget {
             z-index: 2024;
         }
+
     </style>
 
 </head>
@@ -65,27 +67,27 @@
     <!-- Auto Complete -->
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script>
-       $(document).ready(function() { 
-        src = "{{ route('searchproductajax') }}";
-        $("#search_text").autocomplete({
-            source: function(request, response) {
-                $.ajax ({
-                    url: src,
-                    data: {
-                        term: request.term
-                    },
-                    dataType: "json",
-                    success: function(data) {
-                        response(data);
-                    }
-                });
-            },
-            minLength: 1,
+        $(document).ready(function() {
+            src = "{{ route('searchproductajax') }}";
+            $("#search_text").autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        url: src,
+                        data: {
+                            term: request.term
+                        },
+                        dataType: "json",
+                        success: function(data) {
+                            response(data);
+                        }
+                    });
+                },
+                minLength: 1,
             });
-            $(document).on('click','.ui-menu-item', function() {
+            $(document).on('click', '.ui-menu-item', function() {
                 $('#search-form').submit();
             });
-       }); 
+        });
     </script>
 
     {{-- product zoom --}}

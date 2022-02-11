@@ -33,7 +33,35 @@
                     <a href="{{ URL::current() . '?sort=newest' }}" class="sort-font">Newest</a>
                     <a href="{{ URL::current() . '?sort=trending' }}" class="sort-font">Trending</a>
                 </div>
-                <div class="col-md-12 mb-3">
+
+                <div class="col-md-3">
+                    <form action="{{ URL::current() }}" method="get">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Brands
+                                    <button type="submit" class="btn btn-sm btn-primary float-end">Filter</button>
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                @foreach ($subcatlist as $item)
+                                    @php
+                                        $checked = [];
+                                        if (isset($_GET['filterbrand'])) {
+                                            $checked = $_GET['filterbrand'];
+                                        }
+                                    @endphp
+                                    <div class="mb-1">
+                                        <input type="checkbox" name="filterbrand[]" value="{{ $item->name }}"
+                                            @if (in_array($item->name, $checked)) checked @endif>
+                                        {{ $item->name }}
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-9 mb-3">
                     <div class="row">
                         @foreach ($products as $prod)
                             <div class="col-md-12 mb-2">
@@ -63,12 +91,13 @@
                                                 @endif
                                                 <br>
                                                 <h5 class="font-italic"><s>₹ {{ $prod->MRP }}</s></h5>
-                                                <h5 class="font-italic fs-4 fw-bold">₹ {{ $prod->price }}
+                                                <h5 class="font-italic fs-4 fw-bold mb-5">₹ {{ $prod->price }}
                                                 </h5>
                                             </div>
                                             <div class="float-end">
                                                 <a href="{{ url('collection/' . $prod->subcategory->category->slug . '/' . $prod->subcategory->slug . '/' . $prod->slug) }}"
-                                                    class="btn btn-lg btn-outline-success py-1 px-3 mt-5">View Details</a>
+                                                    class="btn btn-lg btn-outline-success mt-5"
+                                                    style="margin: -8px; padding: 10px;">View Details</a>
                                             </div>
                                         </div>
                                     </div>

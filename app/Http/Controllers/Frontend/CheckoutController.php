@@ -68,19 +68,19 @@ class CheckoutController extends Controller
             $prod->update();
         }
 
-        // if (Auth::user()->address1 == null) {       // if user has not set address
-        //     $user = User::where('id', Auth::id())->first();
-        //     $user->name = $request->input('fname');
-        //     $user->lname = $request->input('lname');
-        //     $user->phone = $request->input('phone');
-        //     $user->address1 = $request->input('address1');
-        //     $user->address2 = $request->input('address2');
-        //     $user->city = $request->input('city');
-        //     $user->state = $request->input('state');
-        //     $user->country = $request->input('country');
-        //     $user->pincode = $request->input('pincode');
-        //     $user->update();
-        // }
+        if (Auth::user()->address1 == null) {       // if user has not set address
+            $user = User::where('id', Auth::id())->first();
+            $user->name = $request->input('fname');
+            $user->lname = $request->input('lname');
+            $user->phone = $request->input('phone');
+            $user->address1 = $request->input('address1');
+            $user->address2 = $request->input('address2');
+            $user->city = $request->input('city');
+            $user->state = $request->input('state');
+            $user->country = $request->input('country');
+            $user->pincode = $request->input('pincode');
+            $user->update();
+        }
 
         $order_data = [
             'fname' => $request->input('fname'),
@@ -93,15 +93,16 @@ class CheckoutController extends Controller
             'state' => $request->input('state'),
             'country' => $request->input('country'),
             'pincode' => $request->input('pincode'),
+            'tracking_no' => $order->tracking_no,
         ];
 
         $user_email = $request->input('email');
 
         Mail::to($user_email)->send(new OrderMail($order_data, $cartitems));
 
-        // $cartitems = Cart::where('user_id', Auth::id())->get();
-        // Cart::destroy($cartitems);
+        $cartitems = Cart::where('user_id', Auth::id())->get();
+        Cart::destroy($cartitems);
 
-        // return redirect('/')->with('status', 'Order Placed Successfully!');
+        return redirect('/')->with('status', 'Order Placed Successfully!');
     }
 }

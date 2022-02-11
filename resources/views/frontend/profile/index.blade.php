@@ -19,7 +19,7 @@
     </div>
     <div class="container py-5">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <a href="{{ url('my-profile/edit') }}" class="btn btn-warning m-2 float-end">Edit Profile</a>
@@ -27,113 +27,79 @@
                     </div>
                     <div class="card-body">
                         <div class="row container">
-                            <div class="col-md-5 fs-5 fw-bold mt-3">
-                                <label>Name :</label>
+                            <div class="col-md-4 mt-3">
+                                <label>Name:</label>
+                                <input class="form-control" value="{{ Auth::user()->name }} {{ Auth::user()->lname }}"
+                                    disabled>
                             </div>
-                            <div class="col-md-7 fs-5 mt-3">
-                                <input value="{{ Auth::user()->name }} {{ Auth::user()->lname }}" disabled>
+                            <div class="col-md-4 mt-3">
+                                <label>Email:</label>
+                                <input class="form-control" value="{{ Auth::user()->email }}" disabled>
                             </div>
-                            <div class="col-md-5 fs-5 fw-bold mt-3">
-                                <label>E-mail :</label>
+                            <div class="col-md-4 mt-3">
+                                <label>Phone Number:</label>
+                                @if (Auth::user()->phone == null)
+                                    <input class="text-danger form-control" value="Not Set" disabled>
+                                @else
+                                    <input class="form-control" value="{{ Auth::user()->phone }}" disabled>
+                                @endif
                             </div>
-                            <div class="col-md-7 fs-5 mt-3">
-                                <input value="{{ Auth::user()->email }}" disabled>
+                            <div class="col-md-4 mt-3">
+                                <label>Gender:</label>
+                                @if (Auth::user()->gender == null)
+                                    <input class="text-danger form-control" value="Not Set" disabled>
+                                @else
+                                    <input class="form-control" value="{{ Auth::user()->gender }}" disabled>
+                                @endif
                             </div>
-                            <div class="col-md-5 fs-5 fw-bold mt-3">
-                                <label>Phone Number :</label>
+                            <div class="col-md-4 mt-3">
+                                <label>Date of Birth:</label>
+                                @if (Auth::user()->dob == null)
+                                    <input class="text-danger form-control" value="Not Set" disabled>
+                                @else
+                                    <input class="form-control" value="{{ Auth::user()->dob }}" disabled>
+                                @endif
                             </div>
-                            <div class="col-md-7 fs-5 mt-3">
-                                <label>
-                                    @if (Auth::user()->phone == null)
-                                        <span class="text-danger">Not Set</span>
-                                    @else
-                                        <input value="{{ Auth::user()->phone }}" disabled>
-                                    @endif
-                                </label>
+                            <div class="col-md-4 mt-3">
+                                <label>Address:</label>
+                                @if (Auth::user()->address1 == null && Auth::user()->address2 == null)
+                                    <input class="text-danger form-control" value="Not Set" disabled>
+                                @else
+                                    <input class="form-control"
+                                        value="{{ Auth::user()->address1 }}, {{ Auth::user()->address2 }}" disabled>
+                                @endif
                             </div>
-                            <div class="col-md-5 fs-5 fw-bold mt-3">
-                                <label>Gender :</label>
+                            <div class="col-md-4 mt-3">
+                                <label>City:</label>
+                                @if (Auth::user()->city == null)
+                                    <input class="text-danger form-control" value="Not Set" disabled>
+                                @else
+                                    <input class="form-control" value="{{ Auth::user()->city }}" disabled>
+                                @endif
                             </div>
-                            <div class="col-md-7 fs-5 mt-3">
-                                <label>
-                                    @if (Auth::user()->gender == null)
-                                        <span class="text-danger">Not Set</span>
-                                    @else
-                                        <input value="{{ Auth::user()->gender }}" disabled>
-                                    @endif
-                                </label>
+                            <div class="col-md-4 mt-3">
+                                <label>State:</label>
+                                @if (Auth::user()->state == null)
+                                    <input class="text-danger form-control" value="Not Set" disabled>
+                                @else
+                                    <input class="form-control" value="{{ Auth::user()->state }}" disabled>
+                                @endif
                             </div>
-                            <div class="col-md-5 fs-5 fw-bold mt-3">
-                                <label>Date of Birth :</label>
+                            <div class="col-md-4 mt-3">
+                                <label>Country:</label>
+                                @if (Auth::user()->country == null)
+                                    <input class="text-danger form-control" value="Not Set" disabled>
+                                @else
+                                    <input class="form-control" value="{{ Auth::user()->country }}" disabled>
+                                @endif
                             </div>
-                            <div class="col-md-7 fs-5 mt-3">
-                                <label>
-                                    @if (Auth::user()->dob == null)
-                                        <span class="text-danger">Not Set</span>
-                                    @else
-                                        <input value="{{ Auth::user()->dob }}" disabled>
-                                    @endif
-                                </label>
-                            </div>
-                            <div class="col-md-5 fs-5 fw-bold mt-3">
-                                <label>Address :</label>
-                            </div>
-                            <div class="col-md-7 fs-5 mt-3">
-                                <label>
-                                    @if (Auth::user()->address1 == null && Auth::user()->address2 == null)
-                                        <span class="text-danger">Not Set</span>
-                                    @else
-                                        <input value="{{ Auth::user()->address1 }}, {{ Auth::user()->address2 }}" disabled>
-                                    @endif
-                                </label>
-                            </div>
-                            <div class="col-md-5 fs-5 fw-bold mt-3">
-                                <label>City :</label>
-                            </div>
-                            <div class="col-md-7 fs-5 mt-3">
-                                <label>
-                                    @if (Auth::user()->city == null)
-                                        <span class="text-danger">Not Set</span>
-                                    @else
-                                        <input value="{{ Auth::user()->city }}" disabled>
-                                    @endif
-                                </label>
-                            </div>
-                            <div class="col-md-5 fs-5 fw-bold mt-3">
-                                <label>State :</label>
-                            </div>
-                            <div class="col-md-7 fs-5 mt-3">
-                                <label>
-                                    @if (Auth::user()->state == null)
-                                        <span class="text-danger">Not Set</span>
-                                    @else
-                                        <input value="{{ Auth::user()->state }}" disabled>
-                                    @endif
-                                </label>
-                            </div>
-                            <div class="col-md-5 fs-5 fw-bold mt-3">
-                                <label>Country :</label>
-                            </div>
-                            <div class="col-md-7 fs-5 mt-3">
-                                <label>
-                                    @if (Auth::user()->country == null)
-                                        <span class="text-danger">Not Set</span>
-                                    @else
-                                        <input value="{{ Auth::user()->country }}" disabled>
-                                    @endif
-                                </label>
-                            </div>
-                            <div class="col-md-5 fs-5 fw-bold mt-3">
-                                <label>Pin Code :</label>
-                            </div>
-                            <div class="col-md-7 fs-5 mt-3">
-                                <label>
-                                    @if (Auth::user()->pincode == null)
-                                        <span class="text-danger">Not Set</span>
-                                    @else
-                                        <input value="{{ Auth::user()->pincode }}" disabled>
-                                    @endif
-                                </label>
+                            <div class="col-md-4 mt-3">
+                                <label>Pin Code:</label>
+                                @if (Auth::user()->pincode == null)
+                                    <input class="text-danger form-control" value="Not Set" disabled>
+                                @else
+                                    <input class="form-control" value="{{ Auth::user()->pincode }}" disabled>
+                                @endif
                             </div>
                         </div>
                     </div>

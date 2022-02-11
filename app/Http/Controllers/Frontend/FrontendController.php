@@ -46,6 +46,7 @@ class FrontendController extends Controller
         if (Category::where('slug', $cat_slug)->exists()) {
             if (SubCategory::where('slug', $subcat_slug)->exists()) {    // if category exists
                 $subcategory = SubCategory::where('slug',  $subcat_slug)->first();
+                $subcatlist = SubCategory::where('cat_id', $subcategory->cat_id)->get();
                 $sort = Request::get('sort');
                 if ($sort == 'price_asc') {
                     $products = Product::where('subcat_id', $subcategory->id)->orderBy('price', 'asc')->where('status', '1')->get();
@@ -55,10 +56,19 @@ class FrontendController extends Controller
                     $products = Product::where('subcat_id', $subcategory->id)->orderBy('created_at', 'desc')->where('status', '1')->get();
                 } elseif ($sort == 'trending') {
                     $products = Product::where('subcat_id', $subcategory->id)->orderBy('trending', 'desc')->where('status', '1')->get();
+                } elseif (Request::get('filterbrand')) {
+                    $checked = $_GET['filterbrand'];
+
+                    $subcat_filter = SubCategory::whereIn('name', $checked)->get();
+                    $subcatid = [];
+                    foreach ($subcat_filter as $subcat) {
+                        array_push($subcatid, $subcat->id);   // get subcat id
+                    }
+                    $products = Product::whereIn('subcat_id', $subcatid)->where('status', '1')->get();
                 } else {
                     $products = Product::where('subcat_id', $subcategory->id)->where('status', '1')->get();
                 }
-                return view('frontend.products.index', compact('subcategory', 'products'));
+                return view('frontend.products.index', compact('subcategory', 'products', 'subcatlist'));
             } else {    // if sub category does not exist
                 return redirect('/')->with('status', " Sub Cat Slug doesn't exist");
             }
@@ -93,6 +103,4 @@ class FrontendController extends Controller
             return redirect(' /')->with('sta tus', "No such category found :/");
         }
     }
-
-    
 }

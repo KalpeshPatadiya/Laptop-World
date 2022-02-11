@@ -1,27 +1,13 @@
-@extends('layouts.front')
+@extends('layouts.admin')
 
 @section('title')
     My Profile
 @endsection
 
 @section('content')
-    <div class="py-3 mb-4 shadow-sm bg-info border-top">
-        <div class="container">
-            <h6 class="mb-0">
-                <a href="{{ url('/') }}">
-                    Home
-                </a> /
-                <a href="{{ url('my-profile') }}">
-                    My Profile
-                </a>&gt;
-                <a href="{{ url('my-profile/edit') }}">
-                    Edit Profile
-                </a>
-            </h6>
-        </div>
-    </div>
+
     <div class="container py-5">
-        <form action="{{ url('update-profile') }}" method="POST">
+        <form action="{{ url('update-admin-profile') }}" method="POST">
             @csrf
             @method('PUT')
             <div class="row">
@@ -66,7 +52,7 @@
                                     <input type="date" id="dob_validate" class="form-control"
                                         value="{{ Auth::user()->dob }}" name="dob" required>
                                 </div>
-                                <div class="col-md-4 mt-3">
+                                {{-- <div class="col-md-4 mt-3">
                                     <label for="add1_validate">Address 1</label>
                                     <input type="text" id="add1_validate" class="form-control"
                                         value="{{ Auth::user()->address1 }}" name="address1"
@@ -97,7 +83,7 @@
                                     <label for="pin_validate">Pin Code</label>
                                     <input type="number" id="pin_validate" class="form-control"
                                         value="{{ Auth::user()->pincode }}" name="pincode" placeholder="Enter Pin Code">
-                                </div>
+                                </div> --}}
                                 <div class="col-md-12">
                                     <button type="submit"
                                         class=" col-md-2 btn btn-success mt-3 fs-5 float-end">Update</button>
@@ -109,5 +95,4 @@
             </div>
         </form>
     </div>
-
 @endsection
