@@ -9,6 +9,7 @@ use App\Models\Rating;
 use App\Models\SubCategory;
 use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Slider;
 //use Illuminate\Http\Request;
 use Request;
 
@@ -18,7 +19,8 @@ class FrontendController extends Controller
     {
         $featured_products = Product::where('trending', '1')->take(15)->get();
         $trending_category = Category::where('popular', '1')->take(15)->get();
-        return view('frontend.index', compact('featured_products', 'trending_category'));
+        $slider = Slider::where('status','1')->get();
+        return view('frontend.index', compact('featured_products', 'trending_category','slider'));
     }
 
     public function category()

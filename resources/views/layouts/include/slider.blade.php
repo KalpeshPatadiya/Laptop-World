@@ -8,15 +8,16 @@
             aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="https://source.unsplash.com/600x150/?laptop,technology" class="d-block w-100" alt="...">
+        @php $i=1; @endphp
+        @foreach($slider as $item)
+        <div class="carousel-item {{ $i == 1 ? 'active' : ''}}">
+        @php $i++ @endphp
+            <img src="{{ asset('assets/uploads/slider/' . $item->image) }}" class="d-block w-100" alt="Slider Image">
+            <!-- <h5>{{ $item->heading }}</h5>
+            <p>{{ $item->description }}</p>
+            <a href="{{ $item->link }}">{{ $item->link_name }}</p> -->
         </div>
-        <div class="carousel-item">
-            <img src="https://source.unsplash.com/600x150/?laptop,wild" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="https://source.unsplash.com/600x150/?laptop,nature" class="d-block w-100" alt="...">
-        </div>
+        @endforeach
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
         data-bs-slide="prev">

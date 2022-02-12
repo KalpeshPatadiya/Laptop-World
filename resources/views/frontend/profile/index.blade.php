@@ -17,11 +17,33 @@
             </h6>
         </div>
     </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action= "{{ url('my-profile/delete/' . $profile->id)}}"  method="POST">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Yes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="container py-5">
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
+                        <a class="btn btn-danger m-2 float-end" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Delete Account</a>
                         <a href="{{ url('my-profile/edit') }}" class="btn btn-warning m-2 float-end">Edit Profile</a>
                         <h3 class="m-2">My Profile</h3>
                     </div>

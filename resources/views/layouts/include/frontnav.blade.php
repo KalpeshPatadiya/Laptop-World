@@ -4,15 +4,17 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <form id="search-form" action="{{ url('/searching') }}" method="POST">
-            @csrf
-            <div class="input-group">
-                <input type="text" name="search_product" id="search_text" class="form-control" placeholder="Search here">
-                <div class="input-group-append">
-                    <button name="searchbtn" class="btn btn-outline-secondary" type="submit">Search</button>
+        <div class="search-bar">
+            <form id="search-form" action="{{ url('/searching') }}" method="POST">
+                @csrf
+                <div class="input-group">
+                    <input type="text" name="search_product" id="search_text" class="form-control" placeholder="Search here">
+                    <div class="input-group-append">
+                        <button name="searchbtn" class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item active">

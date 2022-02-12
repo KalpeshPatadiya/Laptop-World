@@ -54,6 +54,12 @@ class UserController extends Controller
         $profile->save();
         return redirect('my-profile')->with('status', 'Profile updated Successfully');
     }
+    public function deleteacc($id)
+    {
+        $profile = User::find($id);
+        $profile->delete();
+        return redirect('/')->with('status',"Your account is successfully deleted and you will never be able to login with that account");
+    }
 
     public function adminprofile()
     {
@@ -99,37 +105,63 @@ class UserController extends Controller
     public function result(Request $request)
     {
         $searchingdata = $request->input('search_product');
-        $products = Product::where('name','LIKE','%'.$searchingdata.'%')->where('status','1')->first();
-        if($products)
+        if($searchingdata != "")
         {
-            if(isset($_POST['searchbtn']))
+            $products = Product::where('name','LIKE','%'.$searchingdata.'%')->where('status','1')->first();
+            if($products)
             {
-                return redirect('collection/'.$products->subcategory->category->slug.'/'.
-                $products->subcategory->slug);
+                if(isset($_POST['searchbtn']))
+                {
+                    return redirect('collection/'.$products->subcategory->category->slug.'/'.
+                    $products->subcategory->slug);
+                }
+                else 
+                {
+                    return redirect('collection/'.$products->subcategory->category->slug.'/'.
+                    $products->subcategory->slug.'/'.$products->slug);
+                }
             }
             else 
             {
-                return redirect('collection/'.$products->subcategory->category->slug.'/'.
-                $products->subcategory->slug.'/'.$products->slug);
+                return redirect('/')->with('status',"Product Not Available");
             }
         }
         else 
         {
-            return redirect('/')->with('status',"Product Not Available");
+            return redirect()->back();
         }
+        // $products = Product::where('name','LIKE','%'.$searchingdata.'%')->where('status','1')->first();
+        // if($products)
+        // {
+        //     if(isset($_POST['searchbtn']))
+        //     {
+        //         return redirect('collection/'.$products->subcategory->category->slug.'/'.
+        //         $products->subcategory->slug);
+        //     }
+        //     else 
+        //     {
+        //         return redirect('collection/'.$products->subcategory->category->slug.'/'.
+        //         $products->subcategory->slug.'/'.$products->slug);
+        //     }
+        // }
+        // else 
+        // {
+        //     return redirect('/')->with('status',"Product Not Available");
+        // }
     }
 
     public function cancelorder(Request $request,$id)
     {
-        // $orders = Order::find($id);
-        // $orders->cancellation_reason = $request->input('cancel_reason');
-        // $orders->order_status = "3";
-        $prod_id = $request->input('prod_id');
-        $products = Product::where('id',$prod_id)->get();
-        $new_qty= $request->input('quantity1');
-        $products->quantity =  $new_qty;
-        // $orders->save();
-        $products->update();
+        $orders = Order::find($id);
+        $orders->cancellation_reason = $request->input('cancel_reason');
+        $orders->order_status = "3";
+        // $prod_id = $request->input('prod_id');
+        // $products = Product::where('id',$prod_id)->get();
+        // $new_qty= $request->input('quantity1');
+        // $products->quantity =  $new_qty;
+        $orders->update();
+        // $products->update();
         return redirect('my-orders')->with('status','Order Cancelled');
     }
+
 }
