@@ -5,14 +5,49 @@
 @endsection
 
 @section('content')
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{{ url('cancel-order/' . $orders->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    @foreach ($orders->orderitems as $item)
+                        <input type="hidden" name="prod_id" value="{{ $item->prod_id }}">
+                        <input type="hidden" name="quantity1" value="{{ $item->qty }}">
+                    @endforeach
 
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cancel order</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure? <br />
+                        If yes, please state Cancellation Reason :
+                        <select name="cancel_reason" id="custom-select" required id="inputGroup1">
+                            <option value="">-- Select --</option>
+                            <option value="">Accidentally placed order</option>
+                            <option value="">Delayed</option>
+                            <option value="">Not Interested in this product</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Yes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="container py-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header bg-secondary">
                         <h3 class="text-white">Order View
+                            <!-- <a href="{{ url('cancel-order/' . $orders->id) }}" class="btn btn-warning float-end">Cancel Order</a> -->
                             <a href="{{ url('my-orders') }}" class="btn btn-warning float-end">Back</a>
+                            <a href="" class="btn btn-warning float-end" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">Cancel order</a>
                         </h3>
                     </div>
                     <div class="card-body">
@@ -65,10 +100,8 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <h4 class="px-2">Grand Total: <span class="float-end">
-                                        <b>₹ {{ $orders->total_price }}</b></span></h4>
-                                <a href="{{ url('generate-invoice/' . $orders->id) }}"
-                                    class="btn btn-outline-success float-end">Generate Invoice</a>
+                                <h4 class="px-2">Grand Total: <span class="float-end"><b>₹
+                                            {{ $orders->total_price }}</b></span></h4>
                             </div>
                         </div>
                     </div>

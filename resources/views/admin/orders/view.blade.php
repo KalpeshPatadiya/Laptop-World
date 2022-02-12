@@ -75,10 +75,22 @@
                                         @csrf
                                         @method('PUT')
                                         <select class="form-select" name="order_status">
-                                            <option {{ $orders->status == '0' ? 'selected' : '' }} value="0">Pending
-                                            </option>
-                                            <option {{ $orders->status == '1' ? 'selected' : '' }} value="1">Completed
-                                            </option>
+                                            @if ($orders->order_status != '3')
+                                                <option {{ $orders->status == '0' ? 'selected' : '' }} value="0">Pending
+                                                </option>
+                                                <option {{ $orders->status == '1' ? 'selected' : '' }} value="1">Shipped
+                                                </option>
+                                                <option {{ $orders->status == '2' ? 'selected' : '' }} value="2">
+                                                    Completed
+                                                </option>
+                                                <option {{ $orders->status == '3' ? 'selected' : '' }} value="3">
+                                                    Cancelled
+                                                </option>
+                                            @else
+                                                <option {{ $orders->status == '3' ? 'selected' : '' }} value="3">
+                                                    Cancelled
+                                                </option>
+                                            @endif
                                         </select>
                                         <button type="submit" class="btn btn-primary float-end mt-3">Update</button>
                                     </form>

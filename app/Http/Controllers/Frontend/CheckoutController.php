@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrderMail;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -10,6 +11,8 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 class CheckoutController extends Controller
 {
     public function index()
@@ -78,6 +81,24 @@ class CheckoutController extends Controller
             $user->pincode = $request->input('pincode');
             $user->update();
         }
+
+        $order_data = [
+            'fname' => $request->input('fname'),
+            'lname' => $request->input('lname'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'address1' => $request->input('address1'),
+            'address2' => $request->input('address2'),
+            'city' => $request->input('city'),
+            'state' => $request->input('state'),
+            'country' => $request->input('country'),
+            'pincode' => $request->input('pincode'),
+            'tracking_no' => $order->tracking_no,
+        ];
+
+        $user_email = $request->input('email');
+
+        Mail::to($user_email)->send(new OrderMail($order_data, $cartitems));
 
         $cartitems = Cart::where('user_id', Auth::id())->get();
         Cart::destroy($cartitems);

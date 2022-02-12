@@ -35,6 +35,10 @@
     }
 }
 
+.search-bar {
+    margin-left: 9%;
+}
+
 .checkout-form label {
     font-size: 14px;
     font-weight: 600;

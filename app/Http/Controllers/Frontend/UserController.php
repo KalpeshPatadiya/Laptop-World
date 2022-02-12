@@ -18,7 +18,7 @@ class UserController extends Controller
         return view('frontend.orders.index', compact('orders'));
     }
 
-    public function vieworder($id)
+    public function vieworder(Request $request, $id)
     {
         $orders = Order::where('id', $id)->where('user_id', Auth::id())->first();
         return view('frontend.orders.view', compact('orders'));
@@ -60,6 +60,44 @@ class UserController extends Controller
         $profile->phone = $request->input('phone');
         $profile->gender = $request->input('gender');
         $profile->dob = $date;
+        // $profile->address1 = $request->input('address1');
+        // $profile->address2 = $request->input('address2');
+        // $profile->city = $request->input('city');
+        // $profile->state = $request->input('state');
+        // $profile->country = $request->input('country');
+        // $profile->pincode = $request->input('pincode');
+        $profile->save();
+        return redirect('my-profile')->with('status', 'Profile updated Successfully');
+    }
+    public function deleteacc($id)
+    {
+        $profile = User::find($id);
+        $profile->delete();
+        return redirect('/')->with('status', "Your account is successfully deleted and you will never be able to login with that account");
+    }
+
+    public function adminprofile()
+    {
+        $profile = User::find(Auth::id());
+        return view('admin.profile.index', compact('profile'));
+    }
+
+    public function editadminprofile()
+    {
+        $profile = User::find(Auth::id());
+        return view('admin.profile.edit', compact('profile'));
+    }
+
+    public function updateadminprofile(Request $request)
+    {
+        $date = date('y-m-d', strtotime($request->dob));
+        $profile = User::find(Auth::id());
+        $profile->name = $request->input('fname');
+        $profile->lname = $request->input('lname');
+        $profile->email = $request->input('email');
+        $profile->phone = $request->input('phone');
+        $profile->gender = $request->input('gender');
+        $profile->dob = $date;
         $profile->address1 = $request->input('address1');
         $profile->address2 = $request->input('address2');
         $profile->city = $request->input('city');
@@ -67,13 +105,7 @@ class UserController extends Controller
         $profile->country = $request->input('country');
         $profile->pincode = $request->input('pincode');
         $profile->save();
-        return redirect('my-profile')->with('status', 'Profile updated Successfully');
-    }
-
-    public function adminprofile()
-    {
-        $profile = User::find(Auth::id());
-        return view('admin.profile.index', compact('profile'));
+        return redirect('admin-profile')->with('status', 'Profile updated Successfully');
     }
 
     public function SearchautoComplete(Request $request)
@@ -97,17 +129,35 @@ class UserController extends Controller
     public function result(Request $request)
     {
         $searchingdata = $request->input('search_product');
-        $products = Product::where('name', 'LIKE', '%' . $searchingdata . '%')->where('status', '1')->first();
-        if ($products) {
-            if (isset($_POST['searchbtn'])) {
-                return redirect('collection/' . $products->subcategory->category->slug . '/' .
-                    $products->subcategory->slug);
+        if ($searchingdata != "") {
+            $products = Product::where('name', 'LIKE', '%' . $searchingdata . '%')->where('status', '1')->first();
+            if ($products) {
+                if (isset($_POST['searchbtn'])) {
+                    return redirect('collection/' . $products->subcategory->category->slug . '/' .
+                        $products->subcategory->slug);
+                } else {
+                    return redirect('collection/' . $products->subcategory->category->slug . '/' .
+                        $products->subcategory->slug . '/' . $products->slug);
+                }
             } else {
-                return redirect('collection/' . $products->subcategory->category->slug . '/' .
-                    $products->subcategory->slug . '/' . $products->slug);
+                return redirect('/')->with('status', "Product Not Available");
             }
         } else {
-            return redirect('/')->with('status', "Product Not Available");
+            return redirect()->back();
         }
+    }
+
+    public function cancelorder(Request $request, $id)
+    {
+        $orders = Order::find($id);
+        $orders->cancellation_reason = $request->input('cancel_reason');
+        $orders->order_status = "3";
+        // $prod_id = $request->input('prod_id');
+        // $products = Product::where('id',$prod_id)->get();
+        // $new_qty= $request->input('quantity1');
+        // $products->quantity =  $new_qty;
+        $orders->update();
+        // $products->update();
+        return redirect('my-orders')->with('status', 'Order Cancelled');
     }
 }

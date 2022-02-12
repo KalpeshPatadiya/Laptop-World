@@ -111,21 +111,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- {{ $item->total_price = $item->price * $item->quantity }} --}}
                                         @foreach ($cartitems as $item)
                                             <tr>
                                                 <td>{{ $item->products->name }}</td>
                                                 <td>{{ $item->prod_qty }}</td>
                                                 <td>{{ $item->products->price }}</td>
                                             </tr>
-                                            {{-- {{ $item->total_price += $item->products->price * $item->prod_qty }} --}}
                                             @php
                                                 $total += $item->products->price * $item->prod_qty;
                                             @endphp
                                         @endforeach
                                         <tr>
                                             <td colspan="2">Total</td>
-                                            {{-- <td>{{ $item->total_price }}</td> --}}
                                             <td>{{ $total }}</td>
                                         </tr>
                                     </tbody>
