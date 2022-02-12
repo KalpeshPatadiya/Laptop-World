@@ -4,6 +4,7 @@ use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FrontendController as AdminFrontendController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
@@ -44,6 +45,13 @@ Auth::routes(['verify' => true]);
 
 Route::get('/searchajax', 'Frontend\UserController@SearchautoComplete')->name('searchproductajax');
 Route::post('/searching', 'Frontend\UserController@result');
+
+Route::get('slider','Admin\FrontendController@slider');
+Route::get('add-slider','Admin\FrontendController@add');
+Route::post('insert-slider','Admin\FrontendController@insert');
+Route::get('edit-slider/{id}','Admin\FrontendController@edit');
+Route::put('update-slider/{id}','Admin\FrontendController@update');
+Route::get('delete-slider/{id}','Admin\FrontendController@destroy');
 
 Route::get('load-cart-data', [CartController::class, 'cartcount']);
 Route::get('load-wishlist-data', [WishlistController::class, 'wishlistcount']);
@@ -98,6 +106,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('my-profile', [UserController::class, 'myprofile']);
     Route::get('my-profile/edit', [UserController::class, 'editprofile']);
     Route::put('update-profile', [UserController::class, 'updateprofile']);
+    Route::post('my-profile/delete/{id}',[UserController::class, 'deleteacc']);
 });
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {

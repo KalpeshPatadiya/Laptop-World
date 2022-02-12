@@ -21,7 +21,15 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" @if (Request::is(['categories'] || ['add-actegory'])) class="active bg-gradient-primary" @endif href="{{ url('categories') }}">
+                <a class="nav-link text-white" href="{{ url('slider') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">category</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Slider</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{{ url('categories') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">category</i>
                     </div>
