@@ -2,6 +2,14 @@
     font-family: 'Nunito', sans-serif;
 }
 
+.content {
+    min-height: 83vh;
+}
+
+.footer {
+    margin-top: auto;
+}
+
 .cate-img {
     width: 150px;
 }

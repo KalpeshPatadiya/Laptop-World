@@ -25,6 +25,27 @@
         <div class="card shadhow wishlistitemsR">
             <div class="card-body">
                 @if ($wishlist->count() > 0)
+                    <div class="row justify-content-between">
+                        <div class="col-md-2">
+                            <h5><strong>Image</strong></h5>
+                        </div>
+                        <div class="col-md-2">
+                            <h5><strong>Name</strong></h5>
+                        </div>
+                        <div class="col-md-auto">
+                            <h5><strong>Price</strong></h5>
+                        </div>
+                        <div class="col-md-auto">
+                            <h5><strong>Availibility</strong></h5>
+                        </div>
+                        <div class="col-md-1">
+                            <h5><strong>Add Cart</strong></h5>
+                        </div>
+                        <div class="col-md-1">
+                            <h5><strong>Action</strong></h5>
+                        </div>
+                    </div>
+                    <hr>
                     @foreach ($wishlist as $item)
                         <div class="row product_data d-flex justify-content-between">
                             <div class="col-md-2">

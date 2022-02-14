@@ -47,7 +47,7 @@ class FrontendController extends Controller
     {
         if (Category::where('slug', $cat_slug)->exists()) {
             if (SubCategory::where('slug', $subcat_slug)->exists()) {    // if category exists
-                $subcategory = SubCategory::where('slug',  $subcat_slug)->first();
+                $subcategory = SubCategory::where('slug', $subcat_slug)->first();
                 $subcatlist = SubCategory::where('cat_id', $subcategory->cat_id)->get();
                 $sort = Request::get('sort');
                 if ($sort == 'price_asc') {

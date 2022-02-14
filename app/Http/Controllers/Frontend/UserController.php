@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $orders = Order::where('user_id', Auth::id())->get();
+        $orders = Order::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
         return view('frontend.orders.index', compact('orders'));
     }
 
@@ -60,12 +61,6 @@ class UserController extends Controller
         $profile->phone = $request->input('phone');
         $profile->gender = $request->input('gender');
         $profile->dob = $date;
-        // $profile->address1 = $request->input('address1');
-        // $profile->address2 = $request->input('address2');
-        // $profile->city = $request->input('city');
-        // $profile->state = $request->input('state');
-        // $profile->country = $request->input('country');
-        // $profile->pincode = $request->input('pincode');
         $profile->save();
         return redirect('my-profile')->with('status', 'Profile updated Successfully');
     }
@@ -152,12 +147,15 @@ class UserController extends Controller
         $orders = Order::find($id);
         $orders->cancellation_reason = $request->input('cancel_reason');
         $orders->order_status = "3";
-        // $prod_id = $request->input('prod_id');
-        // $products = Product::where('id',$prod_id)->get();
-        // $new_qty= $request->input('quantity1');
-        // $products->quantity =  $new_qty;
         $orders->update();
-        // $products->update();
+
+        $orderitems = OrderItem::where('order_id', $id)->get();
+        foreach ($orderitems as $item) {
+            $prod = Product::where('id', $item->prod_id)->first();
+            $prod->quantity = $prod->quantity + $item->qty;
+            $prod->update();
+        }
+
         return redirect('my-orders')->with('status', 'Order Cancelled');
     }
 }

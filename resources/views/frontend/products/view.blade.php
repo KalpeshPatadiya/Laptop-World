@@ -131,7 +131,7 @@
                             <div class="col-md-10">
                                 <br>
                                 @if ($products->quantity > 0)
-                                    <button type="button" class="btn btn-primary me-3 addToCartBtn float-start">Add to Cart
+                                    <button type="button" id="toastr_btn" class="btn btn-primary me-3 addToCartBtn float-start">Add to Cart
                                         <i class="fa fa-shopping-cart"></i></button>
                                 @endif
                                 <button type="button" class="btn btn-success me-3 addToWishlist float-start">Add to Wishlist
@@ -225,7 +225,7 @@
         </div>
     </div>
 
-    <section class="py-5  container">
+    {{-- <section class="py-5  container">
         <div class="row">
             <div class="col-md 12">
                 <h4 class="fw-bold">Related Products</h4>
@@ -250,5 +250,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection

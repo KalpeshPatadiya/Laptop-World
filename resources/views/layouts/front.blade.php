@@ -37,6 +37,9 @@
         integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+
+    <!-- Alertify CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
     <style>
         .ui-widget {
             z-index: 2024;
@@ -100,6 +103,10 @@
             swal("{{ session('status') }}");
         </script>
     @endif
+
+    <!-- Allertify JS -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
 
     @yield('scripts')
 </body>

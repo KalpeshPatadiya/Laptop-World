@@ -62,7 +62,7 @@
         }
 
         .body-section {
-            padding: 16px;
+            padding: 16px;  
             border: 1px solid gray;
         }
 
@@ -124,17 +124,11 @@
 
 <body>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="brand-section">
             <div class="row">
                 <div class="col-6">
                     <h1 class="text-white">Laptop World</h1>
-                </div>
-                <div class="col-6">
-                    <div class="company-details">
-                        <!-- <p class="text-white">Laptop World</p>
-                        <p class="text-white">+91 888555XXXX</p> -->
-                    </div>
                 </div>
             </div>
         </div>
@@ -171,7 +165,7 @@
                         <th>Product</th>
                         <th class="w-20">Price</th>
                         <th class="w-20">Quantity</th>
-                        <th class="w-20">SubTotal</th>
+                        <th class="w-20">Total</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -193,13 +187,13 @@
                 </tbody>
             </table>
             <br>
-            <h3 class="heading">Payment Status : {{ $orders->status == '0' ? 'Pending...' : 'Completed' }}
-                <h3 class="heading">Payment Mode : COD </h3>
+            <h3 class="heading">Payment Status : {{ $orders->status == '1' ? 'Shipped' : 'Completed' }}
+                <h3 class="heading">Payment Mode : Cash on Delivery </h3>
         </div>
 
         <div class="body-section">
-            <p>&copy; Copyright 2021 - Laptop World . All rights reserved.
-                <a href="/" class="float-right">Laptop World</a>
+            <p>&copy; Copyright 2022 - {{ config('app.name') }} . All rights reserved.
+                <a href="http://localhost:8000/" class="float-right">{{ config('app.name') }}</a>
             </p>
         </div>
     </div>
