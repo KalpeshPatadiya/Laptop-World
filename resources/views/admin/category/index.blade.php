@@ -7,7 +7,7 @@
             <h5>Category Page</h5>
         </div>
         <div class="card-body">
-            <table class="table table-bordered table-striped">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Id</th>

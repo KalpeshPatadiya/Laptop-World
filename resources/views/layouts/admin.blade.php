@@ -38,6 +38,9 @@
     {{-- data table css --}}
     <link href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" rel="stylesheet">
 
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'> --}}
+
 </head>
 
 <body class="g-sidenav-show bg-gray-200">
@@ -46,8 +49,10 @@
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         @include('layouts.include.adminnav')
 
-        <div class="container-fluid py-4">
+        <div class="container-fluid content py-4">
             @yield('content')
+        </div>
+        <div class="footer">
             @include('layouts.include.adminfooter')
         </div>
     </main>
@@ -66,7 +71,7 @@
     {{-- data table script --}}
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {{-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> --}}
     @if (session('status'))
         <script>
             swal("{{ session('status') }}");

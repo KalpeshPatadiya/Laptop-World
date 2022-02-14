@@ -116,10 +116,6 @@
                             <input name="new_arrivals" rows="3" value="{{ $products->new_arrivals }}"
                                 class="form-control">
                         </div>
-                        <div class="form-group col-md-4 mb-3">
-                            <label for="">Offers</label>
-                            <input name="offers_pr" rows="3" value="{{ $products->offers_pr }}" class="form-control">
-                        </div>
                     </div>
                 </div>
             </form>

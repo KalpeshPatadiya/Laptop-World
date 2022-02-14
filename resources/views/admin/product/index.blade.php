@@ -7,8 +7,8 @@
             <h5>Product Page</h5>
         </div>
         <div class="card-body">
-            <table class="table table-bordered table-striped">
-                <thead>
+            <table id="datatable_product" class="table table-striped">
+                <thead class="table-dark">
                     <tr>
                         <th>Id</th>
                         <th>Category</th>
@@ -39,4 +39,12 @@
             </table>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#datatable_product').DataTable();
+        });
+    </script>
 @endsection

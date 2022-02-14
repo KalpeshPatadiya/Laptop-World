@@ -27,7 +27,7 @@
         }
 
         #contact tr:hover {
-            background-color: rgb(128, 128, 128);
+            background-color: rgb(211, 211, 211);
         }
 
         #contact th {
@@ -64,7 +64,7 @@
         @php
             $total = 0;
         @endphp
-        <table id="contact" cellpadding="5px" cellspacing="5px" border="1">
+        <table id="contact">
             <thead>
                 <tr>
                     <th>Product Name</th>

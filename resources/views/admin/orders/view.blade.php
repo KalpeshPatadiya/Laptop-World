@@ -58,9 +58,8 @@
                                                 <td>{{ $item->qty }}</td>
                                                 <td>{{ $item->price }}</td>
                                                 <td>
-                                                    <img src="{{ asset('assets/uploads/products/' . $item->products ? @$item->products->image : '') }}"
-                                                        alt="product img" width="100"
-                                                        onerror="this.src='https://via.placeholder.com/150/FF0000/FFFFFF?Text=noimage'" />
+                                                    <img src="{{ asset('assets/uploads/products/' . $item->products) }}"
+                                                        alt="product img" width="100">
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -69,25 +68,31 @@
                                 <hr>
                                 <h4 class="px-2">Grand Total: <span class="float-end"><b>₹
                                             {{ $orders->total_price }}</b></span></h4>
-                                <div class="mt-5 px-2">
+                                <div class="order-details">
+                                    <label>Tracking No.</label>
+                                    <div class="border">{{ $orders->tracking_no }}</div>
+                                </div>
+                                <div class="mt-3 px-2">
                                     <label for="">Order Status:</label>
                                     <form action="{{ url('update-order/' . $orders->id) }}" method="POST">
                                         @csrf
                                         @method('PUT')
                                         <select class="form-select" name="order_status">
                                             @if ($orders->order_status != '3')
-                                                <option {{ $orders->status == '0' ? 'selected' : '' }} value="0">Pending
+                                                <option {{ $orders->order_status == '0' ? 'selected' : '' }} value="0">
+                                                    Pending
                                                 </option>
-                                                <option {{ $orders->status == '1' ? 'selected' : '' }} value="1">Shipped
+                                                <option {{ $orders->order_status == '1' ? 'selected' : '' }} value="1">
+                                                    Shipped
                                                 </option>
-                                                <option {{ $orders->status == '2' ? 'selected' : '' }} value="2">
+                                                <option {{ $orders->order_status == '2' ? 'selected' : '' }} value="2">
                                                     Completed
                                                 </option>
-                                                <option {{ $orders->status == '3' ? 'selected' : '' }} value="3">
+                                                <option {{ $orders->order_status == '3' ? 'selected' : '' }} value="3">
                                                     Cancelled
                                                 </option>
                                             @else
-                                                <option {{ $orders->status == '3' ? 'selected' : '' }} value="3">
+                                                <option {{ $orders->order_status == '3' ? 'selected' : '' }} value="3">
                                                     Cancelled
                                                 </option>
                                             @endif

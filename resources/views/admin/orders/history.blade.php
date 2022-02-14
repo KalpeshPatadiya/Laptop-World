@@ -15,10 +15,11 @@
                         </h3>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped">
-                            <thead>
+                        <table id="datatable_order_history" class="table table-striped">
+                            <thead class="table-dark">
                                 <tr>
                                     <th>Order Date</th>
+                                    <th>User ID</th>
                                     <th>Tracking Number</th>
                                     <th>Total Price</th>
                                     <th>Status</th>
@@ -29,6 +30,7 @@
                                 @foreach ($orders as $item)
                                     <tr>
                                         <td>{{ date('d-m-y', strtotime($item->created_at)) }}</td>
+                                        <td>{{ $item->user_id }}</td>
                                         <td>{{ $item->tracking_no }}</td>
                                         <td>{{ $item->total_price }}</td>
                                         <td>{{ $item->order_status == '3' ? 'Cancelled' : 'Completed' }}
@@ -45,4 +47,12 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#datatable_order_history').DataTable();
+        });
+    </script>
 @endsection

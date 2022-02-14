@@ -23,7 +23,6 @@
                                         <th>Total Price</th>
                                         <th>Status</th>
                                         <th>Action</th>
-                                        <th>Invoice</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -37,16 +36,18 @@
                                             @elseif($item->order_status == '1')
                                                 <td>Shipped</td>
                                             @elseif($item->order_status == '2')
-                                                <td>Completed</td>
+                                                <td class="text-success">Completed</td>
                                             @else
-                                                <td>Cancelled</td>
+                                                <td class="text-danger">Cancelled</td>
                                             @endif
-                                            <td>
+                                            <td style="width: 300px;">
                                                 <a href="{{ url('view-order/' . $item->id) }}"
                                                     class="btn btn-primary">View</a>
+                                                @if ($item->order_status != '0' && $item->order_status != '3')
+                                                    <a href="{{ url('generate-invoice/' . $item->id) }}"
+                                                        class="btn btn-success mx-4">Generate Invoice</a>
+                                                @endif
                                             </td>
-                                            <td><a href="{{ url('generate-invoice/' . $item->id) }}"
-                                                    class="btn btn-success">Generate Invoice</a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

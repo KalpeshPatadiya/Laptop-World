@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="card-body">
-            <table id="datatable1" class="table table-striped">
+            <table id="datatable_user" class="table table-striped">
                 <thead class="table-dark">
                     <tr>
                         <th>Id</th>
@@ -40,7 +40,7 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-            $('#datatable1').DataTable();
+            $('#datatable_user').DataTable();
         });
     </script>
 @endsection

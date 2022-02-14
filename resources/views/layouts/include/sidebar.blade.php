@@ -21,7 +21,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="{{ url('slider') }}">
+                <a class="nav-link text-white {{ Request::is('slider') ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ url('slider') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">category</i>
                     </div>
@@ -29,7 +30,10 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="{{ url('categories') }}">
+                <a class="nav-link text-white {{ Request::is('categories') ? 'active bg-gradient-primary' : '' }}
+                    {{ Request::is('add-category') ? 'active bg-gradient-primary' : '' }}
+                    {{ Request::is('edit-category/*') ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ url('categories') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">category</i>
                     </div>
@@ -37,7 +41,10 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="{{ url('sub-category') }}">
+                <a class="nav-link text-white {{ Request::is('sub-category') ? 'active bg-gradient-primary' : '' }}
+                    {{ Request::is('add-sub-category') ? 'active bg-gradient-primary' : '' }}
+                    {{ Request::is('edit-sub-category/*') ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ url('sub-category') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">category</i>
                     </div>
@@ -45,7 +52,10 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="{{ url('products') }}">
+                <a class="nav-link text-white {{ Request::is('products') ? 'active bg-gradient-primary' : '' }}
+                    {{ Request::is('add-product') ? 'active bg-gradient-primary' : '' }}
+                    {{ Request::is('edit-product/*') ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ url('products') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">badge</i>
                     </div>
@@ -53,7 +63,10 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="{{ url('orders') }}">
+                <a class="nav-link text-white {{ Request::is('orders') ? 'active bg-gradient-primary' : '' }}
+                    {{ Request::is('order-history') ? 'active bg-gradient-primary' : '' }}
+                    {{ Request::is('admin/view-order/*') ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ url('orders') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">content_paste</i>
                     </div>
@@ -61,7 +74,10 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white}}" href="{{ url('users') }}">
+                <a class="nav-link text-white}} {{ Request::is('users') ? 'active bg-gradient-primary' : '' }}
+                    {{ Request::is('edit-user/*') ? 'active bg-gradient-primary' : '' }}
+                    {{ Request::is('view-user/*') ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ url('users') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">group</i>
                     </div>

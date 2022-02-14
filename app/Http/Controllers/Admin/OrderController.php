@@ -4,7 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\InvoiceMail;
 
 class OrderController extends Controller
 {
@@ -24,6 +29,11 @@ class OrderController extends Controller
     {
         $orders = Order::find($id);
         $orders->order_status = $request->input('order_status');
+        if ($orders->order_status == '1') {
+            $order_track_id = Order::find(Auth::id())->where('tracking_no')->get();
+            $order_id = OrderItem::find(Auth::id())->where('order_id')->get();
+            Mail::to($orders->email)->send(new InvoiceMail($order_track_id, $order_id));
+        }
         $orders->update();
         return redirect('orders')->with('status', "Order Updated Successfully");
     }

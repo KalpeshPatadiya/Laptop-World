@@ -6,6 +6,7 @@
 
 @section('content')
     @include('layouts.include.slider')
+
     <div class="py-4">
         <div class="container-fluid">
             <div class="row">

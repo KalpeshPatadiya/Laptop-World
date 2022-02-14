@@ -12,11 +12,10 @@
         @foreach ($slider as $item)
             <div class="carousel-item {{ $i == 1 ? 'active' : '' }}">
                 @php $i++ @endphp
-                <img src="{{ asset('assets/uploads/slider/' . $item->image) }}" class="d-block w-100"
-                    alt="Slider Image">
-                {{-- <h5>{{ $item->heading }}</h5>
-            <p>{{ $item->description }}</p>
-            <a href="{{ $item->link }}">{{ $item->link_name }}</p> --}}
+                <a href="{{ $item->link }}">
+                    <img src="{{ asset('assets/uploads/slider/' . $item->image) }}" class="d-block w-100"
+                        alt="Slider Image">
+                </a>
             </div>
         @endforeach
     </div>

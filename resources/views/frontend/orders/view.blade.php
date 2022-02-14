@@ -42,12 +42,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header bg-secondary">
-                        <h3 class="text-white">Order View
-                            <!-- <a href="{{ url('cancel-order/' . $orders->id) }}" class="btn btn-warning float-end">Cancel Order</a> -->
+                    <div class="card-header">
+                        <h3>Order View
                             <a href="{{ url('my-orders') }}" class="btn btn-warning float-end">Back</a>
-                            <a href="" class="btn btn-warning float-end" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">Cancel order</a>
                         </h3>
                     </div>
                     <div class="card-body">
@@ -102,6 +99,14 @@
                                 </table>
                                 <h4 class="px-2">Grand Total: <span class="float-end"><b>₹
                                             {{ $orders->total_price }}</b></span></h4>
+                                <div class="order-details mb-3">
+                                    <label>Tracking No.</label>
+                                    <div class="border">{{ $orders->tracking_no }}</div>
+                                </div>
+                                @if ($orders->order_status == '0')
+                                    <a href="" class="btn btn-warning float-end" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">Cancel order</a>
+                                @endif
                             </div>
                         </div>
                     </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use App\Models\Slider;
 use Illuminate\Support\Facades\File;
@@ -11,7 +13,13 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $totalOrders = \DB::table('orders')->count();
+        $totalProducts = \DB::table('products')->count();
+        $totalUsers = \DB::table('users')->count();
+        $totalSubcategories = \DB::table('subcategories')->count();
+        $products = \DB::table('products')->where('quantity', '<=', '5')->get();
+        $neworders = OrderItem::orderBy('id', 'desc')->take(5)->get();
+        return view('admin.index', compact('totalOrders', 'totalProducts', 'totalUsers', 'totalSubcategories', 'products', 'neworders'));
     }
     public function slider()
     {
@@ -36,7 +44,7 @@ class FrontendController extends Controller
         $slider->description = $request->input('description');
         $slider->link = $request->input('link');
         $slider->link_name = $request->input('link_name');
-        $slider->status = $request->input('status') == TRUE ? '1' : '0';
+        $slider->status = $request->input('status') == true ? '1' : '0';
         $slider->save();
         return redirect('slider')->with('status', "Slider Added Successfully");
     }
@@ -63,7 +71,7 @@ class FrontendController extends Controller
         $slider->description = $request->input('description');
         $slider->link = $request->input('link');
         $slider->link_name = $request->input('link_name');
-        $slider->status = $request->input('status') == TRUE ? '1' : '0';
+        $slider->status = $request->input('status') == true ? '1' : '0';
         $slider->save();
         return redirect('slider')->with('status', "Slider Added Successfully");
     }

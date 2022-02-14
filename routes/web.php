@@ -17,7 +17,7 @@ use App\Http\Controllers\Frontend\RatingController;
 use App\Http\Controllers\Frontend\ReviewController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
-use App\Mail\WelcomeMail;
+use App\Mail\InvoiceMail;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -46,12 +46,12 @@ Auth::routes(['verify' => true]);
 Route::get('/searchajax', 'Frontend\UserController@SearchautoComplete')->name('searchproductajax');
 Route::post('/searching', 'Frontend\UserController@result');
 
-Route::get('slider','Admin\FrontendController@slider');
-Route::get('add-slider','Admin\FrontendController@add');
-Route::post('insert-slider','Admin\FrontendController@insert');
-Route::get('edit-slider/{id}','Admin\FrontendController@edit');
-Route::put('update-slider/{id}','Admin\FrontendController@update');
-Route::get('delete-slider/{id}','Admin\FrontendController@destroy');
+Route::get('slider', 'Admin\FrontendController@slider');
+Route::get('add-slider', 'Admin\FrontendController@add');
+Route::post('insert-slider', 'Admin\FrontendController@insert');
+Route::get('edit-slider/{id}', 'Admin\FrontendController@edit');
+Route::put('update-slider/{id}', 'Admin\FrontendController@update');
+Route::get('delete-slider/{id}', 'Admin\FrontendController@destroy');
 
 Route::get('load-cart-data', [CartController::class, 'cartcount']);
 Route::get('load-wishlist-data', [WishlistController::class, 'wishlistcount']);
@@ -59,7 +59,7 @@ Route::get('load-wishlist-data', [WishlistController::class, 'wishlistcount']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // mail
-Route::get('/email', [WelcomeMail::class, 'welcome']);
+Route::get('/email', [InvoiceMail::class, 'invoice']);
 
 //email verification
 Route::get('/email/verify', function () {
@@ -106,7 +106,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('my-profile', [UserController::class, 'myprofile']);
     Route::get('my-profile/edit', [UserController::class, 'editprofile']);
     Route::put('update-profile', [UserController::class, 'updateprofile']);
-    Route::post('my-profile/delete/{id}',[UserController::class, 'deleteacc']);
+    Route::post('my-profile/delete/{id}', [UserController::class, 'deleteacc']);
 });
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
