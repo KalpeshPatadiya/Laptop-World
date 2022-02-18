@@ -6,36 +6,44 @@
             <div class="row">
                 <div class="col-md-3 mb-4">
                     <div class="card">
-                        <div class="card-body p-3">
-                            <p class="mb-0 fw-bold fs-4">Total Orders : {{ $totalOrders }}</p>
+                        <div class="card-body card-gradiant p-3">
+                            <p class="mb-0 fw-bold fs-4">Total Orders : {{ $totalOrders }}
+                                <i class="dash-icon bi bi-cart-check-fill text-success"></i>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4">
                     <div class="card">
-                        <div class="card-body p-3">
-                            <p class="mb-0 fw-bold fs-4">Total Users : {{ $totalUsers }}</p>
+                        <div class="card-body card-gradiant p-3">
+                            <p class="mb-0 fw-bold fs-4">Total Users : {{ $totalUsers }}
+                                <i class="dash-icon bi bi-person-check-fill text-primary"></i>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4">
                     <div class="card">
-                        <div class="card-body p-3">
-                            <p class="mb-0 fw-bold fs-4">Total Brands : {{ $totalSubcategories }}</p>
+                        <div class="card-body card-gradiant p-3">
+                            <p class="mb-0 fw-bold fs-4">Total Brands : {{ $totalSubcategories }}
+                                <i class="dash-icon bi bi-ui-checks-grid text-warning"></i>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4">
                     <div class="card">
-                        <div class="card-body p-3">
-                            <p class="mb-0 fw-bold fs-4">Total Products : {{ $totalProducts }}</p>
+                        <div class="card-body card-gradiant p-3">
+                            <p class="mb-0 fw-bold fs-4">Total Products : {{ $totalProducts }}
+                                <i class="dash-icon bi-file-earmark-check-fill text-danger"></i>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
-                    @if ($products->count() > 0)
+                @if ($products->count() > 0)
+                    <div class="col-md-6">
                         <table class="table table-striped">
                             <thead class="table-secondary">
                                 <h4>Newest Orders</h4>
@@ -55,10 +63,10 @@
                                 @endforeach
                             </tbody>
                         </table>
-                    @endif
-                </div>
-                <div class="col-md-6">
-                    @if ($products->count() > 0)
+                    </div>
+                @endif
+                @if ($products->count() > 0)
+                    <div class="col-md-6">
                         <table class="table table-striped">
                             <thead class="secondary">
                                 <h4>Product Running out of Quantity</h4>
@@ -78,8 +86,8 @@
                                 @endforeach
                             </tbody>
                         </table>
-                    @endif
-                </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

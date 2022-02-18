@@ -177,11 +177,11 @@
 
                 <div class="row">
                     <div class="col-md-4">
-                        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-dark" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">
                             Rate this product
                         </button>
-                        <button type="button" class="btn btn-outline-dark" style="padding: unset; margin-left: 20px;">
+                        <button type="button" class="btn btn-warning" style="padding: unset; margin-left: 20px;">
                             <a href="{{ url('add-review/' . $products->slug . '/userreview') }}" class="btn btn-link">
                                 Write a review
                             </a>

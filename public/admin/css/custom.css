@@ -3,6 +3,64 @@
 }
 
 .content {
+    display: none;
+}
+
+.loader {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff;
+    position: absolute;
+}
+
+.loader div {
+    height: 88px;
+    width: 88px;
+    border: 12px solid #ddd;
+    border-top-color: rgb(111, 111, 111);
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 250px;
+    right: 0;
+    bottom: 50px;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    margin-bottom: 30px;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(90, 97, 105, 0.1), 0 0.9375rem 1.40625rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12), 0 0.125rem 0.1875rem rgba(90, 97, 105, 0.1);
+}
+
+.card-gradiant {
+    border-radius: 10px;
+    background: rgb(146, 146, 146);
+    background: linear-gradient(90deg, rgba(146, 146, 146, 0.6867880941439075) 0%, rgba(253, 253, 253, 1) 100%);
+}
+
+.dash-icon {
+    line-height: 80px;
+    margin-left: 15px;
+    position: absolute;
+    right: 5px;
+    top: 0px;
+    opacity: 0.3;
+    font-size: 60px;
+}
+
+.content1 {
     min-height: 83vh;
 }
 

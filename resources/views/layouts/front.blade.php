@@ -11,7 +11,7 @@
     <title>
         @yield('title') | Laptop World
     </title>
-    <link rel="shortcut icon" href="{{ asset('assets/uploads/logo/transFavicon.png') }}" type="image/png">
+    <link rel="shortcut icon" href="{{ asset('assets/logo/transFavicon.png') }}" type="image/png">
 
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -40,12 +40,6 @@
 
     <!-- Alertify CSS -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
-    <style>
-        .ui-widget {
-            z-index: 2024;
-        }
-
-    </style>
 
 </head>
 
@@ -106,7 +100,6 @@
 
     <!-- Allertify JS -->
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-
 
     @yield('scripts')
 </body>

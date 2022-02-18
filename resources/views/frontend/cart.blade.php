@@ -25,60 +25,6 @@
         <div class="card shadhow cartitemsR">
             @if ($cartItems->count() > 0)
                 <div class="card-body">
-                    {{-- <table class="table table-borderless">
-                        <thead>
-                            <tr>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>SubTotal</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php
-                                $total = 0;
-                            @endphp
-                            @foreach ($cartItems as $item)
-                                <tr>
-                                    <td><img src="{{ asset('assets/uploads/products/' . $item->products->image) }}" alt=""
-                                            class="cart-img"></td>
-                                    <td>{{ $item->products->name }}</td>
-                                    <td>
-                                        <h6><strong>₹ {{ $item->products->price }}</strong></h6>
-                                    </td>
-                                    <td>
-                                        <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
-                                        @if ($item->products->quantity >= $item->prod_qty)
-                                            <label for="Quantity">Quantity</label>
-                                            <div class="input-group mb-3" style="width: 60%;">
-                                                <button class="input-group-text changeQuantity decrement-btn">-</button>
-                                                <input type="text" name="quantity" value="{{ $item->prod_qty }}"
-                                                    class="form-control qty-input">
-                                                <button class="input-group-text changeQuantity increment-btn">+</button>
-                                            </div>
-                                            @php
-                                                $total += $item->products->price * $item->prod_qty;
-                                            @endphp
-                                        @else
-                                            <h5>Out of Stock</h5>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @php
-                                            $prod_total = $item->products->price * $item->prod_qty;
-                                        @endphp
-                                        <h6><strong>₹ {{ $prod_total }}</strong></h6>
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-danger delete-cart-item"><i class="fa fa-trash"></i>
-                                            Remove</button>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table> --}}
                     @php
                         $total = 0;
                     @endphp

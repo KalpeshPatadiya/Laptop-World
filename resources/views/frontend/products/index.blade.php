@@ -36,7 +36,7 @@
 
                 <div class="col-md-3">
                     <form action="{{ URL::current() }}" method="get">
-                        <div class="card">
+                        <div class="card login">
                             <div class="card-header">
                                 <h4>Brands
                                     <button type="submit" class="btn btn-sm btn-primary float-end">Filter</button>
@@ -65,10 +65,10 @@
                     <div class="row">
                         @foreach ($products as $prod)
                             <div class="col-md-12 mb-2">
-                                <div class="card container">
+                                <div class="card login container">
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <img class="product_img"
+                                            <img class="category-img"
                                                 src="{{ asset('assets/uploads/products/' . $prod->image) }}"
                                                 alt="product image">
                                         </div>
@@ -96,7 +96,7 @@
                                             </div>
                                             <div class="float-end">
                                                 <a href="{{ url('collection/' . $prod->subcategory->category->slug . '/' . $prod->subcategory->slug . '/' . $prod->slug) }}"
-                                                    class="btn btn-lg btn-outline-success mt-5"
+                                                    class="btn btn-lg btn-outline-success mt-2"
                                                     style="margin: -8px; padding: 10px;">View Details</a>
                                             </div>
                                         </div>

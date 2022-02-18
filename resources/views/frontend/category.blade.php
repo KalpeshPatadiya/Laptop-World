@@ -24,8 +24,8 @@
                         @foreach ($category as $cate)
                             <div class="col-md-3 mb-3">
                                 <a href="{{ url('collection/' . $cate->slug) }}">
-                                    <div class="card">
-                                        <img class="card-img-top"
+                                    <div class="card card-effect">
+                                        <img class="category-img"
                                             src="{{ asset('assets/uploads/category/' . $cate->image) }}"
                                             alt="category image">
                                         <div class="card-body">

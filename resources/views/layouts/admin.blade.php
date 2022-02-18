@@ -44,18 +44,25 @@
 </head>
 
 <body class="g-sidenav-show bg-gray-200">
+
+    <div class="loader">
+        <div></div>
+    </div>
+
     @include('layouts.include.sidebar')
 
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         @include('layouts.include.adminnav')
-
-        <div class="container-fluid content py-4">
-            @yield('content')
-        </div>
-        <div class="footer">
-            @include('layouts.include.adminfooter')
+        <div class="content">
+            <div class="container-fluid content1 py-4">
+                @yield('content')
+            </div>
+            <div class="footer">
+                @include('layouts.include.adminfooter')
+            </div>
         </div>
     </main>
+
     {{-- Scripts --}}
     <script src="{{ asset('admin/js/material-dashboard.min.js') }}" defer></script>
     <script src="{{ asset('admin/js/popper.min.js') }}" defer></script>
@@ -77,6 +84,14 @@
             swal("{{ session('status') }}");
         </script>
     @endif
+
+    {{-- loader --}}
+    <script>
+        $(window).on('load', function() {
+            $('.loader').fadeOut(500);
+            $('.content').fadeIn(1000);
+        });
+    </script>
 
     @yield('scripts')
 </body>
