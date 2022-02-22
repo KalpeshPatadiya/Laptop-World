@@ -36,7 +36,7 @@
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                                 <textarea name="user_review" rows="5" class="form-control"
-                                    placeholder="What did you like or dislike? What did you use this product for?"></textarea>
+                                    placeholder="What did you like or dislike? What did you use this product for?" required></textarea>
                                 <button class="btn btn-primary mt-3">Submit Review</button>
                             </form>
                         @else

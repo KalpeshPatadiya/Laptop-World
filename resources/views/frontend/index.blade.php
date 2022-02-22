@@ -8,13 +8,13 @@
     @include('layouts.include.slider')
 
     <div class="py-4">
-        <div class="container-fluid">
+        <div class="container-fluid glass">
             <div class="row">
                 <h2 class="px-5">Featured Products</h2>
-                <div class="owl-carousel featured-carousel owl-theme carousel-shadow">
+                <div class="owl-carousel featured-carousel owl-theme">
                     @foreach ($featured_products as $prod)
                         <div class="item">
-                            <div class="card card-none card-shadow m-2">
+                            <div class="card card-effect card-none card-shadow m-2 glass-card">
                                 <a
                                     href="{{ url('collection/' . $prod->subcategory->category->slug . '/' . $prod->subcategory->slug . '/' . $prod->slug) }}">
                                     <img class="card-img-top zoom-in"
@@ -34,13 +34,13 @@
     </div>
 
     <div class="py-4">
-        <div class="container">
+        <div class="container glass">
             <div class="row">
                 <h2>New Arrived</h2>
                 <div class="owl-carousel new-products owl-theme">
                     @foreach ($new_products as $item)
                         <div class="item">
-                            <div class="card card-shadow m-2">
+                            <div class="card card-effect card-shadow m-2 glass-card">
                                 <a
                                     href="{{ url('collection/' . $item->subcategory->category->slug . '/' . $item->subcategory->slug . '/' . $item->slug) }}">
                                     <img class="card-img-top zoom-in"
@@ -60,15 +60,15 @@
     </div>
 
     <div class="py-4">
-        <div class="container">
+        <div class="container glass">
             <div class="row">
                 <h2>Popular Brands</h2>
                 <div class="owl-carousel popular-brands owl-theme">
                     @foreach ($popular_brand as $item)
                         <div class="item">
                             <a href="{{ url('collection/' . $item->category->slug . '/' . $item->slug) }}">
-                                <div class="card card-shadow m-2">
-                                    <img class="category-img zoom-in"
+                                <div class="card card-effect card-shadow m-2 glass-card">
+                                    <img class="category-img"
                                         src="{{ asset('assets/uploads/sub-category/' . $item->image) }}"
                                         alt="subcategory image">
                                     <div class="card-body">
@@ -85,15 +85,15 @@
     </div>
 
     <div class="py-4">
-        <div class="container">
+        <div class="container glass">
             <div class="row">
                 <h2>Trending Categories</h2>
                 <div class="owl-carousel trending-carousel owl-theme">
                     @foreach ($trending_category as $tcategory)
                         <div class="item">
                             <a href="{{ url('collection/' . $tcategory->slug) }}">
-                                <div class="card card-shadow m-2">
-                                    <img class="category-img zoom-in"
+                                <div class="card card-effect card-shadow m-2 glass-card">
+                                    <img class="category-img"
                                         src="{{ asset('assets/uploads/category/' . $tcategory->image) }}"
                                         alt="product image">
                                     <div class="card-body">
@@ -113,7 +113,7 @@
 @section('scripts')
     <script>
         $('.featured-carousel').owlCarousel({
-            loop: false,
+            loop: true,
             margin: 10,
             nav: true,
             dots: false,

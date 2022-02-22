@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="py-3 mb-4 shadow-sm bg-info border-top">
+    <div class="py-2 mb-4 shadow-sm bg-info border-top">
         <div class="container">
             <h6 class="mb-0">
                 <a href="{{ url('/') }}">
@@ -42,9 +42,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <a class="btn btn-danger m-2 float-end" data-bs-toggle="modal"
+                        <a class="btn btn-danger text-white m-2 float-end btn-delete" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">Delete Account</a>
-                        <a href="{{ url('my-profile/edit') }}" class="btn btn-warning m-2 float-end">Edit Profile</a>
+                        <a href="{{ url('my-profile/edit') }}" class="btn btn-warning btn-back m-2 float-end">Edit Profile</a>
                         <h3 class="m-2">My Profile</h3>
                     </div>
                     <div class="card-body">

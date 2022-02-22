@@ -6,8 +6,80 @@
     display: none;
 }
 
+body {
+    /* background: linear-gradient(-45deg, #eff1f3, #b8d3dd, #eff1f3, #b8d3dd); */
+    /* background: #eff1f3 !important; */
+    /* background: url('../../assets/pictures/peaceful-blur-background-1x-1920x1080.jpg') no-repeat center center fixed; */
+    background: url('../../assets/pictures/Teal\ and\ White\ Gradient\ Tech\ and\ Gaming\ Retail\ Website.png');
+    background-size: 100% 100%;
+    /* background-size: 400% 400%; */
+    /* animation: gradient 10s ease infinite; */
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+footer {
+    color: #dbdbdb !important;
+    background: #232F3E !important;
+}
+
+/* glass effect */
+.glass {
+    background: rgba(255, 255, 255, 0.4) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 30px rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(20px) !important;
+    padding: 20px 0;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.login {
+    background: rgba(255, 255, 255, 0.5) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(14px) !important;
+}
+
+/* A tag */
+a {
+    text-decoration: none !important;
+    color: #000 !important;
+}
+
+a:hover {
+    color: #232F3E !important;
+    text-shadow: 0 0 5px rgba(100, 149, 237, 0.5);
+}
+
+nav a:hover {
+    color: cornflowerblue !important;
+    text-shadow: 0 0 5px rgba(100, 148, 237, 0.5);
+}
+
+footer a:hover {
+    color: cornflowerblue !important;
+    text-shadow: 0 0 5px rgba(100, 148, 237, 0.5);
+}
+
+/* Loader */
 .loader {
-    height: 80%;
+    height: 91%;
     width: 100%;
     overflow: hidden;
     background-color: #fff;
@@ -35,10 +107,7 @@
     }
 }
 
-.search-bar {
-    margin-left: 9%;
-}
-
+/* checkout form */
 .checkout-form label {
     font-size: 14px;
     font-weight: 600;
@@ -61,12 +130,23 @@
     border-radius: 10px;
 }
 
-.category-img {
-    width: 100%;
-    height: 16vw;
-    object-fit: scale-down;
+/* card effect */
+.card-effect {
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    transition: .3s;
+    transform: scale(.94);
+    box-shadow: 0 0.4rem 2rem rgba(90, 97, 105, 0.1), 0 0.9375rem 1.40625rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12), 0 0.125rem 0.1875rem rgba(90, 97, 105, 0.1);
 }
 
+.card-effect:hover {
+    color: #232F3E !important;
+    transform: scale(.98);
+}
+
+/* card image effect */
 .card-img-top {
     width: 100%;
     height: 16vw;
@@ -80,36 +160,7 @@
     transform: scale(1);
 }
 
-.product_img {
-    width: 100%;
-    height: 20vw;
-    object-fit: scale-down;
-}
-
-.container .card-none {
-    border: none;
-}
-
-.nav-item span {
-    padding: 7px 7px 3px;
-    color: gainsboro;
-    background-color: cornflowerblue;
-}
-
-.container h6 a:hover {
-    color: white !important;
-}
-
-a {
-    text-decoration: none !important;
-    color: #000 !important;
-}
-
-a:hover {
-    color: cornflowerblue !important;
-    text-shadow: 0 0 5px rgba(100, 148, 237, 0.5);
-}
-
+/* cart image */
 .cart-img {
     width: 190px;
     height: 175px;
@@ -118,25 +169,6 @@ a:hover {
     border-radius: 8%;
     margin-bottom: 10px;
     box-shadow: 4px 3px #555555;
-}
-
-.exzoom_img_ul li {
-    display: contents !important;
-}
-
-.carousel-shadow {
-    box-shadow: #696969 0px 0px 20px 7px !important;
-}
-
-.card-shadow:hover {
-    /* box-shadow: #696969 0px 0px 20px 7px !important; */
-    box-shadow: 2px 2px 5px 2px #696969;
-}
-
-.sort-font {
-    color: #262626;
-    font-size: 15px;
-    margin: 0 10px;
 }
 
 /* rating */
@@ -169,14 +201,8 @@ a:hover {
     transition: 0.3s ease;
 }
 
-/* End of Star Rating */
-
-.checked {
-    color: #ffe400;
-}
-
-/* Button effect */
-.btn {
+/* Button Section */
+.btn-effect {
     border: none;
     color: #090909;
     padding: 0.7em 1.7em;
@@ -185,12 +211,87 @@ a:hover {
     background: #e8e8e8;
     border: 1px solid #e8e8e8;
     transition: all .3s;
-    box-shadow: 6px 6px 12px #c5c5c5,
-        -6px -6px 12px #ffffff;
+    box-shadow: 6px 6px 12px #c5c5c5;
 }
 
-.btn:active {
-    color: #666 !important;
-    box-shadow: inset 4px 4px 12px #c5c5c5,
-        inset -4px -4px 12px #ffffff;
+.btn-effect:hover,
+.btn-effect:focus {
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px 0 !important;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.btn-user:active {
+    background-color: rgb(199, 215, 224) !important;
+}
+
+.btn-back:hover {
+    color: rgb(18, 155, 0) !important;
+}
+
+.btn-delete:hover {
+    color: rgb(236, 236, 236) !important;
+}
+
+/* other */
+.checked {
+    color: #ffe400;
+}
+
+.search-bar {
+    margin-left: 3%;
+    width: 360px;
+}
+
+.category-img {
+    width: 100%;
+    height: 16vw;
+    object-fit: scale-down;
+}
+
+li.active {
+    color: cornflowerblue !important;
+    border-bottom: cornflowerblue solid 2px;
+}
+
+.container .card-none {
+    border: none;
+}
+
+.nav-item span {
+    padding: 7px 7px 3px;
+    color: gainsboro;
+    background-color: cornflowerblue;
+}
+
+.container h6 a:hover {
+    color: white !important;
+}
+
+.sort-font {
+    color: #262626;
+    font-size: 15px;
+    margin: 0 10px;
+}
+
+.addToCartBtn,
+.addToWishlist {
+    border-radius: 20px !important;
+}
+
+/* product zoom */
+figure.zoom {
+    /* height: 380px;
+    width: 500px; */
+    overflow: hidden;
+    cursor: crosshair;
+}
+
+figure.zoom img:hover {
+    opacity: 0;
+}
+
+figure.zoom img {
+    transition: opacity 0.3s;
+    display: block;
+    width: 100%;
 }

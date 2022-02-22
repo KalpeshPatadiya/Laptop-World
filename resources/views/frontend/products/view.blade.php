@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    <div class="py-3 mb-4 shadow-sm bg-info border-top">
+    <div class="py-2 mb-4 shadow-sm bg-info border-top">
         <div class="container">
             <h6 class="mb-0">
                 <a href="{{ url('collection') }}">
@@ -73,20 +73,22 @@
     </div>
 
     <div class="container pb-4">
-        <div class="card shadow product_data">
+        <div class="card glass shadow product_data">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-4 exzoom border-right" id="exzoom">
-                        <div class="exzoom_img_box">
-                            <ul class='exzoom_img_ul'>
-                                <li><img src="{{ asset('assets/uploads/products/' . $products->image) }}" alt=""></li>
-                            </ul>
-                        </div>
+                    {{-- <div class="col-md-4 glass">
+                        <img src="{{ asset('assets/uploads/products/' . $products->image) }}" alt="">
+                    </div> --}}
+                    <div class="col-md-4 glass">
+                        <figure class="zoom" onmousemove="zoom(event)"
+                            style="background-image: url({{ asset('assets/uploads/products/' . $products->image) }})">
+                            <img src="{{ asset('assets/uploads/products/' . $products->image) }}" />
+                        </figure>
                     </div>
                     <div class="col-md-8">
                         <h2 class="mb-0">{{ $products->name }}
                             @if ($products->trending == '1')
-                                <label style="font-size: 14px;"
+                                <label style="font-size: 16px;"
                                     class="float-end badge bg-danger trending_tag">Trending</label>
                             @endif
                         </h2>
@@ -131,7 +133,8 @@
                             <div class="col-md-10">
                                 <br>
                                 @if ($products->quantity > 0)
-                                    <button type="button" id="toastr_btn" class="btn btn-primary me-3 addToCartBtn float-start">Add to Cart
+                                    <button type="button" id="toastr_btn"
+                                        class="btn btn-primary me-3 addToCartBtn float-start">Add to Cart
                                         <i class="fa fa-shopping-cart"></i></button>
                                 @endif
                                 <button type="button" class="btn btn-success me-3 addToWishlist float-start">Add to Wishlist
@@ -177,11 +180,10 @@
 
                 <div class="row">
                     <div class="col-md-4">
-                        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Rate this product
                         </button>
-                        <button type="button" class="btn btn-outline-dark" style="padding: unset; margin-left: 20px;">
+                        <button type="button" class="btn btn-info" style="padding: unset; margin-left: 20px;">
                             <a href="{{ url('add-review/' . $products->slug . '/userreview') }}" class="btn btn-link">
                                 Write a review
                             </a>
@@ -225,30 +227,46 @@
         </div>
     </div>
 
-    {{-- <section class="py-5  container">
+    <section class="py-5  container">
         <div class="row">
             <div class="col-md 12">
                 <h4 class="fw-bold">Related Products</h4>
                 <hr>
                 <div class="row">
-                    @foreach ($products->subcategory->products as $item)
-                        <div class="col-md-3">
-                            <div class="card card-none card-shadow m-2">
-                                <a
-                                    href="{{ url('collection/' . $item->subcategory->category->slug . '/' . $item->subcategory->slug . '/' . $item->slug) }}">
-                                    <img class="card-img-top zoom-in"
-                                        src="{{ asset('assets/uploads/products/' . $item->image) }}" alt="product image">
-                                    <div class="card-body">
-                                        <h5>{{ $item->name }}</h5>
-                                        <span class="float-start"><b>₹</b> {{ $item->price }}</span>
-                                        <span class="float-end"><b>₹ </b><s>{{ $item->MRP }}</s></span>
-                                    </div>
-                                </a>
+                    @foreach ($products->subcategory->category->products as $item)
+                        @if ($item->id != $products->id)
+                            <div class="col-md-3">
+                                <div class="card card-none card-shadow m-2">
+                                    <a
+                                        href="{{ url('collection/' . $item->subcategory->category->slug . '/' . $item->subcategory->slug . '/' . $item->slug) }}">
+                                        <img class="card-img-top zoom-in"
+                                            src="{{ asset('assets/uploads/products/' . $item->image) }}"
+                                            alt="product image">
+                                        <div class="card-body">
+                                            <h5>{{ $item->name }}</h5>
+                                            <span class="float-start"><b>₹</b> {{ $item->price }}</span>
+                                            <span class="float-end"><b>₹ </b><s>{{ $item->MRP }}</s></span>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     @endforeach
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
+@endsection
+
+@section('scripts')
+    <script>
+        function zoom(e) {
+            var zoomer = e.currentTarget;
+            e.offsetX ? offsetX = e.offsetX : offsetX = e.touches[0].pageX
+            e.offsetY ? offsetY = e.offsetY : offsetX = e.touches[0].pageX
+            x = offsetX / zoomer.offsetWidth * 100
+            y = offsetY / zoomer.offsetHeight * 100
+            zoomer.style.backgroundPosition = x + '% ' + y + '%';
+        }
+    </script>
 @endsection

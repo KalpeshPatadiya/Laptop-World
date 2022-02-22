@@ -19,11 +19,13 @@ class FrontendController extends Controller
         $totalSubcategories = \DB::table('subcategories')->count();
         $products = \DB::table('products')->where('quantity', '<=', '5')->get();
         $neworders = OrderItem::orderBy('id', 'desc')->take(5)->get();
-        return view('admin.index', compact('totalOrders', 'totalProducts', 'totalUsers', 'totalSubcategories', 'products', 'neworders'));
+        $isAdmin = \DB::table('users')->where('role_as', '1')->take(3)->get();
+        return view('admin.index', compact('totalOrders', 'totalProducts', 'totalUsers', 'totalSubcategories', 'products', 'neworders', 'isAdmin'));
     }
     public function slider()
     {
         $slider = Slider::all();
+        $slider_count = Slider::count();
         return view('admin.slider.slider', compact('slider'));
     }
     public function add()
@@ -73,7 +75,7 @@ class FrontendController extends Controller
         $slider->link_name = $request->input('link_name');
         $slider->status = $request->input('status') == true ? '1' : '0';
         $slider->save();
-        return redirect('slider')->with('status', "Slider Added Successfully");
+        return redirect('slider')->with('status', "Slider Updated Successfully");
     }
     public function destroy($id)
     {

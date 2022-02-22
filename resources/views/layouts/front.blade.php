@@ -11,7 +11,7 @@
     <title>
         @yield('title') | Laptop World
     </title>
-    <link rel="shortcut icon" href="{{ asset('assets/uploads/logo/transFavicon.png') }}" type="image/png">
+    <link rel="shortcut icon" href="{{ asset('assets/logo/transFavicon.png') }}" type="image/png">
 
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -19,8 +19,6 @@
 
     <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/bootstrap.css') }}" rel="stylesheet">
-
-    <link href="{{ asset('frontend/css/jquery.exzoom.css') }}" rel="stylesheet">
 
     {{-- Owl Carousel --}}
     <link href="{{ asset('frontend/css/owl.carousel.min.css') }}" rel="stylesheet">
@@ -40,12 +38,6 @@
 
     <!-- Alertify CSS -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
-    <style>
-        .ui-widget {
-            z-index: 2024;
-        }
-
-    </style>
 
 </head>
 
@@ -69,32 +61,6 @@
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
     <!-- Auto Complete -->
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-    <script>
-        $(document).ready(function() {
-            src = "{{ route('searchproductajax') }}";
-            $("#search_text").autocomplete({
-                source: function(request, response) {
-                    $.ajax({
-                        url: src,
-                        data: {
-                            term: request.term
-                        },
-                        dataType: "json",
-                        success: function(data) {
-                            response(data);
-                        }
-                    });
-                },
-                minLength: 1,
-            });
-            $(document).on('click', '.ui-menu-item', function() {
-                $('#search-form').submit();
-            });
-        });
-    </script>
-
-    {{-- product zoom --}}
-    <script src="{{ asset('frontend/js/jquery.exzoom.js') }}"></script>
 
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -103,10 +69,6 @@
             swal("{{ session('status') }}");
         </script>
     @endif
-
-    <!-- Allertify JS -->
-    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-
 
     @yield('scripts')
 </body>

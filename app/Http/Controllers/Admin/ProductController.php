@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\SubCategory;
+use App\Models\Category;
 use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
@@ -18,8 +19,9 @@ class ProductController extends Controller
 
     public function add()
     {
+        $category = Category::all();
         $subcategory = SubCategory::all();
-        return view('admin.product.add', compact('subcategory'));
+        return view('admin.product.add', compact('subcategory', 'category'));
     }
 
     public function insert(Request $request)
@@ -32,6 +34,7 @@ class ProductController extends Controller
             $file->move('assets/uploads/products/', $filename);
             $products->image = $filename;
         }
+        $products->cat_id = $request->input('cat_id');
         $products->subcat_id = $request->input('subcat_id');
         $products->name = $request->input('name');
         $products->slug = $request->input('slug');

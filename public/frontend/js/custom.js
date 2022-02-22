@@ -45,15 +45,14 @@ $(document).ready(function () {
                 'product_qty': product_qty,
             },
             success: function (response) {
-                // swal(response.status);
-                alertify.set('notifier', 'position', 'top-right');
-                alertify.success(response.status);
+                swal(response.status);
                 loadcart();
             }
         });
 
     });
 
+    // add to cart from wishlist
     $('.addToCartBtnFW').click(function (e) {
         e.preventDefault();
 
@@ -183,10 +182,25 @@ $(document).ready(function () {
     });
 });
 
-// product zoom
-$(function () {
-    $("#exzoom").exzoom({
-        // options here
+$(document).ready(function () {
+    src = "{{ route('searchproductajax') }}";
+    $("#search_text").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: src,
+                data: {
+                    term: request.term
+                },
+                dataType: "json",
+                success: function (data) {
+                    response(data);
+                }
+            });
+        },
+        minLength: 1,
+    });
+    $(document).on('click', '.ui-menu-item', function () {
+        $('#search-form').submit();
     });
 });
 

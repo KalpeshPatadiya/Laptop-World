@@ -19,13 +19,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>All Categories</h2>
+                    <h2>All Collections</h2>
                     <div class="row">
                         @foreach ($category as $cate)
                             <div class="col-md-3 mb-3">
                                 <a href="{{ url('collection/' . $cate->slug) }}">
-                                    <div class="card">
-                                        <img class="card-img-top"
+                                    <div class="card glass-card card-effect">
+                                        <img class="category-img"
                                             src="{{ asset('assets/uploads/category/' . $cate->image) }}"
                                             alt="category image">
                                         <div class="card-body">

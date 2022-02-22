@@ -24,9 +24,9 @@
                 <h2>Sub Categories</h2>
                 @foreach ($subcategory as $item)
                     <div class="col-md-3 mb-3">
-                        <div class="card">
+                        <div class="card glass-card card-effect">
                             <a href="{{ url('collection/' . $item->category->slug . '/' . $item->slug . '/') }}">
-                                <img class="card-img-top"
+                                <img class="category-img"
                                     src="{{ asset('assets/uploads/sub-category/' . $item->image) }}" alt="product image">
                                 <div class="card-body">
                                     <h5>{{ $item->name }}</h5>

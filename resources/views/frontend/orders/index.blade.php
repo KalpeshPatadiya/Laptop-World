@@ -5,7 +5,18 @@
 @endsection
 
 @section('content')
-
+    <div class="py-2 mb-4 shadow-sm bg-info border-top">
+        <div class="container">
+            <h6 class="mb-0">
+                <a href="{{ url('/') }}">
+                    Home
+                </a> /
+                <a href="{{ url('my-orders') }}">
+                    My Orders
+                </a>
+            </h6>
+        </div>
+    </div>
     <div class="container py-5">
         <div class="row">
             <div class="col-md-12">

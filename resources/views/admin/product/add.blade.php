@@ -27,6 +27,17 @@
                     <div class="tab-pane fade show active" id="home" role="tabpanel">
                         <div class="row">
                             <div class="col-md-12 form-group mt-3 mb-3">
+                                <select class="form-select" name="cat_id">
+                                    <option value="">Select a Category</option>
+                                    @foreach ($category as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            {{-- @if ($category == slected)
+
+                            @endif --}}
+                            <div class="col-md-12 form-group mt-3 mb-3">
                                 <select class="form-select" name="subcat_id">
                                     <option value="">Select a Sub Category</option>
                                     @foreach ($subcategory as $item)
