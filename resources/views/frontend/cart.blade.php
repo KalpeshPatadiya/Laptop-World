@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="py-3 mb-4 shadow-sm bg-info border-top">
+    <div class="py-2 mb-4 shadow-sm bg-info border-top">
         <div class="container">
             <h6 class="mb-0">
                 <a href="{{ url('/') }}">
@@ -52,11 +52,17 @@
                     @foreach ($cartItems as $item)
                         <div class="row product_data d-flex justify-content-around">
                             <div class="col-md-2">
-                                <img src="{{ asset('assets/uploads/products/' . $item->products->image) }}" alt=""
-                                    class="cart-img">
+                                <a
+                                    href="{{ url('collection/' .$item->products->subcategory->category->slug .'/' .$item->products->subcategory->slug .'/' .$item->products->slug) }}">
+                                    <img src="{{ asset('assets/uploads/products/' . $item->products->image) }}" alt=""
+                                        class="cart-img">
+                                </a>
                             </div>
                             <div class="col-md-3 my-auto">
-                                <h4>{{ $item->products->name }}</h4>
+                                <a
+                                    href="{{ url('collection/' .$item->products->subcategory->category->slug .'/' .$item->products->subcategory->slug .'/' .$item->products->slug) }}">
+                                    <h4>{{ $item->products->name }}</h4>
+                                </a>
                             </div>
                             <div class="col-md-1 my-auto">
                                 <h6><strong>₹ {{ $item->products->price }}</strong></h6>
@@ -98,7 +104,7 @@
                 </div>
             @else
                 <div class="card-body text-center">
-                    <h2>Your <i class="fa fa-shopping-cart"></i> Cart is empty</h2>
+                    <h2>Your <i class="fa fa-shopping-cart text-success"></i> Cart is empty</h2>
                     <a href="{{ url('collection') }}" class="btn btn-outline-primary float-end">Continue Shopping</a>
                 </div>
             @endif

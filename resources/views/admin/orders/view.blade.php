@@ -58,7 +58,7 @@
                                                 <td>{{ $item->qty }}</td>
                                                 <td>{{ $item->price }}</td>
                                                 <td>
-                                                    <img src="{{ asset('assets/uploads/products/' . $item->products) }}"
+                                                    <img src="{{ asset('assets/uploads/products/' . $item->products->image) }}"
                                                         alt="product img" width="100">
                                                 </td>
                                             </tr>

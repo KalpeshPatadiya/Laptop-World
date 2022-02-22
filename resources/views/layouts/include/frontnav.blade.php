@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark trans-nav shadow-lg bg-body sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark shadow bg-body sticky-top">
     <div class="container">
         <a class="navbar-brand p-0 ml-auto" href="{{ url('/') }}">
             <img src="{{ asset('assets/logo/Laptop World (2).png') }}" style="width: 275px;"
@@ -15,7 +15,7 @@
                     <input type="text" name="search_product" id="search_text" class="form-control"
                         placeholder="Search here">
                     <div class="input-group-append">
-                        <button name="searchbtn" class="btn btn-outline-success" type="submit"><i
+                        <button name="searchbtn" class="btn btn-outline-warning text-black" type="submit"><i
                                 class="fa fa-search"></i></button>
                     </div>
                 </div>
@@ -30,12 +30,12 @@
                     <a class="nav-link" href="{{ url('collection') }}">Collection</a>
                 </li>
                 <li class="nav-item {{ Request::is('cart') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ url('cart') }}"><i class="fas fa-shopping-cart"></i> Cart
+                    <a class="nav-link" href="{{ url('cart') }}"><i class="fas fa-shopping-cart text-success"></i> Cart
                         <span class="badge badge-pill cart-count">0</span>
                     </a>
                 </li>
                 <li class="nav-item {{ Request::is('wishlist') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ url('wishlist') }}"><i class="fas fa-heart"></i> Wishlist
+                    <a class="nav-link" href="{{ url('wishlist') }}"><i class="fas fa-heart text-danger"></i> Wishlist
                         <span class="badge badge-pill wishlist-count">0</span>
                     </a>
                 </li>
@@ -62,7 +62,7 @@
                 <li class="nav-link dropdown dropdown-menu-right py-0 ml-auto">
                     <a href="#" class="btn btn-effect nav-link dropdown-toggle" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user"></i> {{ Auth::user()->name }}
+                        <i class="fas fa-user text-secondary"></i> {{ Auth::user()->name }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         @if (Auth::user()->role_as == '0')

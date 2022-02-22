@@ -9,7 +9,9 @@
 body {
     /* background: linear-gradient(-45deg, #eff1f3, #b8d3dd, #eff1f3, #b8d3dd); */
     /* background: #eff1f3 !important; */
-    background: url('../../assets/pictures/peaceful-blur-background-1x-1920x1080.jpg') no-repeat center center fixed;
+    /* background: url('../../assets/pictures/peaceful-blur-background-1x-1920x1080.jpg') no-repeat center center fixed; */
+    background: url('../../assets/pictures/Teal\ and\ White\ Gradient\ Tech\ and\ Gaming\ Retail\ Website.png');
+    background-size: 100% 100%;
     /* background-size: 400% 400%; */
     /* animation: gradient 10s ease infinite; */
 }
@@ -35,15 +37,15 @@ footer {
 
 /* glass effect */
 .glass {
-    background: rgba(255, 255, 255, 0.3) !important;
+    background: rgba(255, 255, 255, 0.4) !important;
     border-radius: 16px !important;
     box-shadow: 0 4px 30px rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(15px) !important;
+    backdrop-filter: blur(20px) !important;
     padding: 20px 0;
 }
 
 .glass-card {
-    background: rgba(255, 255, 255, 0.88) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(10px) !important;
 }
 
@@ -77,7 +79,7 @@ footer a:hover {
 
 /* Loader */
 .loader {
-    height: 80%;
+    height: 91%;
     width: 100%;
     overflow: hidden;
     background-color: #fff;
@@ -219,7 +221,15 @@ footer a:hover {
 }
 
 .btn-user:active {
-    background-color: rgb(88, 88, 88) !important;
+    background-color: rgb(199, 215, 224) !important;
+}
+
+.btn-back:hover {
+    color: rgb(18, 155, 0) !important;
+}
+
+.btn-delete:hover {
+    color: rgb(236, 236, 236) !important;
 }
 
 /* other */
@@ -257,12 +267,31 @@ li.active {
     color: white !important;
 }
 
-.exzoom_img_ul li {
-    display: contents !important;
-}
-
 .sort-font {
     color: #262626;
     font-size: 15px;
     margin: 0 10px;
+}
+
+.addToCartBtn,
+.addToWishlist {
+    border-radius: 20px !important;
+}
+
+/* product zoom */
+figure.zoom {
+    /* height: 380px;
+    width: 500px; */
+    overflow: hidden;
+    cursor: crosshair;
+}
+
+figure.zoom img:hover {
+    opacity: 0;
+}
+
+figure.zoom img {
+    transition: opacity 0.3s;
+    display: block;
+    width: 100%;
 }

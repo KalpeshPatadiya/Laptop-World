@@ -14,7 +14,7 @@
                             @method('PUT')
                             <input type="hidden" name="review_id" value="{{ $review->id }}">
                             <textarea name="user_review" rows="5" class="form-control"
-                                placeholder="What did you like or dislike? What did you use this product for?">{{ $review->user_review }}</textarea>
+                                placeholder="What did you like or dislike? What did you use this product for?" required>{{ $review->user_review }}</textarea>
                             <button class="btn btn-primary mt-3">Update Review</button>
                         </form>
                     </div>

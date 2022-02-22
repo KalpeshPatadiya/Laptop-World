@@ -42,6 +42,27 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-md-4">
+                    <table class="table table-striped">
+                        <thead class="table-secondary">
+                            <h4>Admin List</h4>
+                        </thead>
+                        <tbody>
+                            <tr class="table-info">
+                                <th>Admin Id</th>
+                                <th>Name</th>
+                            </tr>
+                            @foreach ($isAdmin as $admin)
+                                <tr>
+                                    <td>{{ $admin->id }}</td>
+                                    <td>{{ $admin->name }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
                 @if ($products->count() > 0)
                     <div class="col-md-6">
                         <table class="table table-striped">

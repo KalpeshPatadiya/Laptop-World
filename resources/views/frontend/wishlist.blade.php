@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="py-3 mb-4 shadow-sm bg-info border-top">
+    <div class="py-2 mb-4 shadow-sm bg-info border-top">
         <div class="container">
             <h6 class="mb-0">
                 <a href="{{ url('/') }}">
@@ -79,7 +79,7 @@
                     @endforeach
                 @else
                     <div class="card-body text-center">
-                        <h2>Your <i class="fa fa-heart"></i> Wishlist is empty</h2>
+                        <h2>Your <i class="fa fa-heart text-danger"></i> Wishlist is empty</h2>
                         <a href="{{ url('/') }}" class="btn btn-outline-primary float-end">Explore new product</a>
                     </div>
                 @endif

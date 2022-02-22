@@ -44,7 +44,7 @@
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row mb-2">
                                 <div class="col-md-6 offset-md-4">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember"
