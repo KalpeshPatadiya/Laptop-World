@@ -1,203 +1,184 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice</title>
+    <title>Invoice - {{ $orders->tracking_no }}</title>
     <style>
-        body {
-            background-color: #F6F6F6;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            margin: 0;
-            padding: 0;
-        }
-
-        p {
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            width: 80%;
-            margin-right: auto;
-            margin-left: auto;
-        }
-
-        .brand-section {
-            background-color: #0d1033;
-            padding: 10px 40px;
-        }
-
-        .logo {
-            width: 50%;
-        }
-
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .col-6 {
-            width: 50%;
-            flex: 0 0 auto;
-        }
-
-        .text-white {
-            color: #fff;
-        }
-
-        .company-details {
-            float: right;
-            text-align: right;
-        }
-
-        .body-section {
-            padding: 16px;  
-            border: 1px solid gray;
-        }
-
-        .heading {
-            font-size: 20px;
-            margin-bottom: 08px;
-        }
-
-        .sub-heading {
-            color: #262626;
-            margin-bottom: 05px;
+        h1 {
+            font: bold 125% sans-serif;
+            letter-spacing: 0.3em;
+            text-align: center;
+            text-transform: uppercase;
         }
 
         table {
-            background-color: #fff;
-            width: 100%;
-            border-collapse: collapse;
+            font-size: 88%;
         }
 
-        table thead tr {
-            border: 1px solid #111;
-            background-color: #f2f2f2;
+        th,
+        td {
+            border-width: 1px;
+            padding: 0.5em;
+            text-align: left;
+            border-style: solid;
+            border-radius: 0.25em;
         }
 
-        table td {
-            vertical-align: middle !important;
-            text-align: center;
+        th {
+            background: #EEE;
+            border-color: #BBB;
         }
 
-        table th,
-        table td {
-            padding-top: 08px;
-            padding-bottom: 08px;
+        td {
+            border-color: #DDD;
         }
 
-        .table-bordered {
-            box-shadow: 0px 0px 5px 0.5px gray;
+        html {
+            font: 16px/1 'Open Sans', sans-serif;
+            overflow: auto;
+            padding: 0.5in;
         }
 
-        .table-bordered td,
-        .table-bordered th {
-            border: 1px solid #dee2e6;
+
+        body {
+            box-sizing: border-box;
+            margin: 0 auto;
+            width: 7in;
+            background: #FFF;
+            box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
         }
 
-        .text-right {
-            text-align: end;
+        header {
+            margin: 0 0 3em;
         }
 
-        .w-20 {
-            width: 20%;
+        header:after {
+            clear: both;
+            content: "";
+            display: table;
         }
 
-        .float-right {
+        header h1 {
+            background: #000;
+            border-radius: 0.25em;
+            color: #FFF;
+            margin: 0 0 1em;
+            padding: 0.5em 0;
+        }
+
+        header address {
+            float: left;
+            font-size: 100%;
+            font-style: normal;
+            line-height: 1.25;
+        }
+
+        article,
+        article address,
+        table.meta,
+        table.inventory {
+            margin: 0 0 3em;
+        }
+
+        article:after {
+            clear: both;
+            content: "";
+            display: table;
+        }
+
+        article address {
+            float: left;
+            font-size: 125%;
+            font-weight: bold;
+        }
+
+        table.meta,
+        table.balance {
             float: right;
+            width: 36%;
+        }
+
+        table.inventory {
+            clear: both;
+            width: 100%;
+        }
+
+        table.balance th,
+        table.balance td {
+            width: 50%;
         }
 
     </style>
 </head>
 
 <body>
-
-    <div class="container-fluid">
-        <div class="brand-section">
-            <div class="row">
-                <div class="col-6">
-                    <h1 class="text-white">Laptop World</h1>
-                </div>
-            </div>
-        </div>
-
-        <div class="body-section">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="col-md-6">
-                        <h2 class="heading">Invoice No. : {{ $orders->id }}</h2>
-                        <p class="sub-heading">Tracking No. : {{ $orders->tracking_no }} </p>
-                        <p class="sub-heading">Order Date : {{ $orders->created_at->format('d-m-Y') }} </p>
-                        <p class="sub-heading">Email Address : {{ $orders->email }} </p>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="sub-heading">Full Name : {{ $orders->fname }} {{ $orders->lname }}</p>
-                        <p class="sub-heading">Address : {{ $orders->address1 }} {{ $orders->address2 }}</p>
-                        <p class="sub-heading">Phone Number : {{ $orders->phone }}</p>
-                        <p class="sub-heading">City, State, Pincode :
-                            {{ $orders->city }},
-                            {{ $orders->state }},
-                            {{ $orders->pincode }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="body-section">
-            <h3 class="heading">Ordered Items</h3>
-            <br>
-            <table class="table-bordered">
-                <thead>
+    <header>
+        <h1>Invoice</h1>
+        <address>
+            <h3>Invoice No. : {{ $orders->id }}</h3>
+            <p>Full Name : {{ $orders->fname }} {{ $orders->lname }}</p>
+            <p>Email Address : {{ $orders->email }} </p>
+            <p>Phone Number : {{ $orders->phone }}</p>
+            <p>Address : {{ $orders->address1 }}, {{ $orders->address2 }}, {{ $orders->city }},
+                {{ $orders->state }} - {{ $orders->pincode }}</p>
+        </address>
+    </header>
+    <article>
+        <address>
+            <p>{{ config('app.name') }}</p>
+        </address>
+        <table class="meta">
+            <tr>
+                <th>Tracking No.</th>
+                <td>{{ $orders->tracking_no }}</td>
+            </tr>
+            <tr>
+                <th>Order Date</th>
+                <td>{{ $orders->created_at->format('d-m-Y') }}</td>
+            </tr>
+        </table>
+        <table class="inventory">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($orders->orderitems as $item)
                     <tr>
-                        <th>Product</th>
-                        <th class="w-20">Price</th>
-                        <th class="w-20">Quantity</th>
-                        <th class="w-20">Total</th>
+                        <td>{{ $item->products->name }}</td>
+                        <td>{{ $item->price }}</td>
+                        <td>{{ $item->qty }}</td>
+                        @php
+                            $prod_total = $item->price * $item->qty;
+                        @endphp
+                        <td>{{ $prod_total }}</td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach ($orders->orderitems as $item)
-                        <tr>
-                            <td>{{ $item->products->name }}</td>
-                            <td>{{ $item->price }}</td>
-                            <td>{{ $item->qty }}</td>
-                            @php
-                                $prod_total = $item->price * $item->qty;
-                            @endphp
-                            <td>{{ $prod_total }}</td>
-                        </tr>
-                    @endforeach
-                    <tr>
-                        <td colspan="3" class="text-right">Grand Total</td>
-                        <td>{{ $orders->total_price }}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
-            <h3 class="heading">Payment Status : {{ $orders->status == '1' ? 'Shipped' : 'Completed' }}
-                <h3 class="heading">Payment Mode : Cash on Delivery </h3>
+                @endforeach
+            </tbody>
+        </table>
+        <address>
+            <h5 class="heading">Payment Status : {{ $orders->status == '1' ? 'Shipped' : 'Completed' }}</h5>
+            <h5 class="heading">Payment Mode : Cash on Delivery </h5>
+        </address>
+        <table class="balance">
+            <tr>
+                <th>Grand Total</th>
+                <td>{{ $orders->total_price }}</td>
+            </tr>
+        </table>
+    </article>
+    <aside>
+        <h1>Additional Notes</h1>
+        <div>
+            <p>A finance charge of 1.5% will be made on unpaid balances after 30 days.</p>
         </div>
-
-        <div class="body-section">
-            <p>&copy; Copyright 2022 - {{ config('app.name') }} . All rights reserved.
-                <a href="http://localhost:8000/" class="float-right">{{ config('app.name') }}</a>
-            </p>
-        </div>
-    </div>
-
+    </aside>
 </body>
 
 </html>

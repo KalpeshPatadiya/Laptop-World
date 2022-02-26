@@ -18,6 +18,7 @@ class CreateReviewsTable extends Migration
             $table->string('user_id');
             $table->string('prod_id');
             $table->mediumText('user_review');
+            $table->tinyInteger('review_status')->default(1);
             $table->timestamps();
         });
     }

@@ -25,19 +25,22 @@
                             class="form-control"> {{ $category->description }} </textarea>
                     </div>
                     <div class="form-group col-md-6 mb-3">
-                        <input class="form-check-input form-control" {{ $category->status == '1' ? 'checked' : '' }}
-                            type="checkbox" name="status">
+                        <input class="form-check-input" {{ $category->status == '1' ? 'checked' : '' }} type="checkbox"
+                            name="status">
                         <label class="form-check-label" for="">Status</label>
                     </div>
                     <div class="form-group col-md-6 mb-3">
-                        <input class="form-check-input form-control" {{ $category->popular == '1' ? 'checked' : '' }}
-                            type="checkbox" name="popular">
+                        <input class="form-check-input" {{ $category->popular == '1' ? 'checked' : '' }} type="checkbox"
+                            name="popular">
                         <label class="form-check-label" for="">Popular</label>
                     </div>
                     @if ($category->image)
-                        <img src="{{ asset('assets/uploads/category/' . $category->image) }}" alt="">
+                        <label class="text-bold">Current Image</label>
+                        <img class="w-25 mb-3" src="{{ asset('assets/uploads/category/' . $category->image) }}"
+                            alt="">
                     @endif
                     <div class="form-group col-md-12 mb-3">
+                        <label class="text-bold">Select Diffrent Image</label>
                         <input type="file" name="image" class="form-control">
                     </div>
                     <div class="col-md-12">

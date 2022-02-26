@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div class="py-5">
+    <div class="pt-5">
         <div class="container">
             <h2>{{ $subcategory->name }}</h2>
             <div class="row">
@@ -36,7 +36,7 @@
 
                 <div class="col-md-3">
                     <form action="{{ URL::current() }}" method="get">
-                        <div class="card login">
+                        <div class="card glass p-0">
                             <div class="card-header">
                                 <h4>Brands
                                     <button type="submit" class="btn btn-sm btn-primary float-end">Filter</button>
@@ -96,7 +96,7 @@
                                             </div>
                                             <div class="float-end">
                                                 <a href="{{ url('collection/' . $prod->subcategory->category->slug . '/' . $prod->subcategory->slug . '/' . $prod->slug) }}"
-                                                    class="btn btn-lg btn-outline-success mt-2"
+                                                    class="btn btn-outline-dark btn-delete mt-2"
                                                     style="margin: -8px; padding: 10px;">View Details</a>
                                             </div>
                                         </div>

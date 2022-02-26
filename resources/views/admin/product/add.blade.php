@@ -2,12 +2,15 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header pb-0">
-            <a href="{{ url('products') }}" class="btn btn-warning float-end">Back</a>
-            <h4>Add Product</h4>
-        </div>
-        <div class="card-body">
-            <form action="{{ url('insert-product') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('insert-product') }}" method="POST" enctype="multipart/form-data">
+            <div class="card-header">
+                <a href="{{ url('products') }}" class="btn btn-warning float-end mx-3">Back</a>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary float-end">Add Product</button>
+                </div>
+                <h4>Add Product</h4>
+            </div>
+            <div class="card-body">
                 @csrf
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -26,25 +29,18 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel">
                         <div class="row">
-                            <div class="col-md-12 form-group mt-3 mb-3">
-                                <select class="form-select" name="cat_id">
-                                    <option value="">Select a Category</option>
+                            <div class="col-md-12 form-group my-3">
+                                <select class="form-select catS" id="cat_id" name="cat_id">
+                                    <option value="0" disabled="true" selected="true">Select a Category</option>
                                     @foreach ($category as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
-                            </div>
-                            {{-- @if ($category == slected)
-
-                            @endif --}}
-                            <div class="col-md-12 form-group mt-3 mb-3">
-                                <select class="form-select" name="subcat_id">
-                                    <option value="">Select a Sub Category</option>
-                                    @foreach ($subcategory as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                    @endforeach
+                                <select class="form-select subcatS mt-3" id="subcat_id" name="subcat_id">
+                                    <option value="0" disabled="true" selected="true">Select a Sub Category</option>
                                 </select>
                             </div>
+                            {{ csrf_field() }}
                             <div class="form-group col-md-6 mb-3">
                                 <label for="name">Name</label>
                                 <input type="text" name="name" class="form-control">
@@ -71,10 +67,7 @@
                                 <input type="number" name="quantity" class="form-control">
                             </div>
                             <div class="form-group col-md-12 my-3">
-                                <input type="file" name="image" class="form-control">
-                            </div>
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary">Add Product</button>
+                                <input type="file" name="image" class="form-control" multiple>
                             </div>
                         </div>
                     </div>
@@ -87,7 +80,7 @@
                             <label for="">Highlights Description</label>
                             <textarea name="highlights" id="sumnote_highlight" rows="4" class="form-control"></textarea>
                         </div>
-                        <div class="form-group col-md-4 mb-3">
+                        <div class="form-group col-md-6 mb-3">
                             <label for="">Product Description</label>
                             <input type="text" name="des_heading" class="form-control">
                         </div>
@@ -95,7 +88,7 @@
                             <label for="">Product Description</label>
                             <textarea name="description" id="sumnote_prod_desc" rows="4" class="form-control"></textarea>
                         </div>
-                        <div class="form-group col-md-4 mb-3">
+                        <div class="form-group col-md-6 mb-3">
                             <label for="">Product Details/Specifications</label>
                             <input type="text" name="det_heading" class="form-control">
                         </div>
@@ -105,22 +98,23 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="other" role="tabpanel">
-                        <div class="form-group col-md-4 mb-3">
+                        <div class="form-group col-md-12 my-3">
                             <input class="form-check-input" type="checkbox" name="status" class="form-control">
-                            <label class="form-check-label" for="">Status</label>
+                            <label class="form-check-label" for="">Status</label><span class="mx-5 text-success">if checked
+                                then product will show otherwise hide</span>
                         </div>
-                        <div class="form-group col-md-4 mb-3">
+                        <div class="form-group col-md-12 mb-3">
                             <input class="form-check-input" type="checkbox" name="trending" class="form-control">
                             <label class="form-check-label" for="">Trending</label>
                         </div>
-                        <div class="form-group col-md-4 mb-3">
+                        <div class="form-group col-md-12 mb-3">
                             <input class="form-check-input" type="checkbox" name="new_arrivals" class="form-control">
                             <label class="form-check-label" for="">New Arrival</label>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 @endsection
 
@@ -131,6 +125,37 @@
             $("#sumnote_highlight").summernote();
             $("#sumnote_prod_desc").summernote();
             $("#sumnote_detail").summernote();
+        });
+
+        $(document).ready(function() {
+
+            $(document).on('change', '.catS', function() {
+
+                var cat_id = $(this).val();
+                var div = $(this).parent();
+                var op = " ";
+
+                $.ajax({
+                    type: 'get',
+                    url: '{!! URL::to('findcatS') !!}',
+                    data: {
+                        'id': cat_id
+                    },
+                    success: function(data) {
+                        op +=
+                            '<option value="0" selected disabled>Select a Sub Category</option>';
+                        for (var i = 0; i < data.length; i++) {
+                            op += '<option value="' + data[i].id + '">' + data[i].name +
+                                '</option>';
+                        }
+                        div.find('.subcatS').html(" ");
+                        div.find('.subcatS').append(op);
+                    },
+                    error: function() {
+
+                    }
+                });
+            });
         });
     </script>
 @endsection

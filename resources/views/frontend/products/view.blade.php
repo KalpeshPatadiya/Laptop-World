@@ -5,7 +5,7 @@
 @section('content')
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content glass-card text-white">
                 <form action="{{ url('/add-rating') }}" method="POST">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $products->id }}">
@@ -73,17 +73,11 @@
     </div>
 
     <div class="container pb-4">
-        <div class="card glass shadow product_data">
+        <div class="card glass shadow product_data p-0">
             <div class="card-body">
                 <div class="row">
-                    {{-- <div class="col-md-4 glass">
+                    <div class="col-md-4">
                         <img src="{{ asset('assets/uploads/products/' . $products->image) }}" alt="">
-                    </div> --}}
-                    <div class="col-md-4 glass">
-                        <figure class="zoom" onmousemove="zoom(event)"
-                            style="background-image: url({{ asset('assets/uploads/products/' . $products->image) }})">
-                            <img src="{{ asset('assets/uploads/products/' . $products->image) }}" />
-                        </figure>
                     </div>
                     <div class="col-md-8">
                         <h2 class="mb-0">{{ $products->name }}
@@ -126,18 +120,17 @@
                                 <label for="Quantity">Quantity</label>
                                 <div class="input-group text-center mb-3">
                                     <button class="input-group-text decrement-btn">-</button>
-                                    <input type="text" name="quantity" value="1" class="form-control qty-input">
+                                    <input type="text" name="quantity" value="1" class="form-control glass-card qty-input">
                                     <button class="input-group-text increment-btn">+</button>
                                 </div>
                             </div>
                             <div class="col-md-10">
                                 <br>
                                 @if ($products->quantity > 0)
-                                    <button type="button" id="toastr_btn"
-                                        class="btn btn-primary me-3 addToCartBtn float-start">Add to Cart
+                                    <button type="button" class="btn btn-primary me-3 addToCartBtn CartBtn float-start">Add to Cart
                                         <i class="fa fa-shopping-cart"></i></button>
                                 @endif
-                                <button type="button" class="btn btn-success me-3 addToWishlist float-start">Add to Wishlist
+                                <button type="button" class="btn btn-success me-3 addToWishlist CartBtn float-start">Add to Wishlist
                                     <i class="fa fa-heart"></i></button>
                             </div>
                         </div>
@@ -145,7 +138,7 @@
                     <div class="col-md-12">
                         <hr>
                         @if ($products->high_heading != 'NULL' && $products->high_heading != 'NULL')
-                            <div class="card my-3">
+                            <div class="card glass-card my-3">
                                 <details open>
                                     <summary class="card-header fs-3">{{ $products->high_heading }}</summary>
                                     <div class="card-body">
@@ -155,7 +148,7 @@
                             </div>
                         @endif
                         @if ($products->des_heading != 'NULL' && $products->description != 'NULL')
-                            <div class="card my-3">
+                            <div class="card glass-card my-3">
                                 <details>
                                     <summary class="card-header fs-3">{{ $products->des_heading }}</summary>
                                     <div class="card-body">
@@ -165,7 +158,7 @@
                             </div>
                         @endif
                         @if ($products->det_heading != 'NULL' && $products->details != 'NULL')
-                            <div class="card my-3">
+                            <div class="card glass-card my-3">
                                 <details>
                                     <summary class="card-header fs-3">{{ $products->det_heading }}</summary>
                                     <div class="card-body">
@@ -192,33 +185,37 @@
                     <div class="col-md-8">
                         @foreach ($reviews as $item)
                             <div class="user-review">
-                                <label class="fw-bold">{{ $item->user->name . ' ' . $item->user->lname }}</label>
-                                @if ($item->user_id == Auth::id())
-                                    <button type="button" class="btn btn-warning float-end" style="padding: 3px 12px;">
+                                @if ($item->review_status == '1')
+                                    <label
+                                        class="fw-bold">{{ $item->user->name . ' ' . $item->user->lname }}</label>
+                                    @if ($item->user_id == Auth::id())
                                         <a href="{{ url('edit-review/' . $products->slug . '/userreview') }}">
-                                            Edit
+                                            <button type="button" class="btn btn-warning float-end"
+                                                style="padding: 3px 12px;">
+                                                Edit
+                                            </button>
                                         </a>
-                                    </button>
+                                    @endif
+                                    <br>
+                                    @php
+                                        $rating = App\Models\Rating::where('prod_id', $products->id)
+                                            ->where('user_id', $item->user->id)
+                                            ->first();
+                                    @endphp
+                                    @if ($rating)
+                                        @php $user_rated = $rating->stars_rated @endphp
+                                        @for ($i = 1; $i <= $user_rated; $i++)
+                                            <i class="fa fa-star checked"></i>
+                                        @endfor
+                                        @for ($j = $user_rated + 1; $j <= 5; $j++)
+                                            <i class="fa fa-star"></i>
+                                        @endfor
+                                    @endif
+                                    <small><em>Reviewed on {{ $item->updated_at->format('d M Y') }}</em></small>
+                                    <p>
+                                        {{ $item->user_review }}
+                                    </p>
                                 @endif
-                                <br>
-                                @php
-                                    $rating = App\Models\Rating::where('prod_id', $products->id)
-                                        ->where('user_id', $item->user->id)
-                                        ->first();
-                                @endphp
-                                @if ($rating)
-                                    @php $user_rated = $rating->stars_rated @endphp
-                                    @for ($i = 1; $i <= $user_rated; $i++)
-                                        <i class="fa fa-star checked"></i>
-                                    @endfor
-                                    @for ($j = $user_rated + 1; $j <= 5; $j++)
-                                        <i class="fa fa-star"></i>
-                                    @endfor
-                                @endif
-                                <small><em>Reviewed on {{ $item->created_at->format('d M Y') }}</em></small>
-                                <p>
-                                    {{ $item->user_review }}
-                                </p>
                             </div>
                         @endforeach
                     </div>
@@ -226,8 +223,9 @@
             </div>
         </div>
     </div>
+    <hr>
 
-    <section class="py-5  container">
+    <section class="py-4 container glass">
         <div class="row">
             <div class="col-md 12">
                 <h4 class="fw-bold">Related Products</h4>
@@ -236,7 +234,7 @@
                     @foreach ($products->subcategory->category->products as $item)
                         @if ($item->id != $products->id)
                             <div class="col-md-3">
-                                <div class="card card-none card-shadow m-2">
+                                <div class="card card-effect card-none card-shadow m-2 glass-card">
                                     <a
                                         href="{{ url('collection/' . $item->subcategory->category->slug . '/' . $item->subcategory->slug . '/' . $item->slug) }}">
                                         <img class="card-img-top zoom-in"
@@ -256,17 +254,4 @@
             </div>
         </div>
     </section>
-@endsection
-
-@section('scripts')
-    <script>
-        function zoom(e) {
-            var zoomer = e.currentTarget;
-            e.offsetX ? offsetX = e.offsetX : offsetX = e.touches[0].pageX
-            e.offsetY ? offsetY = e.offsetY : offsetX = e.touches[0].pageX
-            x = offsetX / zoomer.offsetWidth * 100
-            y = offsetY / zoomer.offsetHeight * 100
-            zoomer.style.backgroundPosition = x + '% ' + y + '%';
-        }
-    </script>
 @endsection

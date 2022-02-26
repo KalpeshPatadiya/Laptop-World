@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    Orders
+    Reviews
 @endsection
 
 @section('content')
@@ -10,33 +10,30 @@
             <div class="col-md 12">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <h3>Order History
-                            <a href="{{ 'orders' }}" class="btn btn-warning float-end">New Orders</a>
+                        <h3>Reviews
+                            <a href="{{ 'hidden-reviews' }}" class="btn btn-warning float-end">Hidden Reviews</a>
                         </h3>
                     </div>
                     <div class="card-body">
-                        <table id="datatable_order_history" class="table table-striped">
+                        <table id="datatable_review" data-order='[[ 0, "desc" ]]' class="table table-striped">
                             <thead class="table-dark">
                                 <tr>
-                                    <th>Order ID</th>
-                                    <th>Order Date</th>
-                                    <th>Tracking Number</th>
-                                    <th>Total Price</th>
-                                    <th>Status</th>
+                                    <th>ID</th>
+                                    <th>User Name</th>
+                                    <th>Product Name</th>
+                                    <th>Review</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($orders as $item)
+                                @foreach ($reviews as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ date('d-m-y', strtotime($item->created_at)) }}</td>
-                                        <td>{{ $item->tracking_no }}</td>
-                                        <td>{{ $item->total_price }}</td>
-                                        <td>{{ $item->order_status == '3' ? 'Cancelled' : 'Completed' }}
+                                        <td>{{ $item->user->name }}</td>
+                                        <td>{{ $item->product->name }}</td>
+                                        <td>{{ $item->user_review }}</td>
                                         <td>
-                                            <a href="{{ url('admin/view-order/' . $item->id) }}"
-                                                class="btn btn-primary">View</a>
+                                            <a href="{{ url('hide-review/' . $item->id) }}" class="btn btn-danger">Hide</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -52,7 +49,7 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-            $('#datatable_order_history').DataTable();
+            $('#datatable_review').DataTable();
         });
     </script>
 @endsection

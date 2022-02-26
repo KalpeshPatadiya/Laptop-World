@@ -8,7 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Laptop World</title>
+    <title>
+        @yield('title') | Laptop World
+    </title>
+    <link rel="shortcut icon" href="{{ asset('assets/logo/transFavicon.png') }}" type="image/png">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

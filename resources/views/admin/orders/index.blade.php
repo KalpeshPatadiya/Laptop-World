@@ -15,10 +15,10 @@
                         </h3>
                     </div>
                     <div class="card-body">
-                        <table id="datatable_order" class="table table-striped">
+                        <table id="datatable_order"  data-order='[[ 0, "desc" ]]' class="table table-striped">
                             <thead class="table-dark">
                                 <tr>
-                                    <th>User ID</th>
+                                    <th>Order ID</th>
                                     <th>Order Date</th>
                                     <th>Tracking Number</th>
                                     <th>Total Price</th>
@@ -29,7 +29,7 @@
                             <tbody>
                                 @foreach ($orders as $item)
                                     <tr>
-                                        <td>{{ $item->user_id }}</td>
+                                        <td>{{ $item->id }}</td>
                                         <td>{{ date('d-m-y', strtotime($item->created_at)) }}</td>
                                         <td>{{ $item->tracking_no }}</td>
                                         <td>{{ $item->total_price }}</td>

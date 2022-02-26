@@ -10,9 +10,6 @@
                 <i class="bi bi-laptop"></i> VisitSite
             </h5>
         </a>
-        <a href="{{ url('admin-profile') }}" class="btn ms-3 pt-4 text-successs">
-            <i class="fas fa-user text-secondary"></i> {{ Auth::user()->name }}
-        </a>
     </div>
 </nav>
 <!-- End Navbar -->

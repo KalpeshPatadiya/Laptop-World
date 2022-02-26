@@ -26,7 +26,7 @@
                     <div class="card">
                         <div class="card-body card-gradiant p-3">
                             <p class="mb-0 fw-bold fs-4">Total Brands : {{ $totalSubcategories }}
-                                <i class="dash-icon bi bi-ui-checks-grid text-warning"></i>
+                                <i class="dash-icon bi-ui-checks-grid text-warning"></i>
                             </p>
                         </div>
                     </div>
@@ -35,14 +35,14 @@
                     <div class="card">
                         <div class="card-body card-gradiant p-3">
                             <p class="mb-0 fw-bold fs-4">Total Products : {{ $totalProducts }}
-                                <i class="dash-icon bi-file-earmark-check-fill text-danger"></i>
+                                <i class="dash-icon bi-clipboard-check text-danger"></i>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <table class="table table-striped">
                         <thead class="table-secondary">
                             <h4>Admin List</h4>
@@ -53,13 +53,33 @@
                                 <th>Name</th>
                             </tr>
                             @foreach ($isAdmin as $admin)
-                                <tr>
-                                    <td>{{ $admin->id }}</td>
-                                    <td>{{ $admin->name }}</td>
-                                </tr>
+                            <tr>
+                                <td>{{ $admin->id }}</td>
+                                <td>{{ $admin->name }}</td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <div class="card-body card-gradiant p-3">
+                            <p class="mb-0 fw-bold fs-4">Total Sliders : {{ $totalSliders }}
+                                <i class="dash-icon bi-folder-check text-dark"></i>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <div class="card-body card-gradiant p-3">
+                            <p class="mb-0 fw-bold fs-4">Total Reviews : {{ $totalreviews }}
+                                <i class="dash-icon bi-ui-checks text-info"></i>
+                                {{-- <i class="dash-icon bi-file-earmark-check-fill text-danger"></i> --}}
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
