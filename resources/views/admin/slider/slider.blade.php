@@ -18,7 +18,7 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Heading</th>
+                                    <th>Link</th>
                                     <th>Image</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -28,7 +28,7 @@
                                 @foreach ($slider as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->description }}</td>
+                                        <td>{{ $item->link }}</td>
                                         <td>
                                             <img src="{{ asset('assets/uploads/slider/' . $item->image) }}"
                                                 class="cate-img" alt="">

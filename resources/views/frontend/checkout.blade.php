@@ -18,74 +18,74 @@
         </div>
     </div>
 
-    <div class="container pb-5">
+    <div class="container">
         <form action="{{ url('place-order') }}" method="POST">
             {{ csrf_field() }}
             <div class="row">
-                <div class="bg-white mb-3">
+                <div class="mb-3">
                     <a href="{{ url('cart') }}" class="btn btn-warning float-end">Back</a>
                 </div>
                 <div class="col-md-7">
-                    <div class="card">
+                    <div class="card glass">
                         <div class="card-body">
                             <h5>Basic Details</h5>
                             <hr>
                             <div class="row checkout-form">
                                 <div class="col-md-6 mt-3">
                                     <label for="name_validate">First Name</label>
-                                    <input type="text" id="name_validate" class="form-control"
+                                    <input type="text" id="name_validate" class="form-control px-2 glass"
                                         value="{{ Auth::user()->name }}" name="fname" required
                                         placeholder="Enter First Name">
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="lname_validate">Last Name</label>
-                                    <input type="text" id="lname_validate" class="form-control"
+                                    <input type="text" id="lname_validate" class="form-control px-2 glass"
                                         value="{{ Auth::user()->lname }}" name="lname" required
                                         placeholder="Enter Last Name">
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="email_validate">Email</label>
-                                    <input type="text" id="email_validate" class="form-control"
+                                    <input type="text" id="email_validate" class="form-control px-2 glass"
                                         value="{{ Auth::user()->email }}" name="email" required placeholder="Enter Email">
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="phone_validate">Phone Number</label>
-                                    <input type="text" id="phone_validate" class="form-control"
+                                    <input type="text" id="phone_validate" class="form-control px-2 glass"
                                         value="{{ Auth::user()->phone }}" name="phone" required
                                         placeholder="Enter Phone Number">
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="add1_validate">Address 1</label>
-                                    <input type="text" id="add1_validate" class="form-control"
+                                    <input type="text" id="add1_validate" class="form-control px-2 glass"
                                         value="{{ Auth::user()->address1 }}" name="address1" required
                                         placeholder="Enter Address 1">
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="add2_validate">Address 2</label>
-                                    <input type="text" id="add2_validate" class="form-control"
+                                    <input type="text" id="add2_validate" class="form-control px-2 glass"
                                         value="{{ Auth::user()->address2 }}" name="address2" required
                                         placeholder="Enter Address 2">
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="city_validate">City</label>
-                                    <input type="text" id="city_validate" class="form-control"
+                                    <input type="text" id="city_validate" class="form-control px-2 glass"
                                         value="{{ Auth::user()->city }}" name="city" required placeholder="Enter City">
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="state_validate">State</label>
-                                    <input type="text" id="state_validate" class="form-control"
+                                    <input type="text" id="state_validate" class="form-control px-2 glass"
                                         value="{{ Auth::user()->state }}" name="state" required
                                         placeholder="Enter State">
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="country_validate">Country</label>
-                                    <input type="text" id="country_validate" class="form-control"
+                                    <input type="text" id="country_validate" class="form-control px-2 glass"
                                         value="{{ Auth::user()->country }}" name="country" required
                                         placeholder="Enter Country">
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="pin_validate">Pin Code</label>
-                                    <input type="text" id="pin_validate" class="form-control"
+                                    <input type="text" id="pin_validate" class="form-control px-2 glass"
                                         value="{{ Auth::user()->pincode }}" name="pincode" required
                                         placeholder="Enter Pin Code">
                                 </div>
@@ -94,7 +94,7 @@
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <div class="card">
+                    <div class="card px-2 glass">
                         <div class="card-body">
                             <h5>Order Details</h5>
                             <hr>
@@ -122,8 +122,8 @@
                                             @endphp
                                         @endforeach
                                         <tr>
-                                            <td colspan="2">Total</td>
-                                            <td>{{ $total }}</td>
+                                            <td colspan="2" class="fw-bold">Total</td>
+                                            <td class="fw-bold">{{ $total }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

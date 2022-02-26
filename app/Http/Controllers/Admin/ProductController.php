@@ -24,6 +24,12 @@ class ProductController extends Controller
         return view('admin.product.add', compact('subcategory', 'category'));
     }
 
+    public function findcatS(Request $request)
+    {
+        $data = SubCategory::select('name','id')->where('cat_id',$request->id)->take(25)->get();
+        return response()->json($data);
+    }
+
     public function insert(Request $request)
     {
         $products = new Product();

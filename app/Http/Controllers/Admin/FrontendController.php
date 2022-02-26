@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Order;
+use App\Models\Rating;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use App\Models\Slider;
@@ -17,10 +17,12 @@ class FrontendController extends Controller
         $totalProducts = \DB::table('products')->count();
         $totalUsers = \DB::table('users')->count();
         $totalSubcategories = \DB::table('subcategories')->count();
-        $products = \DB::table('products')->where('quantity', '<=', '5')->get();
-        $neworders = OrderItem::orderBy('id', 'desc')->take(5)->get();
-        $isAdmin = \DB::table('users')->where('role_as', '1')->take(3)->get();
-        return view('admin.index', compact('totalOrders', 'totalProducts', 'totalUsers', 'totalSubcategories', 'products', 'neworders', 'isAdmin'));
+        $products = \DB::table('products')->where('quantity', '<=', '5')->take(10)->get();
+        $neworders = OrderItem::orderBy('id', 'desc')->take(7)->get();
+        $isAdmin = \DB::table('users')->where('role_as', '1')->take(5)->get();
+        $totalSliders = \DB::table('slider')->count();
+        $totalreviews = \DB::table('reviews')->count();
+        return view('admin.index', compact('totalOrders', 'totalProducts', 'totalUsers', 'totalSubcategories', 'products', 'neworders', 'isAdmin', 'totalSliders', 'totalreviews'));
     }
     public function slider()
     {
@@ -42,10 +44,7 @@ class FrontendController extends Controller
             $file->move('assets/uploads/slider/', $filename);
             $slider->image = $filename;
         }
-        $slider->heading = $request->input('heading');
-        $slider->description = $request->input('description');
         $slider->link = $request->input('link');
-        $slider->link_name = $request->input('link_name');
         $slider->status = $request->input('status') == true ? '1' : '0';
         $slider->save();
         return redirect('slider')->with('status', "Slider Added Successfully");
@@ -69,10 +68,7 @@ class FrontendController extends Controller
             $file->move('assets/uploads/slider/', $filename);
             $slider->image = $filename;
         }
-        $slider->heading = $request->input('heading');
-        $slider->description = $request->input('description');
         $slider->link = $request->input('link');
-        $slider->link_name = $request->input('link_name');
         $slider->status = $request->input('status') == true ? '1' : '0';
         $slider->save();
         return redirect('slider')->with('status', "Slider Updated Successfully");

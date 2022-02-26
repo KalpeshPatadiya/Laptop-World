@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="py-3 mb-4 shadow-sm bg-info border-top">
+    <div class="py-3 shadow-sm bg-info border-top">
         <div class="container">
             <h6 class="mb-0">
                 <a href="{{ url('collection') }}">
@@ -25,17 +25,17 @@
         </div>
     </div>
 
-    <div class="container py-5">
+    <div class="container pt-4">
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card glass">
                     <div class="card-body">
                         @if ($verified_purchase->count() > 0)
                             <h5>You will be writing a review for {{ $product->name }}</h5>
                             <form action="{{ url('/add-review') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                <textarea name="user_review" rows="5" class="form-control"
+                                <textarea name="user_review" rows="5" class="form-control glass-card"
                                     placeholder="What did you like or dislike? What did you use this product for?" required></textarea>
                                 <button class="btn btn-primary mt-3">Submit Review</button>
                             </form>
@@ -45,7 +45,7 @@
                                 For the trust worthiness of the reviews, only customers who purchased
                                 the product can write a review about the product
                             </p>
-                            <a href="{{ url()->previous() }}" class="btn btn-outline-dark mt-3">Go Back</a>
+                            <a href="{{ url()->previous() }}" class="btn btn-outline-dark mt-3 btn-delete">Go Back</a>
                         @endif
                     </div>
                 </div>

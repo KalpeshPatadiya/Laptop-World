@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="py-5">
+    <div class="pt-5">
         <div class="container">
             <div class="row">
                 <h2>Sub Categories</h2>

@@ -22,7 +22,7 @@
         <div class="col-md-12">
             <h3><strong>My Wishlist</strong></h3>
         </div>
-        <div class="card shadhow wishlistitemsR">
+        <div class="card glass p-0 shadhow wishlistitemsR">
             <div class="card-body">
                 @if ($wishlist->count() > 0)
                     <div class="row justify-content-between">
@@ -68,7 +68,7 @@
                                 @endif
                             </div>
                             <div class="col-md-auto my-auto">
-                                <button class="btn btn-success addToCartBtnFW"><i class="fa fa-shopping-cart"></i>
+                                <button class="btn btn-success addToCartBtnFW CartBtn"><i class="fa fa-shopping-cart"></i>
                                     Add to Cart</button>
                             </div>
                             <div class="col-md-auto my-auto">
@@ -79,8 +79,8 @@
                     @endforeach
                 @else
                     <div class="card-body text-center">
-                        <h2>Your <i class="fa fa-heart text-danger"></i> Wishlist is empty</h2>
-                        <a href="{{ url('/') }}" class="btn btn-outline-primary float-end">Explore new product</a>
+                        <h2 class="my-4">Your <i class="fa fa-heart text-danger"></i> Wishlist is empty</h2>
+                        <a href="{{ url('/') }}" class="btn btn-outline-primary btn-delete float-end">Explore products</a>
                     </div>
                 @endif
             </div>

@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="py-2 mb-4 shadow-sm bg-info border-top">
+    <div class="py-2 shadow-sm bg-info border-top">
         <div class="container">
             <h6 class="mb-0">
                 <a href="{{ url('/') }}">
@@ -17,16 +17,16 @@
             </h6>
         </div>
     </div>
-    <div class="container py-5">
+    <div class="container pt-5">
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card glass p-0">
                     <div class="card-header">
                         <h3>My Orders</h3>
                     </div>
                     @if ($orders->count() > 0)
                         <div class="card-body">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered glass-card">
                                 <thead>
                                     <tr>
                                         <th>Order Date</th>
@@ -51,12 +51,12 @@
                                             @else
                                                 <td class="text-danger">Cancelled</td>
                                             @endif
-                                            <td style="width: 300px;">
+                                            <td style="width: 250px">
                                                 <a href="{{ url('view-order/' . $item->id) }}"
-                                                    class="btn btn-primary">View</a>
+                                                    class="btn btn-primary btn-delete">View</a>
                                                 @if ($item->order_status != '0' && $item->order_status != '3')
                                                     <a href="{{ url('generate-invoice/' . $item->id) }}"
-                                                        class="btn btn-success mx-4">Generate Invoice</a>
+                                                        class="btn btn-success ms-2 btn-delete">Generate Invoice</a>
                                                 @endif
                                             </td>
                                         </tr>

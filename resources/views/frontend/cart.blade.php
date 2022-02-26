@@ -22,7 +22,7 @@
         <div class="col-md-12">
             <h3><strong>My Cart</strong></h3>
         </div>
-        <div class="card shadhow cartitemsR">
+        <div class="card glass p-0 shadhow cartitemsR">
             @if ($cartItems->count() > 0)
                 <div class="card-body">
                     @php
@@ -74,7 +74,7 @@
                                     <div class="input-group mb-3" style="width: 60%;">
                                         <button class="input-group-text changeQuantity decrement-btn">-</button>
                                         <input type="text" name="quantity" value="{{ $item->prod_qty }}"
-                                            class="form-control qty-input">
+                                            class="form-control qty-input glass-card">
                                         <button class="input-group-text changeQuantity increment-btn">+</button>
                                     </div>
                                     @php
@@ -99,15 +99,65 @@
                 </div>
                 <div class="card-footer">
                     <h5>Total Price : ₹ {{ $total }}
-                        <a href="{{ url('checkout') }}" class="btn btn-outline-success float-end">Checkout</a>
+                        <a href="{{ url('checkout') }}" class="btn btn-outline-success float-end btn-delete">Checkout</a>
                     </h5>
                 </div>
             @else
                 <div class="card-body text-center">
-                    <h2>Your <i class="fa fa-shopping-cart text-success"></i> Cart is empty</h2>
-                    <a href="{{ url('collection') }}" class="btn btn-outline-primary float-end">Continue Shopping</a>
+                    <h2 class="my-4">Your <i class="fa fa-shopping-cart text-success"></i> Cart is empty</h2>
+                    <a href="{{ url('collection') }}" class="btn btn-outline-primary btn-delete float-end">Continue
+                        Shopping</a>
                 </div>
             @endif
         </div>
+        <div class="container glass mt-5">
+            <div class="row">
+                <h2>Products you may like...</h2>
+                <div class="owl-carousel featured-carousel owl-theme">
+                    @foreach ($featured_products as $prod)
+                        <div class="item">
+                            <div class="card card-effect card-none card-shadow m-2 glass-card">
+                                <a
+                                    href="{{ url('collection/' . $prod->subcategory->category->slug . '/' . $prod->subcategory->slug . '/' . $prod->slug) }}">
+                                    <img class="card-img-top zoom-in"
+                                        src="{{ asset('assets/uploads/products/' . $prod->image) }}" alt="product image">
+                                    <div class="card-body">
+                                        <h5>{{ $prod->name }}</h5>
+                                        <span class="float-start"><b>₹</b> {{ $prod->price }}</span>
+                                        <span class="float-end"><b>₹ </b><s>{{ $prod->MRP }}</s></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $('.featured-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: false,
+            dots: false,
+            autoplay: true,
+            autoplayTimeout: 4000,
+            autoplayHoverPause: true,
+            smartSpeed: 1500,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        });
+    </script>
 @endsection

@@ -21,15 +21,15 @@
                                 <h4>Shipping Details</h4>
                                 <hr>
                                 <label>First Name</label>
-                                <div class="border">{{ $orders->fname }}</div>
+                                <div class="border px-2">{{ $orders->fname }}</div>
                                 <label>Last Name</label>
-                                <div class="border">{{ $orders->lname }}</div>
+                                <div class="border px-2">{{ $orders->lname }}</div>
                                 <label>E-mail</label>
-                                <div class="border">{{ $orders->email }}</div>
+                                <div class="border px-2">{{ $orders->email }}</div>
                                 <label>Contact No.</label>
-                                <div class="border">{{ $orders->phone }}</div>
+                                <div class="border px-2">{{ $orders->phone }}</div>
                                 <label>Shipping Address</label>
-                                <div class="border">
+                                <div class="border px-2">
                                     {{ $orders->address1 }},<br>
                                     {{ $orders->address2 }},<br>
                                     {{ $orders->city }},<br>

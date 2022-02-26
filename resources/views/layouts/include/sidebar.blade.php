@@ -21,7 +21,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('slider') ? 'active bg-gradient-primary' : '' }}"
+                <a class="nav-link text-white {{ Request::is('slider') ? 'active bg-gradient-primary' : '' }}
+                    {{ Request::is('add-slider') ? 'active bg-gradient-primary' : '' }}
+                    {{ Request::is('edit-slider/*') ? 'active bg-gradient-primary' : '' }}"
                     href="{{ url('slider') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">folder</i>
@@ -74,7 +76,17 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white}} {{ Request::is('users') ? 'active bg-gradient-primary' : '' }}
+                <a class="nav-link text-white {{ Request::is('reviews') ? 'active bg-gradient-primary' : '' }}
+                    {{ Request::is('hidden-reviews') ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ url('reviews') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">copy</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Reviews</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ Request::is('users') ? 'active bg-gradient-primary' : '' }}
                     {{ Request::is('edit-user/*') ? 'active bg-gradient-primary' : '' }}
                     {{ Request::is('view-user/*') ? 'active bg-gradient-primary' : '' }}"
                     href="{{ url('users') }}">

@@ -234,7 +234,8 @@ footer a:hover {
 
 /* other */
 .checked {
-    color: #ffe400;
+    color: #ffc000;
+    /* color: #ffae00; */
 }
 
 .search-bar {
@@ -273,25 +274,6 @@ li.active {
     margin: 0 10px;
 }
 
-.addToCartBtn,
-.addToWishlist {
+.CartBtn {
     border-radius: 20px !important;
-}
-
-/* product zoom */
-figure.zoom {
-    /* height: 380px;
-    width: 500px; */
-    overflow: hidden;
-    cursor: crosshair;
-}
-
-figure.zoom img:hover {
-    opacity: 0;
-}
-
-figure.zoom img {
-    transition: opacity 0.3s;
-    display: block;
-    width: 100%;
 }

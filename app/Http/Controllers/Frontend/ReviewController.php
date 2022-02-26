@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    //
     public function add($product_slug)
     {
         $product = Product::where('slug', $product_slug)->where('status', '1')->first();
@@ -42,10 +41,11 @@ class ReviewController extends Controller
                 'prod_id' => $product_id,
                 'user_review' => $user_review
             ]);
-            $category_slug = $product->category->slug;
+            $category_slug = $product->subcategory->category->slug;
+            $sub_category_slug = $product->subcategory->slug;
             $prod_slug = $product->slug;
             if ($new_review) {
-                return redirect('category/' . $category_slug . '/' . $prod_slug)->with('status', "Thank you for Your thoughts");
+                return redirect('collection/' . $category_slug . '/' . $sub_category_slug . '/' . $prod_slug)->with('status', "Thank you for Your thoughts");
             }
         } else {
             return redirect()->back()->with('status', "The link was broken");
@@ -59,7 +59,7 @@ class ReviewController extends Controller
             $product_id = $product->id;
             $review = Review::where('user_id', Auth::id())->where('prod_id', $product_id)->first();
             if ($review) {
-                return view('frontend.reviews.edit', compact('review'));
+                return view('frontend.reviews.edit', compact('product', 'review'));
             } else {
                 return redirect()->back()->with('status', "The link was broken");
             }
@@ -77,7 +77,7 @@ class ReviewController extends Controller
             if ($review) {
                 $review->user_review = $user_review;
                 $review->update();
-                return redirect('category/' . $review->product->category->slug . '/' . $review->product->slug)->with('status', "Review Updated Successfully");
+                return redirect('collection/' . $review->product->subcategory->category->slug . '/' . $review->product->subcategory->slug . '/' . $review->product->slug)->with('status', "Review Updated Successfully");
             } else {
                 return redirect()->back()->with('status', "The link was broken");
             }

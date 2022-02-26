@@ -17,20 +17,8 @@
                         <form action="{{ url('insert-slider') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group col-md-6 mb-3">
-                                <label for="name">Heading</label>
-                                <input type="text" name="heading" class="form-control">
-                            </div>
-                            <div class="form-group col-md-12 mb-3">
-                                <label for="">Description</label>
-                                <textarea name="description" class="form-control"></textarea>
-                            </div>
-                            <div class="form-group col-md-6 mb-3">
                                 <label for="">Link</label>
                                 <input type="text" name="link" class="form-control">
-                            </div>
-                            <div class="form-group col-md-4 mb-3">
-                                <label for="">Link Name</label>
-                                <input type="text" name="link_name" class="form-control">
                             </div>
                             <div class="form-group col-md-12 mb-3">
                                 <input type="file" name="image" class="form-control">

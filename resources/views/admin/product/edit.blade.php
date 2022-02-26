@@ -2,12 +2,15 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header pb-0">
-            <a href="{{ url('products') }}" class="btn btn-warning float-end">Back</a>
-            <h4>Edit/Update Product</h4>
-        </div>
-        <div class="card-body">
-            <form action="{{ url('update-product/  ' . $products->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('update-product/  ' . $products->id) }}" method="POST" enctype="multipart/form-data">
+            <div class="card-header">
+                <a href="{{ url('products') }}" class="btn btn-warning float-end">Back</a>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary float-end mx-3">Update</button>
+                </div>
+                <h4>Edit/Update Product</h4>
+            </div>
+            <div class="card-body">
                 @csrf
                 @method('PUT')
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -21,14 +24,14 @@
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#other"
-                            type="button" role="tab" aria-controls="other" aria-selected="false">Other</button>
+                            type="button" role="tab" aria-controls="other" aria-selected="false">Product Status</button>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row">
-                            <div class="col-md-12 mt-3">
-                                <select class="form-select">
+                            <div class="col-md-12 my-3">
+                                <select class="form-select" disabled>
                                     <option value="">{{ $products->subcategory->name }}</option>
                                 </select>
                             </div>
@@ -58,24 +61,14 @@
                                 <input type="number" value="{{ $products->quantity }}" name="quantity"
                                     class="form-control">
                             </div>
-                            <div class="form-group col-md-6 mb-3">
-                                <input class="form-check-input form-control"
-                                    {{ $products->status == '1' ? 'checked' : '' }} type="checkbox" name="status">
-                                <label class="form-check-label" for="">Status</label>
-                            </div>
-                            <div class="form-group col-md-6 mb-3">
-                                <input class="form-check-input form-control"
-                                    {{ $products->trending == '1' ? 'checked' : '' }} type="checkbox" name="trending">
-                                <label class="form-check-label" for="">Trending</label>
-                            </div>
                             @if ($products->image)
-                                <img src="{{ asset('assets/uploads/products/' . $products->image) }}" alt="">
+                                <label class="text-bold">Current Image</label>
+                                <img class="w-25"
+                                    src="{{ asset('assets/uploads/products/' . $products->image) }}" alt="">
                             @endif
                             <div class="form-group col-md-12 mt-1 mb-3">
-                                <input type="file" name="image" class="form-control">
-                            </div>
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <label class="text-bold">Select Diffrent Image</label>
+                                <input type="file" name="image" class="form-control" multiple>
                             </div>
                         </div>
                     </div>
@@ -87,8 +80,8 @@
                         </div>
                         <div class="form-group col-md-12 mb-3">
                             <label for="">Highlights Description</label>
-                            <input type="text" name="highlights" id="sumnote_highlight" value="{{ $products->highlights }}"
-                                class="form-control">
+                            <input type="text" name="highlights" id="sumnote_highlight"
+                                value="{{ $products->highlights }}" class="form-control">
                         </div>
                         <div class="form-group col-md-4 mb-3">
                             <label for="">Product Description</label>
@@ -107,19 +100,30 @@
                         </div>
                         <div class="form-group col-md-12 mb-3">
                             <label for="">Product Details/Specifications</label>
-                            <textarea name="details" id="sumnote_detail" rows="3" class="form-control">{{ $products->details }}</textarea>
+                            <textarea name="details" id="sumnote_detail" rows="3"
+                                class="form-control">{{ $products->details }}</textarea>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="form-group col-md-6 my-3">
+                            <input class="form-check-input" {{ $products->status == '1' ? 'checked' : '' }}
+                                type="checkbox" name="status">
+                            <label class="form-check-label" for="">Status</label>
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <input class="form-check-input" {{ $products->trending == '1' ? 'checked' : '' }}
+                                type="checkbox" name="trending">
+                            <label class="form-check-label" for="">Trending</label>
+                        </div>
                         <div class="form-group col-md-4 mt-3 mb-3">
-                            <label for="">New Arrival</label>
-                            <input name="new_arrivals" rows="3" value="{{ $products->new_arrivals }}"
-                                class="form-control">
+                            <input class="form-check-input" {{ $products->new_arrivals == '1' ? 'checked' : '' }}
+                                type="checkbox" name="new_arrivals">
+                            <label class="form-check-label" for="">New Arrivals</label>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 @endsection
 

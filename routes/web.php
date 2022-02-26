@@ -126,6 +126,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 
     Route::get('products', [ProductController::class, 'index'])->name('products');
     Route::get('add-product', [ProductController::class, 'add'])->name('add-product');
+    Route::get('findcatS', [ProductController::class, 'findcatS'])->name('findcatS');
     Route::post('insert-product', [ProductController::class, 'insert']);
 
     Route::get('edit-product/{id}', [ProductController::class, 'edit'])->name('edit-product');
@@ -136,6 +137,11 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('admin/view-order/{id}', [OrderController::class, 'view'])->name('view-order');
     Route::put('update-order/{id}', [OrderController::class, 'updateorder']);
     Route::get('order-history', [OrderController::class, 'orderhistory'])->name('order-history');
+
+    Route::get('reviews', [DashboardController::class, 'index'])->name('reviews');
+    Route::get('hide-review/{id}', [DashboardController::class, 'hidereview']);
+    Route::get('hidden-reviews', [DashboardController::class, 'hiddenreviews'])->name('hidden-reviews');
+    Route::get('show-review/{id}', [DashboardController::class, 'showreview']);
 
     Route::get('users', [DashboardController::class, 'users'])->name('users');
     Route::get('view-user/{id}', [DashboardController::class, 'viewuser'])->name('viewuser');
