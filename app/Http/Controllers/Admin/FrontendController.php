@@ -47,7 +47,7 @@ class FrontendController extends Controller
         $slider->link = $request->input('link');
         $slider->status = $request->input('status') == true ? '1' : '0';
         $slider->save();
-        return redirect('slider')->with('status', "Slider Added Successfully");
+        return redirect('slider')->with('timer', "Slider Added Successfully");
     }
     public function edit($id)
     {
@@ -71,7 +71,7 @@ class FrontendController extends Controller
         $slider->link = $request->input('link');
         $slider->status = $request->input('status') == true ? '1' : '0';
         $slider->save();
-        return redirect('slider')->with('status', "Slider Updated Successfully");
+        return redirect('slider')->with('timer', "Slider Updated Successfully");
     }
     public function destroy($id)
     {
@@ -81,6 +81,6 @@ class FrontendController extends Controller
             File::delete($path);
         }
         $slider->delete();
-        return redirect('slider')->with('status', "Slider Deleted Successfully");
+        return redirect('slider')->with('timer', "Slider Deleted Successfully");
     }
 }

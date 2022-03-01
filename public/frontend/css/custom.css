@@ -72,6 +72,10 @@ nav a:hover {
     text-shadow: 0 0 5px rgba(100, 148, 237, 0.5);
 }
 
+footer a {
+    color: #dbdbdb !important;
+}
+
 footer a:hover {
     color: cornflowerblue !important;
     text-shadow: 0 0 5px rgba(100, 148, 237, 0.5);
@@ -236,6 +240,10 @@ footer a:hover {
 .checked {
     color: #ffc000;
     /* color: #ffae00; */
+}
+
+.sort-by-active{
+    border-bottom: cornflowerblue solid 2px !important;
 }
 
 .search-bar {

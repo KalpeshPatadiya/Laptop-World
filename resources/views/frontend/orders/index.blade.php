@@ -41,7 +41,7 @@
                                         <tr>
                                             <td>{{ date('d-m-y', strtotime($item->created_at)) }}</td>
                                             <td>{{ $item->tracking_no }}</td>
-                                            <td>{{ $item->total_price }}</td>
+                                            <td>₹ {{ number_format($item->total_price) }}</td>
                                             @if ($item->order_status == '0')
                                                 <td>Pending</td>
                                             @elseif($item->order_status == '1')

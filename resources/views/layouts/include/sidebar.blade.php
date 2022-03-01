@@ -87,7 +87,6 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white {{ Request::is('users') ? 'active bg-gradient-primary' : '' }}
-                    {{ Request::is('edit-user/*') ? 'active bg-gradient-primary' : '' }}
                     {{ Request::is('view-user/*') ? 'active bg-gradient-primary' : '' }}"
                     href="{{ url('users') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -98,7 +97,8 @@
             </li>
             <hr class="horizontal light mt-0 mb-2">
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('admin-profile') ? 'active bg-gradient-primary' : '' }}"
+                <a class="nav-link text-white {{ Request::is('admin-profile') ? 'active bg-gradient-primary' : '' }}
+                    {{ Request::is('admin-profile/edit') ? 'active bg-gradient-primary' : '' }}"
                     href="{{ url('admin-profile') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">person</i>

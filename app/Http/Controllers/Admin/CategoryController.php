@@ -37,7 +37,7 @@ class CategoryController extends Controller
         $category->status = $request->input('status') == TRUE ? '1' : '0';
         $category->popular = $request->input('popular') == TRUE ? '1' : '0';
         $category->save();
-        return redirect('/categories')->with('status', "Category Added Successfully");
+        return redirect('/categories')->with('timer', "Category Added Successfully");
     }
 
     public function edit($id)
@@ -66,7 +66,7 @@ class CategoryController extends Controller
         $category->status = $request->input('status') == TRUE ? '1' : '0';
         $category->popular = $request->input('popular') == TRUE ? '1' : '0';
         $category->update();
-        return redirect('/categories')->with('status', "Category Updated Successfully");
+        return redirect('/categories')->with('timer', "Category Updated Successfully");
     }
 
     public function destroy($id)
@@ -79,6 +79,6 @@ class CategoryController extends Controller
             }
         }
         $category->delete();
-        return redirect('categories')->with('status', "Category Deleted Successfully");
+        return redirect('categories')->with('timer', "Category Deleted Successfully");
     }
 }

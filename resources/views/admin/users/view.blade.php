@@ -1,6 +1,32 @@
 @extends('layouts.admin')
 
 @section('content')
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content glass-card p-0 text-white">
+                <form action="{{ url('update-users/' . $users->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Change Role</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Current Role : {{ $users->role_as == '1' ? 'Admin' : 'User' }}</h4>
+                        <select name="role_as" id="custom-select" required id="inputGroup1">
+                            <option value="">-- Select --</option>
+                            <option value="0">User</option>
+                            <option value="1">Admin</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Change</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -15,8 +41,9 @@
                     <div class="card-body">
                         <div class="row order-details">
                             <div class="col-md-4">
-                                <label for="">Role</label>
-                                <div class="p-2 border">{{ $users->role_as == '0' ? 'User' : 'Admin' }}</div>
+                                <label for="">Role</label><a href="" class="btn btn-sm p-1 mb-0 btn-success float-end"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">Change Role</a>
+                                <div class="py-2 border">{{ $users->role_as == '0' ? 'User' : 'Admin' }}</div>
                             </div>
                             <div class="col-md-4">
                                 <label for="">First Name</label>

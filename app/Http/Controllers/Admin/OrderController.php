@@ -35,7 +35,7 @@ class OrderController extends Controller
             Mail::to($orders->email)->send(new InvoiceMail($order_track_id, $order_id));
         }
         $orders->update();
-        return redirect('orders')->with('status', "Order Updated Successfully");
+        return redirect('orders')->with('timer', "Order Updated Successfully");
     }
 
     public function orderhistory()

@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark shadow bg-body sticky-top">
     <div class="container">
         <a class="navbar-brand p-0 ml-auto" href="{{ url('/') }}">
-            <img src="{{ asset('assets/logo/Laptop World (2).png') }}" style="width: 275px;"
-                alt="Laptop World Logo">
+            <img src="{{ asset('assets/logo/Laptop World (2).png') }}" style="width: 275px;" alt="Laptop World Logo">
         </a>
-        <button class="navbar-toggler bg-success" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <button class="navbar-toggler bg-success" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="search-bar">
@@ -30,12 +30,13 @@
                     <a class="nav-link" href="{{ url('collection') }}">Collection</a>
                 </li>
                 <li class="nav-item {{ Request::is('cart') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ url('cart') }}"><i class="fas fa-shopping-cart text-success"></i> Cart
+                    <a class="nav-link" href="{{ url('cart') }}" title="View Cart"><i class="fas fa-shopping-cart text-success"></i> Cart
                         <span class="badge badge-pill cart-count">0</span>
                     </a>
                 </li>
                 <li class="nav-item {{ Request::is('wishlist') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ url('wishlist') }}"><i class="fas fa-heart text-danger"></i> Wishlist
+                    <a class="nav-link" href="{{ url('wishlist') }}"><i class="fas fa-heart text-danger"></i>
+                        Wishlist
                         <span class="badge badge-pill wishlist-count">0</span>
                     </a>
                 </li>
@@ -44,7 +45,8 @@
                 <ul class="navbar-nav ml-auto">
                     @if (Route::has('login'))
                         <li class="nav-item">
-                            <button class="btn btn-effect p-0 me-2"><a class="nav-link" href="{{ route('login') }}">
+                            <button class="btn btn-effect p-0 me-2"><a class="nav-link"
+                                    href="{{ route('login') }}">
                                     <i class="fas fa-sign-in-alt"></i> {{ __('Login') }}
                                 </a></button>
                         </li>

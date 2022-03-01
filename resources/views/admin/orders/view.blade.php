@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -42,6 +41,10 @@
                             <div class="col-md-6">
                                 <h4>Order Details</h4>
                                 <hr>
+                                <div class="order-details">
+                                    <label>Tracking No.</label>
+                                    <div class="border">{{ $orders->tracking_no }}</div>
+                                </div>
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
@@ -56,7 +59,7 @@
                                             <tr>
                                                 <td>{{ $item->products ? $item->products->name : '' }}</td>
                                                 <td>{{ $item->qty }}</td>
-                                                <td>{{ $item->price }}</td>
+                                                <td>₹ {{ number_format($item->price) }}</td>
                                                 <td>
                                                     <img src="{{ asset('assets/uploads/products/' . $item->products->image) }}"
                                                         alt="product img" width="100">
@@ -67,11 +70,7 @@
                                 </table>
                                 <hr>
                                 <h4 class="px-2">Grand Total: <span class="float-end"><b>₹
-                                            {{ $orders->total_price }}</b></span></h4>
-                                <div class="order-details">
-                                    <label>Tracking No.</label>
-                                    <div class="border">{{ $orders->tracking_no }}</div>
-                                </div>
+                                            {{ number_format($orders->total_price) }}</b></span></h4>
                                 <div class="mt-3 px-2">
                                     <label for="">Order Status:</label>
                                     <form action="{{ url('update-order/' . $orders->id) }}" method="POST">
@@ -107,5 +106,4 @@
             </div>
         </div>
     </div>
-
 @endsection

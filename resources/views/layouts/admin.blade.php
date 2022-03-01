@@ -10,8 +10,7 @@
 
     <title>Laptop World</title>
     <link rel="shortcut icon" href="{{ asset('assets/uploads/logo/transFavicon(1).png') }}" type="image/png">
-{{--
-    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+    {{-- <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" /> --}}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
@@ -75,9 +74,20 @@
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    @if (session('status'))
+    @if (session('timer'))
         <script>
-            swal("{{ session('status') }}");
+            swal("{{ session('timer') }}", {
+                timer: 1100,
+                icon: "success",
+                buttons: false,
+            });
+        </script>
+    @endif
+    @if (session('error'))
+        <script>
+            swal("{{ session('error') }}", {
+                icon: "error",
+            });
         </script>
     @endif
 

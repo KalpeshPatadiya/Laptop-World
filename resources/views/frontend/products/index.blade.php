@@ -27,11 +27,14 @@
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <span class="fw-bold sort-font">Sort By :</span>
-                    <a href="{{ URL::current() }}" class="sort-font">All</a>
-                    <a href="{{ URL::current() . '?sort=price_asc' }}" class="sort-font">Price: Low to High</a>
-                    <a href="{{ URL::current() . '?sort=price_desc' }}" class="sort-font">Price: High to Low</a>
-                    <a href="{{ URL::current() . '?sort=newest' }}" class="sort-font">Newest</a>
-                    <a href="{{ URL::current() . '?sort=trending' }}" class="sort-font">Trending</a>
+                    <a href="{{ URL::current() . '?sort=price_asc' }}"
+                        class="sort-font @if (request()->get('sort') == 'price_asc') sort-by-active @endif">Price: Low to High</a>
+                    <a href="{{ URL::current() . '?sort=price_desc' }}"
+                        class="sort-font @if (request()->get('sort') == 'price_desc') sort-by-active @endif">Price: High to Low</a>
+                    <a href="{{ URL::current() . '?sort=newest' }}"
+                        class="sort-font @if (request()->get('sort') == 'newest') sort-by-active @endif">Newest</a>
+                    <a href="{{ URL::current() . '?sort=trending' }}"
+                        class="sort-font @if (request()->get('sort') == 'trending') sort-by-active @endif">Trending</a>
                 </div>
 
                 <div class="col-md-3">
@@ -68,9 +71,12 @@
                                 <div class="card login container">
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <img class="category-img"
-                                                src="{{ asset('assets/uploads/products/' . $prod->image) }}"
-                                                alt="product image">
+                                            <a
+                                                href="{{ url('collection/' . $prod->subcategory->category->slug . '/' . $prod->subcategory->slug . '/' . $prod->slug) }}">
+                                                <img class="category-img"
+                                                    src="{{ asset('assets/uploads/products/' . $prod->image) }}"
+                                                    alt="product image">
+                                            </a>
                                         </div>
                                         <div class="col-md-7 border-end border-start">
                                             <a
@@ -90,9 +96,14 @@
                                                         class="float-end badge bg-danger trending_tag m-3">Trending</label>
                                                 @endif
                                                 <br>
-                                                <h5 class="font-italic"><s>₹ {{ $prod->MRP }}</s></h5>
-                                                <h5 class="font-italic fs-4 fw-bold mb-5">₹ {{ $prod->price }}
+                                                <h5 class="fs-4 fw-bold">₹
+                                                    {{ number_format($prod->price) }}
                                                 </h5>
+                                                <h5><s>₹ {{ number_format($prod->MRP) }}</s></h5>
+                                                @php
+                                                    $discount = (($prod->MRP - $prod->price) / $prod->MRP) * 100;
+                                                @endphp
+                                                <h6 class="mb-4 text-success">{{ number_format($discount) }}% off</h6>
                                             </div>
                                             <div class="float-end">
                                                 <a href="{{ url('collection/' . $prod->subcategory->category->slug . '/' . $prod->subcategory->slug . '/' . $prod->slug) }}"

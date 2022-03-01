@@ -40,7 +40,7 @@ class SubCategoryController extends Controller
         $subcategory->popular = $request->input('popular') == TRUE ? '1' : '0';
         $subcategory->save();
 
-        return redirect('/dashboard')->with('status', "Sub-Category Added Successfully");
+        return redirect('sub-category')->with('timer', "Sub-Category Added Successfully");
     }
     public function edit($id)
     {
@@ -51,14 +51,14 @@ class SubCategoryController extends Controller
     {
         $subcategory = SubCategory::find($id);
         if ($request->hasFile('image')) {
-            $path = 'assets/uploads/subcategory/' . $subcategory->image;
+            $path = 'assets/uploads/sub-category/' . $subcategory->image;
             if (File::exists($path)) {
                 File::delete($path);
             }
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
             $filename = time() . '.' . $ext;
-            $file->move('assets/uploads/subcategory/', $filename);
+            $file->move('assets/uploads/sub-category/', $filename);
             $subcategory->image = $filename;
         }
         $subcategory->name = $request->input('name');
@@ -67,7 +67,7 @@ class SubCategoryController extends Controller
         $subcategory->status = $request->input('status') == TRUE ? '1' : '0';
         $subcategory->popular = $request->input('popular') == TRUE ? '1' : '0';
         $subcategory->update();
-        return redirect('/dashboard')->with('status', "Sub Category Updated Successfully");
+        return redirect('sub-category')->with('timer', "Sub Category Updated Successfully");
     }
     public function destroy($id)
     {
@@ -79,6 +79,6 @@ class SubCategoryController extends Controller
             }
         }
         $subcategory->delete();
-        return redirect('sub-category')->with('status', "Sub Category Deleted Successfully");
+        return redirect('sub-category')->with('timer', "Sub Category Deleted Successfully");
     }
 }

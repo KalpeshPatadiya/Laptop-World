@@ -10,6 +10,11 @@
                 <i class="bi bi-laptop"></i> VisitSite
             </h5>
         </a>
+        <a class="nav-visit" href="{{ url('/admin-profile') }}">
+            <h5 class="font-weight-bolder mb-0">
+                <i class="bi bi-person-circle"></i> {{ Auth::user()->name }}
+            </h5>
+        </a>
     </div>
 </nav>
 <!-- End Navbar -->

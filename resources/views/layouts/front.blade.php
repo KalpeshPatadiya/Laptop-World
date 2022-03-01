@@ -69,6 +69,31 @@
             swal("{{ session('status') }}");
         </script>
     @endif
+    @if (session('success'))
+        <script>
+            swal("", "{{ session('success') }}", "success");
+        </script>
+    @endif
+    @if (session('error'))
+        <script>
+            swal("", "{{ session('error') }}", "error");
+        </script>
+    @endif
+    @if (session('timer'))
+        <script>
+            swal("{{ session('timer') }}", {
+                timer: 1500,
+                icon: "success",
+                buttons: false,
+            });
+        </script>
+    @endif
+
+    <script>
+        $(function() {
+            $(document).tooltip();
+        });
+    </script>
 
     @yield('scripts')
 

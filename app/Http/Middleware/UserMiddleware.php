@@ -6,8 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-
-class AdminMiddleware
+class UserMiddleware
 {
     /**
      * Handle an incoming request.
@@ -19,10 +18,10 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            if (Auth::user()->role_as == '1') {
+            if (Auth::user()->role_as == '0') {
                 return $next($request);
             } else {
-                return redirect('/')->with('error', 'Access Denied! as you are not as Admin');
+                return redirect()->back()->with('error', 'Admin can not access users functionality');
             }
         } else {
             return redirect('/')->with('error', 'Please Login First');

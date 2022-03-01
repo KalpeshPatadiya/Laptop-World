@@ -24,7 +24,7 @@
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->subcategory->name }}</td>
                             <td>{{ $item->name }}</td>
-                            <td>{{ $item->price }}</td>
+                            <td>₹ {{ number_format($item->price) }}</td>
                             <td>
                                 <img src="{{ asset('assets/uploads/products/' . $item->image) }}" class="cate-img"
                                     alt="">

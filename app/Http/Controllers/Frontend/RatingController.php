@@ -34,12 +34,12 @@ class RatingController extends Controller
                         'stars_rated' => $stars_rated
                     ]);
                 }
-                return redirect()->back()->with('status', 'Thank you for rating this product');
+                return redirect()->back()->with('success', 'Thank you for rating this product');
             } else {
-                return redirect()->back()->with('status', "You cannot rate a product without purchase");
+                return redirect()->back()->with('error', "You cannot rate a product without purchase");
             }
         } else {
-            return redirect()->back()->with('status', "The link was broken");
+            return redirect()->back()->with('error', "The link was broken");
         }
     }
 }

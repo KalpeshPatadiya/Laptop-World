@@ -26,7 +26,7 @@ class ReviewController extends Controller
                 return view('frontend.reviews.index', compact('product', 'verified_purchase'));
             }
         } else {
-            return redirect()->back()->with('status', "The link was broken");
+            return redirect()->back()->with('error', "The link was broken");
         }
     }
 
@@ -45,10 +45,10 @@ class ReviewController extends Controller
             $sub_category_slug = $product->subcategory->slug;
             $prod_slug = $product->slug;
             if ($new_review) {
-                return redirect('collection/' . $category_slug . '/' . $sub_category_slug . '/' . $prod_slug)->with('status', "Thank you for Your thoughts");
+                return redirect('collection/' . $category_slug . '/' . $sub_category_slug . '/' . $prod_slug)->with('success', "Thank you for your thoughts");
             }
         } else {
-            return redirect()->back()->with('status', "The link was broken");
+            return redirect()->back()->with('error', "The link was broken");
         }
     }
 
@@ -61,10 +61,10 @@ class ReviewController extends Controller
             if ($review) {
                 return view('frontend.reviews.edit', compact('product', 'review'));
             } else {
-                return redirect()->back()->with('status', "The link was broken");
+                return redirect()->back()->with('error', "The link was broken");
             }
         } else {
-            return redirect()->back()->with('status', "The link was broken");
+            return redirect()->back()->with('error', "The link was broken");
         }
     }
 
@@ -77,12 +77,12 @@ class ReviewController extends Controller
             if ($review) {
                 $review->user_review = $user_review;
                 $review->update();
-                return redirect('collection/' . $review->product->subcategory->category->slug . '/' . $review->product->subcategory->slug . '/' . $review->product->slug)->with('status', "Review Updated Successfully");
+                return redirect('collection/' . $review->product->subcategory->category->slug . '/' . $review->product->subcategory->slug . '/' . $review->product->slug)->with('success', "Review Updated Successfully");
             } else {
-                return redirect()->back()->with('status', "The link was broken");
+                return redirect()->back()->with('error', "The link was broken");
             }
         } else {
-            return redirect()->back()->with('status', "You cannot submit an empty review");
+            return redirect()->back()->with('error', "You cannot submit an empty review");
         }
     }
 }

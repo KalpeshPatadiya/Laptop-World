@@ -15,7 +15,7 @@
                         </h3>
                     </div>
                     <div class="card-body">
-                        <table id="datatable_order"  data-order='[[ 0, "desc" ]]' class="table table-striped">
+                        <table id="datatable_order" data-order='[[ 0, "desc" ]]' class="table table-striped">
                             <thead class="table-dark">
                                 <tr>
                                     <th>Order ID</th>
@@ -32,7 +32,7 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ date('d-m-y', strtotime($item->created_at)) }}</td>
                                         <td>{{ $item->tracking_no }}</td>
-                                        <td>{{ $item->total_price }}</td>
+                                        <td>₹ {{ number_format($item->total_price) }}</td>
                                         @if ($item->order_status == '0')
                                             <td>Pending</td>
                                         @elseif($item->order_status == '1')

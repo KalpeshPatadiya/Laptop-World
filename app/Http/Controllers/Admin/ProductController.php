@@ -26,7 +26,7 @@ class ProductController extends Controller
 
     public function findcatS(Request $request)
     {
-        $data = SubCategory::select('name','id')->where('cat_id',$request->id)->take(25)->get();
+        $data = SubCategory::select('name', 'id')->where('cat_id', $request->id)->take(25)->get();
         return response()->json($data);
     }
 
@@ -55,11 +55,11 @@ class ProductController extends Controller
         $products->MRP = $request->input('MRP');
         $products->price = $request->input('price');
         $products->quantity = $request->input('quantity');
-        $products->status = $request->input('status') == TRUE ? '1' : '0';
-        $products->trending = $request->input('trending') == TRUE ? '1' : '0';
-        $products->new_arrivals = $request->input('new_arrivals') == TRUE ? '1' : '0';
+        $products->status = $request->input('status') == true ? '1' : '0';
+        $products->trending = $request->input('trending') == true ? '1' : '0';
+        $products->new_arrivals = $request->input('new_arrivals') == true ? '1' : '0';
         $products->save();
-        return redirect('products')->with('status', "Product Added Successfully");
+        return redirect('products')->with('timer', "Product Added Successfully");
     }
 
     public function edit($id)
@@ -95,11 +95,11 @@ class ProductController extends Controller
         $products->MRP = $request->input('MRP');
         $products->price = $request->input('price');
         $products->quantity = $request->input('quantity');
-        $products->status = $request->input('status') == TRUE ? '1' : '0';
-        $products->trending = $request->input('trending') == TRUE ? '1' : '0';
-        $products->new_arrivals = $request->input('new_arrivals') == TRUE ? '1' : '0';
+        $products->status = $request->input('status') == true ? '1' : '0';
+        $products->trending = $request->input('trending') == true ? '1' : '0';
+        $products->new_arrivals = $request->input('new_arrivals') == true ? '1' : '0';
         $products->update();
-        return redirect('products')->with('status', "Product Updated Successfully");
+        return redirect('products')->with('timer', "Product Updated Successfully");
     }
 
     public function destroy($id)
@@ -110,6 +110,6 @@ class ProductController extends Controller
             File::delete($path);
         }
         $products->delete();
-        return redirect('products')->with('status', "Product Deleted Successfully");
+        return redirect('products')->with('timer', "Product Deleted Successfully");
     }
 }

@@ -32,7 +32,7 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ date('d-m-y', strtotime($item->created_at)) }}</td>
                                         <td>{{ $item->tracking_no }}</td>
-                                        <td>{{ $item->total_price }}</td>
+                                        <td>₹ {{ number_format($item->total_price) }}</td>
                                         <td>{{ $item->order_status == '3' ? 'Cancelled' : 'Completed' }}
                                         <td>
                                             <a href="{{ url('admin/view-order/' . $item->id) }}"
