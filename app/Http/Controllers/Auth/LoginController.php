@@ -32,10 +32,10 @@ class LoginController extends Controller
     {
         if (Auth::user()->role_as == '1')       //1 = Admin Login
         {
-            return redirect('dashboard')->with('status', 'Welcome to Your Dashboard');
+            return redirect('dashboard')->with('timer', 'Welcome to Your Dashboard');
         } elseif (Auth::user()->role_as == '0')         // Normal or Default User Login
         {
-            return redirect('/')->with('status', 'Logged in Successfully');
+            return redirect('/')->with('timer', 'Logged in Successfully');
         }
     }
     /**

@@ -62,13 +62,13 @@ class UserController extends Controller
         $profile->gender = $request->input('gender');
         $profile->dob = $date;
         $profile->save();
-        return redirect('my-profile')->with('status', 'Profile updated Successfully');
+        return redirect('my-profile')->with('success', 'Profile updated Successfully');
     }
     public function deleteacc($id)
     {
         $profile = User::find($id);
         $profile->delete();
-        return redirect('/')->with('status', "Your account is successfully deleted and you will never be able to login with that account");
+        return redirect('/')->with('success', "Your account is successfully deleted and you will never be able to login with that account");
     }
 
     public function adminprofile()
@@ -100,7 +100,7 @@ class UserController extends Controller
         $profile->country = $request->input('country');
         $profile->pincode = $request->input('pincode');
         $profile->save();
-        return redirect('admin-profile')->with('status', 'Profile updated Successfully');
+        return redirect('admin-profile')->with('timer', 'Profile updated Successfully');
     }
 
     public function SearchautoComplete(Request $request)
@@ -135,7 +135,7 @@ class UserController extends Controller
                         $products->subcategory->slug . '/' . $products->slug);
                 }
             } else {
-                return redirect('/')->with('status', "Product Not Available");
+                return redirect('/')->with('error', "Product Not Available");
             }
         } else {
             return redirect()->back();
@@ -156,6 +156,6 @@ class UserController extends Controller
             $prod->update();
         }
 
-        return redirect('my-orders')->with('status', 'Order Cancelled');
+        return redirect('my-orders')->with('success', 'Order Cancelled');
     }
 }

@@ -26,7 +26,7 @@
                     <a href="{{ url('cart') }}" class="btn btn-warning float-end">Back</a>
                 </div>
                 <div class="col-md-7">
-                    <div class="card glass">
+                    <div class="card p-1 glass">
                         <div class="card-body">
                             <h5>Basic Details</h5>
                             <hr>
@@ -94,7 +94,7 @@
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <div class="card px-2 glass">
+                    <div class="card p-1 glass">
                         <div class="card-body">
                             <h5>Order Details</h5>
                             <hr>
@@ -102,7 +102,7 @@
                                 @php
                                     $total = 0;
                                 @endphp
-                                <table class="table table-bordered">
+                                <table class="table">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
@@ -115,7 +115,7 @@
                                             <tr>
                                                 <td>{{ $item->products->name }}</td>
                                                 <td>{{ $item->prod_qty }}</td>
-                                                <td>{{ $item->products->price }}</td>
+                                                <td>{{ number_format($item->products->price) }}</td>
                                             </tr>
                                             @php
                                                 $total += $item->products->price * $item->prod_qty;
@@ -123,7 +123,7 @@
                                         @endforeach
                                         <tr>
                                             <td colspan="2" class="fw-bold">Total</td>
-                                            <td class="fw-bold">{{ $total }}</td>
+                                            <td class="fw-bold">{{ number_format($total) }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -43,9 +43,13 @@
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    @if (session('status'))
+    @if (session('timer'))
         <script>
-            swal("{{ session('status') }}");
+            swal("{{ session('timer') }}", {
+                timer: 1500,
+                icon: "success",
+                buttons: false,
+            });
         </script>
     @endif
 </body>

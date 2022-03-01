@@ -13,8 +13,6 @@ use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\RatingController;
 use App\Http\Controllers\Frontend\ReviewController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
 use App\Mail\InvoiceMail;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,58 +37,31 @@ Route::get('collection/{cat_slug}', [FrontendController::class, 'viewcategory'])
 Route::get('collection/{cat_slug}/{subcat_slug}', [FrontendController::class, 'subcatview']);
 Route::get('collection/{cat_slug}/{subcat_slug}/{prod_slug}', [FrontendController::class, 'productview']);
 
-Auth::routes(['verify' => true]);
-
 Route::get('/searchajax', 'Frontend\UserController@SearchautoComplete')->name('searchproductajax');
 Route::post('/searching', 'Frontend\UserController@result');
 
-Route::get('slider', 'Admin\FrontendController@slider');
-Route::get('add-slider', 'Admin\FrontendController@add');
-Route::post('insert-slider', 'Admin\FrontendController@insert');
-Route::get('edit-slider/{id}', 'Admin\FrontendController@edit');
-Route::put('update-slider/{id}', 'Admin\FrontendController@update');
-Route::get('delete-slider/{id}', 'Admin\FrontendController@destroy');
+Auth::routes(['verify' => true]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('load-cart-data', [CartController::class, 'cartcount']);
 Route::get('load-wishlist-data', [WishlistController::class, 'wishlistcount']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 // mail
 Route::get('/email', [InvoiceMail::class, 'invoice']);
 
-//email verification
-Route::get('/email/verify', function () {
-    return view('auth.verify');
-})->middleware('auth')->name('verification.notice');
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
-
-    return redirect('/home')->with('status', 'verification success.!');
-})->middleware(['auth', 'signed'])->name('verification.verify');
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
-
-    return back()->with('status', 'Verification link sent!');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
-
-Route::post('add-to-cart', [CartController::class, 'addToCart']);
-Route::post('delete-cart-item', [CartController::class, 'deleteCartItem']);
-Route::post('update-cart', [CartController::class, 'updateCart']);
-
-Route::post('add-to-wishlist', [WishlistController::class, 'add']);
-Route::post('delete-wishlist-item', [WishlistController::class, 'deleteitem']);
-
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'isUser'])->group(function () {
     Route::get('cart', [CartController::class, 'viewcart']);
+    Route::post('add-to-cart', [CartController::class, 'addToCart']);
+    Route::post('delete-cart-item', [CartController::class, 'deleteCartItem']);
+    Route::post('update-cart', [CartController::class, 'updateCart']);
+
+    Route::get('wishlist', [WishlistController::class, 'index']);
+    Route::post('add-to-wishlist', [WishlistController::class, 'add']);
+    Route::post('delete-wishlist-item', [WishlistController::class, 'deleteitem']);
+
     Route::get('checkout', [CheckoutController::class, 'index']);
     Route::post('place-order', [CheckoutController::class, 'placeorder']);
-
-    Route::get('my-orders', [UserController::class, 'index']);
-    Route::get('view-order/{id}', [UserController::class, 'vieworder']);
-    Route::put('cancel-order/{id}', [UserController::class, 'cancelorder']);
-    Route::get('generate-invoice/{order_id}', [UserController::class, 'invoice']);
 
     Route::post('add-rating', [RatingController::class, 'add']);
 
@@ -99,7 +70,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('edit-review/{product_slug}/userreview', [ReviewController::class, 'edit']);
     Route::put('update-review', [ReviewController::class, 'update']);
 
-    Route::get('wishlist', [WishlistController::class, 'index']);
+    Route::get('my-orders', [UserController::class, 'index']);
+    Route::get('view-order/{id}', [UserController::class, 'vieworder']);
+    Route::put('cancel-order/{id}', [UserController::class, 'cancelorder']);
+    Route::get('generate-invoice/{order_id}', [UserController::class, 'invoice']);
 
     Route::get('my-profile', [UserController::class, 'myprofile']);
     Route::get('my-profile/edit', [UserController::class, 'editprofile']);
@@ -109,6 +83,13 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', 'Admin\FrontendController@index');
+
+    Route::get('slider', 'Admin\FrontendController@slider');
+    Route::get('add-slider', 'Admin\FrontendController@add');
+    Route::post('insert-slider', 'Admin\FrontendController@insert');
+    Route::get('edit-slider/{id}', 'Admin\FrontendController@edit');
+    Route::put('update-slider/{id}', 'Admin\FrontendController@update');
+    Route::get('delete-slider/{id}', 'Admin\FrontendController@destroy');
 
     Route::get('categories', 'Admin\CategoryController@index')->name('categories');
     Route::get('add-category', 'Admin\CategoryController@add')->name('add-category');
@@ -145,7 +126,6 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 
     Route::get('users', [DashboardController::class, 'users'])->name('users');
     Route::get('view-user/{id}', [DashboardController::class, 'viewuser'])->name('viewuser');
-    Route::get('edit-user/{id}', [DashboardController::class, 'edituser'])->name('edituser');
     Route::put('update-users/{id}', [DashboardController::class, 'updateuser'])->name('updateuser');
 
     Route::get('admin-profile', [UserController::class, 'adminprofile']);

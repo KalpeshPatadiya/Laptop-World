@@ -58,7 +58,7 @@
                         Ahmedabad, Gujarat 380060</p>
                     <p>
                         <i class="fas fa-envelope me-3"></i>
-                        laptopworld640@gmail.com
+                        <a href="mailto:laptopworld640@gmail.com">laptopworld640@gmail.com</a>
                     </p>
                     <p><i class="fas fa-phone me-3"></i>079 2766 4785</p>
                 </div>

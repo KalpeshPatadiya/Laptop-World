@@ -28,26 +28,18 @@
                     @php
                         $total = 0;
                     @endphp
-                    <div class="row justify-content-around">
-                        <div class="col-md-2">
-                            <h5><strong>Image</strong></h5>
-                        </div>
-                        <div class="col-md-3">
-                            <h5><strong>Name</strong></h5>
-                        </div>
-                        <div class="col-md-1">
-                            <h5><strong>Price</strong></h5>
-                        </div>
-                        <div class="col-md-2">
-                            <h5><strong>Quantity</strong></h5>
-                        </div>
-                        <div class="col-md-auto">
-                            <h5><strong>SubTotal</strong></h5>
-                        </div>
-                        <div class="col-md-1">
-                            <h5><strong>Action</strong></h5>
-                        </div>
-                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 266px;">Image</th>
+                                <th style="width: 355px;">Name</th>
+                                <th style="width: 136px;">Price</th>
+                                <th style="width: 245px;">Quantity</th>
+                                <th style="width: 145px;">SubTotal</th>
+                                <th style="width: 10px;">Action</th>
+                            </tr>
+                        </thead>
+                    </table>
                     <hr>
                     @foreach ($cartItems as $item)
                         <div class="row product_data d-flex justify-content-around">
@@ -65,7 +57,7 @@
                                 </a>
                             </div>
                             <div class="col-md-1 my-auto">
-                                <h6><strong>₹ {{ $item->products->price }}</strong></h6>
+                                <h6><strong>₹ {{ number_format($item->products->price) }}</strong></h6>
                             </div>
                             <div class="col-md-2 my-auto">
                                 <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
@@ -75,7 +67,8 @@
                                         <button class="input-group-text changeQuantity decrement-btn">-</button>
                                         <input type="text" name="quantity" value="{{ $item->prod_qty }}"
                                             class="form-control qty-input glass-card">
-                                        <button class="input-group-text changeQuantity increment-btn">+</button>
+                                        <button class="input-group-text changeQuantity increment-btn"
+                                            data-max-qty="{{ $item->products->quantity }}">+</button>
                                     </div>
                                     @php
                                         $total += $item->products->price * $item->prod_qty;
@@ -88,7 +81,7 @@
                                 @php
                                     $prod_total = $item->products->price * $item->prod_qty;
                                 @endphp
-                                <h6><strong>₹ {{ $prod_total }}</strong></h6>
+                                <h6><strong>₹ {{ number_format($prod_total) }}</strong></h6>
                             </div>
                             <div class="col-md-auto my-auto">
                                 <button class="btn btn-danger delete-cart-item"><i class="fa fa-trash"></i>
@@ -98,7 +91,7 @@
                     @endforeach
                 </div>
                 <div class="card-footer">
-                    <h5>Total Price : ₹ {{ $total }}
+                    <h5>Total Price : ₹ {{ number_format($total) }}
                         <a href="{{ url('checkout') }}" class="btn btn-outline-success float-end btn-delete">Checkout</a>
                     </h5>
                 </div>
@@ -123,8 +116,13 @@
                                         src="{{ asset('assets/uploads/products/' . $prod->image) }}" alt="product image">
                                     <div class="card-body">
                                         <h5>{{ $prod->name }}</h5>
-                                        <span class="float-start"><b>₹</b> {{ $prod->price }}</span>
-                                        <span class="float-end"><b>₹ </b><s>{{ $prod->MRP }}</s></span>
+                                        <span class="float-start"><b>₹ {{ number_format($prod->price) }}</b></span>
+                                        <span class="ms-4"><s><b>₹
+                                                </b>{{ number_format($prod->MRP) }}</s></span>
+                                        @php
+                                            $discount = (($prod->MRP - $prod->price) / $prod->MRP) * 100;
+                                        @endphp
+                                        <span class="float-end text-success">{{ number_format($discount) }}% off</span>
                                     </div>
                                 </a>
                             </div>

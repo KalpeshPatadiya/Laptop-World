@@ -25,26 +25,18 @@
         <div class="card glass p-0 shadhow wishlistitemsR">
             <div class="card-body">
                 @if ($wishlist->count() > 0)
-                    <div class="row justify-content-between">
-                        <div class="col-md-2">
-                            <h5><strong>Image</strong></h5>
-                        </div>
-                        <div class="col-md-2">
-                            <h5><strong>Name</strong></h5>
-                        </div>
-                        <div class="col-md-auto">
-                            <h5><strong>Price</strong></h5>
-                        </div>
-                        <div class="col-md-auto">
-                            <h5><strong>Availibility</strong></h5>
-                        </div>
-                        <div class="col-md-1">
-                            <h5><strong>Add Cart</strong></h5>
-                        </div>
-                        <div class="col-md-1">
-                            <h5><strong>Action</strong></h5>
-                        </div>
-                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 266px;">Image</th>
+                                <th style="width: 370px;">Name</th>
+                                <th style="width: 160px;">Price</th>
+                                <th style="width: 160px;">Availibility</th>
+                                <th style="width: 205px;">Add to Cart</th>
+                                <th style="width: 100px;">Action</th>
+                            </tr>
+                        </thead>
+                    </table>
                     <hr>
                     @foreach ($wishlist as $item)
                         <div class="row product_data d-flex justify-content-between">
@@ -53,10 +45,13 @@
                                     class="cart-img">
                             </div>
                             <div class="col-md-3 my-auto">
-                                <h4>{{ $item->products->name }}</h4>
+                                <a
+                                    href="{{ url('collection/' .$item->products->subcategory->category->slug .'/' .$item->products->subcategory->slug .'/' .$item->products->slug) }}">
+                                    <h4>{{ $item->products->name }}</h4>
+                                </a>
                             </div>
                             <div class="col-md-1 my-auto">
-                                <h6><strong>₹ {{ $item->products->price }}</strong></h6>
+                                <h6><strong>₹ {{ number_format($item->products->price) }}</strong></h6>
                             </div>
                             <div class="col-md-1 my-auto">
                                 <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
@@ -80,7 +75,8 @@
                 @else
                     <div class="card-body text-center">
                         <h2 class="my-4">Your <i class="fa fa-heart text-danger"></i> Wishlist is empty</h2>
-                        <a href="{{ url('/') }}" class="btn btn-outline-primary btn-delete float-end">Explore products</a>
+                        <a href="{{ url('/') }}" class="btn btn-outline-primary btn-delete float-end">Explore
+                            products</a>
                     </div>
                 @endif
             </div>

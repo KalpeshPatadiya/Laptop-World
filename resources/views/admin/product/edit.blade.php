@@ -68,7 +68,7 @@
                             @endif
                             <div class="form-group col-md-12 mt-1 mb-3">
                                 <label class="text-bold">Select Diffrent Image</label>
-                                <input type="file" name="image" class="form-control" multiple>
+                                <input type="file" name="image" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -80,8 +80,8 @@
                         </div>
                         <div class="form-group col-md-12 mb-3">
                             <label for="">Highlights Description</label>
-                            <input type="text" name="highlights" id="sumnote_highlight"
-                                value="{{ $products->highlights }}" class="form-control">
+                            <textarea name="highlights" id="sumnote_highlight" rows="3"
+                                class="form-control">{{ $products->highlights }}</textarea>
                         </div>
                         <div class="form-group col-md-4 mb-3">
                             <label for="">Product Description</label>

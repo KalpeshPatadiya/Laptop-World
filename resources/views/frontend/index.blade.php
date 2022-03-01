@@ -21,8 +21,13 @@
                                         src="{{ asset('assets/uploads/products/' . $prod->image) }}" alt="product image">
                                     <div class="card-body">
                                         <h5>{{ $prod->name }}</h5>
-                                        <span class="float-start"><b>₹</b> {{ $prod->price }}</span>
-                                        <span class="float-end"><b>₹ </b><s>{{ $prod->MRP }}</s></span>
+                                        <span class="float-start"><b>₹ {{ number_format($prod->price) }}</b></span>
+                                        <span class="ms-4"><s><b>₹
+                                                </b>{{ number_format($prod->MRP) }}</s></span>
+                                        @php
+                                            $discount = (($prod->MRP - $prod->price) / $prod->MRP) * 100;
+                                        @endphp
+                                        <span class="float-end text-success">{{ number_format($discount) }}% off</span>
                                     </div>
                                 </a>
                             </div>
@@ -47,8 +52,13 @@
                                         src="{{ asset('assets/uploads/products/' . $item->image) }}" alt="product image">
                                     <div class="card-body">
                                         <h5>{{ $item->name }}</h5>
-                                        <span class="float-start"><b>₹</b> {{ $item->price }}</span>
-                                        <span class="float-end"><b>₹ </b><s>{{ $item->MRP }}</s></span>
+                                        <span class="float-start"><b>₹ {{ number_format($item->price) }}</b></span>
+                                        <span class="ms-4"><s><b>₹
+                                                </b>{{ number_format($item->MRP) }}</s></span>
+                                        @php
+                                            $discount = (($item->MRP - $item->price) / $item->MRP) * 100;
+                                        @endphp
+                                        <span class="float-end text-success">{{ number_format($discount) }}% off</span>
                                     </div>
                                 </a>
                             </div>
@@ -68,7 +78,7 @@
                         <div class="item">
                             <a href="{{ url('collection/' . $item->category->slug . '/' . $item->slug) }}">
                                 <div class="card card-effect card-shadow m-2 glass-card">
-                                    <img class="category-img"
+                                    <img class="category-img p-4"
                                         src="{{ asset('assets/uploads/sub-category/' . $item->image) }}"
                                         alt="subcategory image">
                                     <div class="card-body">

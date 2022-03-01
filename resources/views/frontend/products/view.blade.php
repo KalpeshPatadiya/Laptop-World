@@ -103,8 +103,16 @@
                                 @endif
                             </span>
                         </div>
-                        <label class="fw-bold fs-5">PRICE : ₹ {{ $products->price }}</label>&nbsp;&nbsp;&nbsp;
-                        <label class="me-3">MRP : <s>₹ {{ $products->MRP }}</s></label>
+                        <label class="fw-bold fs-4"> ₹
+                            {{ number_format($products->price) }}</label>&nbsp;&nbsp;&nbsp;
+                        <label class="me-3"><s>₹ {{ number_format($products->MRP) }}</s></label>
+                        @php
+                            $discount = (($products->MRP - $products->price) / $products->MRP) * 100;
+                        @endphp
+                        <label class="me-3 text-success fw-bold">{{ number_format($discount) }}% off</label>
+                        @if ($products->quantity < 5)
+                            <br><span class="text-danger">Hurry, only {{ $products->quantity }} left!!!</span>
+                        @endif
                         <p class="mt-3">
                             {!! $products->small_description !!}
                         </p>
@@ -121,23 +129,26 @@
                                 <div class="input-group text-center mb-3">
                                     <button class="input-group-text decrement-btn">-</button>
                                     <input type="text" name="quantity" value="1" class="form-control glass-card qty-input">
-                                    <button class="input-group-text increment-btn">+</button>
+                                    <button class="input-group-text increment-btn"
+                                        data-max-qty="{{ $products->quantity }}">+</button>
                                 </div>
                             </div>
                             <div class="col-md-10">
                                 <br>
                                 @if ($products->quantity > 0)
-                                    <button type="button" class="btn btn-primary me-3 addToCartBtn CartBtn float-start">Add to Cart
+                                    <button type="button" class="btn btn-primary me-3 addToCartBtn CartBtn float-start">Add
+                                        to Cart
                                         <i class="fa fa-shopping-cart"></i></button>
                                 @endif
-                                <button type="button" class="btn btn-success me-3 addToWishlist CartBtn float-start">Add to Wishlist
+                                <button type="button" class="btn btn-success me-3 addToWishlist CartBtn float-start">Add to
+                                    Wishlist
                                     <i class="fa fa-heart"></i></button>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <hr>
-                        @if ($products->high_heading != 'NULL' && $products->high_heading != 'NULL')
+                        @if ($products->high_heading != '')
                             <div class="card glass-card my-3">
                                 <details open>
                                     <summary class="card-header fs-3">{{ $products->high_heading }}</summary>
@@ -147,7 +158,7 @@
                                 </details>
                             </div>
                         @endif
-                        @if ($products->des_heading != 'NULL' && $products->description != 'NULL')
+                        @if ($products->des_heading != '')
                             <div class="card glass-card my-3">
                                 <details>
                                     <summary class="card-header fs-3">{{ $products->des_heading }}</summary>
@@ -157,7 +168,7 @@
                                 </details>
                             </div>
                         @endif
-                        @if ($products->det_heading != 'NULL' && $products->details != 'NULL')
+                        @if ($products->det_heading != '')
                             <div class="card glass-card my-3">
                                 <details>
                                     <summary class="card-header fs-3">{{ $products->det_heading }}</summary>
@@ -242,8 +253,15 @@
                                             alt="product image">
                                         <div class="card-body">
                                             <h5>{{ $item->name }}</h5>
-                                            <span class="float-start"><b>₹</b> {{ $item->price }}</span>
-                                            <span class="float-end"><b>₹ </b><s>{{ $item->MRP }}</s></span>
+                                            <span class="float-start"><b>₹
+                                                    {{ number_format($item->price) }}</b></span>
+                                            <span class="ms-4"><s><b>₹
+                                                    </b>{{ number_format($item->MRP) }}</s></span>
+                                            @php
+                                                $discount = (($item->MRP - $item->price) / $item->MRP) * 100;
+                                            @endphp
+                                            <span class="float-end text-success">{{ number_format($discount) }}%
+                                                off</span>
                                         </div>
                                     </a>
                                 </div>

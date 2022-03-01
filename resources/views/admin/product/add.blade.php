@@ -67,7 +67,7 @@
                                 <input type="number" name="quantity" class="form-control">
                             </div>
                             <div class="form-group col-md-12 my-3">
-                                <input type="file" name="image" class="form-control" multiple>
+                                <input type="file" name="image" class="form-control">
                             </div>
                         </div>
                     </div>

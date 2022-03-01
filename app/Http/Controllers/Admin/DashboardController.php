@@ -21,7 +21,7 @@ class DashboardController extends Controller
         $reviews = Review::find($id);
         $reviews->review_status = 0;
         $reviews->update();
-        return redirect('reviews')->with('status', "Review Hide Successfully");
+        return redirect('reviews')->with('timer', "Review Hide Successfully");
     }
 
     public function hiddenreviews()
@@ -35,7 +35,7 @@ class DashboardController extends Controller
         $reviews = Review::find($id);
         $reviews->review_status = 1;
         $reviews->update();
-        return redirect('reviews')->with('status', "Review Updated Successfully");
+        return redirect('reviews')->with('timer', "Review Updated Successfully");
     }
 
     public function users()
@@ -50,17 +50,11 @@ class DashboardController extends Controller
         return view('admin.users.view', compact('users'));
     }
 
-    public function edituser($id)
-    {
-        $users = User::find($id);
-        return view('admin.users.edit', compact('users'));
-    }
-
     public function updateuser(Request $request, $id)
     {
         $users = User::find($id);
-        $users->role_as = $request->input('roles');
+        $users->role_as = $request->input('role_as');
         $users->update();
-        return redirect('users')->with('status', "Role Updated Successfully");
+        return redirect('users')->with('timer', "Role Updated Successfully");
     }
 }

@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <div class="container py-5">
+    <div class="container">
         <form action="{{ url('update-admin-profile') }}" method="POST">
             @csrf
             @method('PUT')
@@ -14,7 +14,8 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Edit Profile</h3>
+                            <a href="{{ url('admin-profile') }}" class="btn btn-warning m-2 float-end">Back</a>
+                            <h3 class="m-2">Edit Profile</h3>
                         </div>
                         <div class="card-body">
                             <div class="row container">

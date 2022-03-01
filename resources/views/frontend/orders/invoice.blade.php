@@ -152,12 +152,12 @@
                 @foreach ($orders->orderitems as $item)
                     <tr>
                         <td>{{ $item->products->name }}</td>
-                        <td>{{ $item->price }}</td>
+                        <td>₹ {{ number_format($item->price) }}</td>
                         <td>{{ $item->qty }}</td>
                         @php
                             $prod_total = $item->price * $item->qty;
                         @endphp
-                        <td>{{ $prod_total }}</td>
+                        <td>₹ {{ number_format($prod_total) }}</td>
                     </tr>
                 @endforeach
             </tbody>

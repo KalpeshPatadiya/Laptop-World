@@ -108,13 +108,13 @@
                                                 </td>
                                                 <td>{{ $item->products->name }}</td>
                                                 <td>{{ $item->qty }}</td>
-                                                <td>{{ $item->price }}</td>
+                                                <td>{{ number_format($item->price) }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                                 <h4 class="px-2">Grand Total: <span class="float-end"><b>₹
-                                            {{ $orders->total_price }}</b></span></h4>
+                                            {{ number_format($orders->total_price) }}</b></span></h4>
                                 @if ($orders->order_status == '0')
                                     <a href="" class="btn btn-warning float-end" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal">Cancel order</a>

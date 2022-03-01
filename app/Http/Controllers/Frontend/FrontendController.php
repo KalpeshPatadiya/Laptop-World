@@ -17,10 +17,10 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        $featured_products = Product::where('trending', '1')->take(15)->get();
+        $featured_products = Product::where('trending', '1')->take(12)->get();
         $trending_category = Category::where('popular', '1')->take(15)->get();
-        $new_products = Product::where('new_arrivals', '1')->orderBy('created_at', 'desc')->take(15)->get();
-        $popular_brand = SubCategory::where('popular', '1')->take(15)->get();
+        $new_products = Product::where('new_arrivals', '1')->orderBy('created_at', 'desc')->take(8)->get();
+        $popular_brand = SubCategory::where('popular', '1')->take(6)->get();
         $slider = Slider::where('status', '1')->get();
         return view('frontend.index', compact('featured_products', 'trending_category', 'new_products', 'popular_brand', 'slider'));
     }
@@ -39,7 +39,7 @@ class FrontendController extends Controller
             $subcategory = SubCategory::where('cat_id', $category->id)->where('status', '1')->get();
             return view('frontend.subcategory', compact('category', 'subcategory'));
         } else {    // if category does not exist
-            return redirect('/')->with('status', "Slug doesn't exist");
+            return redirect('/')->with('error', "Slug does not exist");
         }
     }
 
@@ -72,10 +72,10 @@ class FrontendController extends Controller
                 }
                 return view('frontend.products.index', compact('subcategory', 'products', 'subcatlist'));
             } else {    // if sub category does not exist
-                return redirect('/')->with('status', " Sub Cat Slug doesn't exist");
+                return redirect('/')->with('error', " Sub Cat Slug does not exist");
             }
         } else {
-            return redirect('/')->with('status', "Sub Cat Slug doesn't exist");
+            return redirect('/')->with('error', "Sub Cat Slug does not exist");
         }
     }
 
@@ -96,13 +96,13 @@ class FrontendController extends Controller
                     }
                     return view('frontend.products.view', compact('products', 'ratings', 'rating_value', 'user_rating', 'reviews'));
                 } else {    // if product does not exist
-                    return redirect('/')->with('status', "The link was broken or the product doesn't exist :/");
+                    return redirect('/')->with('error', "The link was broken or the product does not exist :/");
                 }
             } else {
-                return redirect('/')->with('status', "The link was  broken or the product doesn't exist :/");
+                return redirect('/')->with('error', "The link was  broken or the product does not exist :/");
             }
         } else {    // if category does not exist
-            return redirect(' /')->with('sta tus', "No such category found :/");
+            return redirect(' /')->with('error', "No such category found :/");
         }
     }
 }
