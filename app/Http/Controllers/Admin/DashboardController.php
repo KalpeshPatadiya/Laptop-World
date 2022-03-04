@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-
     public function index()
     {
         $reviews = Review::where('review_status', '1')->get();

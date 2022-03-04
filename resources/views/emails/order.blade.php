@@ -49,7 +49,7 @@
 <body>
     <div class="container">
         <div class="heading">
-            <h2>Laptop World - Order Purchasing</h2>
+            <h2>Laptop World - Order place</h2>
         </div>
         <h3>Tracking No.: {{ $order_data['tracking_no'] }}</h3>
         <h4>Name: {{ $order_data['fname'] }} {{ $order_data['lname'] }} </h4>

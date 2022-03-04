@@ -21,7 +21,7 @@ class UserMiddleware
             if (Auth::user()->role_as == '0') {
                 return $next($request);
             } else {
-                return redirect()->back()->with('error', 'Admin can not access users functionality');
+                return redirect()->back()->with('error', 'Access Denied!');
             }
         } else {
             return redirect('/')->with('error', 'Please Login First');

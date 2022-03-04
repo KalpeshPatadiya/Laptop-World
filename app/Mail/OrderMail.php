@@ -35,7 +35,7 @@ class OrderMail extends Mailable
 
         $from_name = "Laptop World";
         $from_email = "laptopworld640@gmail.com";
-        $subject = "Laptop World: Thank you for purchasing";
+        $subject = "Laptop World: Thank you for shopping with us";
         return $this->from($from_email, $from_name)->view('emails.order')->subject($subject);
     }
 }

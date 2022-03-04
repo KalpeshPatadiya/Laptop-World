@@ -94,6 +94,8 @@
                                                 @if ($prod->trending == '1')
                                                     <label style="font-size: 14px;"
                                                         class="float-end badge bg-danger trending_tag m-3">Trending</label>
+                                                @elseif ($prod->trending == '0')
+                                                    <span style="font-size: 14px;" class="badge m-3"> </span>
                                                 @endif
                                                 <br>
                                                 <h5 class="fs-4 fw-bold">₹

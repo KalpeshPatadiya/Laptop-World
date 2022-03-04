@@ -30,12 +30,16 @@ class LoginController extends Controller
     //protected $redirectTo = RouteServiceProvider::HOME;
     protected function authenticated()
     {
-        if (Auth::user()->role_as == '1')       //1 = Admin Login
-        {
-            return redirect('dashboard')->with('timer', 'Welcome to Your Dashboard');
-        } elseif (Auth::user()->role_as == '0')         // Normal or Default User Login
-        {
-            return redirect('/')->with('timer', 'Logged in Successfully');
+        if (Auth::user()->role_as == '1') {       //1 = Admin Login
+            return redirect('dashboard')->with('timer', 'Welcome ' . Auth::user()->name);
+        } elseif (Auth::user()->role_as == '2') {         //2 = retailer Login
+            return redirect('retailer/dashboard')->with('timer', 'Welcome ' . Auth::user()->name);
+        } elseif (Auth::user()->role_as == '3') {         //2 = courier Login
+            return redirect('courier/dashboard')->with('timer', 'Welcome ' . Auth::user()->name);
+        } elseif (Auth::user()->role_as == '4') {         //2 = delivery Login
+            return redirect('delivery/dashboard')->with('timer', 'Welcome ' . Auth::user()->name);
+        } elseif (Auth::user()->role_as == '0') {         // Normal or Default User Login
+            return redirect('/')->with('timer', 'Welcome ' . Auth::user()->name);
         }
     }
     /**

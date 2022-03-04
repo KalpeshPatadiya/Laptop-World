@@ -10,13 +10,6 @@
                     <a href="/dashboard" class="font-weight-bold text-muted">Laptop-World Team</a>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-muted" target="_blank">About Us</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </div>
 </footer>

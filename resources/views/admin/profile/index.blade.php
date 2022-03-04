@@ -10,9 +10,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <a href="{{ url('admin-profile/edit') }}" class="btn btn-warning m-2 float-end">Edit Profile</a>
-                        <h3 class="m-2">My Profile</h3>
+                    <div class="card-header pb-0">
+                        <a href="{{ url('admin-profile/edit') }}" class="btn btn-warning float-end">Edit Profile</a>
+                        <h4>My Profile</h4>
                     </div>
                     <div class="card-body">
                         <div class="row container">

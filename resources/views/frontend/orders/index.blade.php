@@ -47,7 +47,7 @@
                                             @elseif($item->order_status == '1')
                                                 <td>Shipped</td>
                                             @elseif($item->order_status == '2')
-                                                <td class="text-success">Completed</td>
+                                                <td class="text-success">Delivered</td>
                                             @else
                                                 <td class="text-danger">Cancelled</td>
                                             @endif

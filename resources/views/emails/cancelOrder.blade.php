@@ -4,8 +4,8 @@
 Cancellation Reason: {{ $orders->cancellation_reason }}
 
 @component('mail::table')
-| name | price | qty |
-|:----:|:-----:|:---:|
+| Name | Price | Quantity |
+|:----:|:-----:|:--------:|
 @foreach($orderitems as $item)
 | {{ $item->products->name }} | {{ $item->price }} | {{ $item->qty }} |
 @endforeach

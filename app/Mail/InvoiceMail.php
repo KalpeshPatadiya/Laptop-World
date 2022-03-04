@@ -11,18 +11,15 @@ use Illuminate\Support\Facades\Mail;
 class InvoiceMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $order_track_id;
-    public $order_id;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($order_track_id, $order_id)
+    public function __construct()
     {
-        $this->order_track_id = $order_track_id;
-        $this->order_id = $order_id;
+        //
     }
 
     /**

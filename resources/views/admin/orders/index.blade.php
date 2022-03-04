@@ -9,10 +9,8 @@
         <div class="row">
             <div class="col-md 12">
                 <div class="card">
-                    <div class="card-header pb-0">
-                        <h3>New Orders
-                            <a href="{{ 'order-history' }}" class="btn btn-warning float-end">Order History</a>
-                        </h3>
+                    <div class="card-header pb-1">
+                        <h4>Orders</h4>
                     </div>
                     <div class="card-body">
                         <table id="datatable_order" data-order='[[ 0, "desc" ]]' class="table table-striped">
@@ -38,7 +36,7 @@
                                         @elseif($item->order_status == '1')
                                             <td>Shipped</td>
                                         @elseif($item->order_status == '2')
-                                            <td>Completed</td>
+                                            <td>Delivered</td>
                                         @else
                                             <td>Cancelled</td>
                                         @endif

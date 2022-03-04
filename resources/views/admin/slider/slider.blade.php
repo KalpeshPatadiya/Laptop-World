@@ -9,9 +9,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <a href="{{ url('add-slider') }}" class="btn btn-warning m-1 float-end">Add Slider</a>
-                        <h3 class="m-2">Slider</h3>
+                    <div class="card-header pb-0">
+                        <a href="{{ url('add-slider') }}" class="btn btn-warning float-end">Add Slider</a>
+                        <h4 class="">Sliders</h4>
                     </div>
                     <div class="card-body">
                         <table class="table table-striped">

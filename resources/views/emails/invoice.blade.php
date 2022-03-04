@@ -1,7 +1,6 @@
 @component('mail::message')
 # Your order has been shipped by {{ config('app.name') }}
 
-
 We are Thank You to Buying Product from our website.<br>
 Here you can download your invoice from below button.
 

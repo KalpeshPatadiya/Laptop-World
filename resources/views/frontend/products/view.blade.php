@@ -76,7 +76,7 @@
         <div class="card glass shadow product_data p-0">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 pt-4">
                         <img src="{{ asset('assets/uploads/products/' . $products->image) }}" alt="">
                     </div>
                     <div class="col-md-8">
@@ -241,10 +241,10 @@
             <div class="col-md 12">
                 <h4 class="fw-bold">Related Products</h4>
                 <hr>
-                <div class="row">
+                <div class="owl-carousel related-carousel owl-theme">
                     @foreach ($products->subcategory->category->products as $item)
                         @if ($item->id != $products->id)
-                            <div class="col-md-3">
+                            <div class="item">
                                 <div class="card card-effect card-none card-shadow m-2 glass-card">
                                     <a
                                         href="{{ url('collection/' . $item->subcategory->category->slug . '/' . $item->subcategory->slug . '/' . $item->slug) }}">
@@ -272,4 +272,30 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('scripts')
+    <script>
+        $('.related-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: false,
+            dots: false,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
+            smartSpeed: 1500,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        });
+    </script>
 @endsection
