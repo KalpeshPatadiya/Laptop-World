@@ -15,6 +15,13 @@ class DashboardController extends Controller
         return view('admin.review.index', compact('reviews'));
     }
 
+    public function viewreview(Request $request)
+    {
+        $review_id = $request->input('review_id');
+        $review = Review::where('id', $review_id)->first();
+        return response()->json(['status' => $review->user_review ]);
+    }
+
     public function hidereview($id)
     {
         $reviews = Review::find($id);

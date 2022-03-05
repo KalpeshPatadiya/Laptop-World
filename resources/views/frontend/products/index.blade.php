@@ -86,7 +86,7 @@
                                                 </div>
                                             </a>
                                             <div class="">
-                                                <h5 class="text-dark mb-0">{!! $prod->small_description !!}</h5>
+                                                <h5 class="text-dark mb-0">{!! $prod->highlights !!}</h5>
                                             </div>
                                         </div>
                                         <div class="col-md-2">

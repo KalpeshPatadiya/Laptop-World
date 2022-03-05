@@ -11,15 +11,16 @@ use Illuminate\Support\Facades\Mail;
 class InvoiceMail extends Mailable
 {
     use Queueable, SerializesModels;
+    public $order_data;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($order_data)
     {
-        //
+        $this->order_data = $order_data;
     }
 
     /**

@@ -119,6 +119,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('admin/view-order/{id}', [OrderController::class, 'view'])->name('view-order');
 
     Route::get('reviews', [DashboardController::class, 'index'])->name('reviews');
+    Route::post('view-review', [DashboardController::class, 'viewreview']);
     Route::get('hide-review/{id}', [DashboardController::class, 'hidereview']);
     Route::get('hidden-reviews', [DashboardController::class, 'hiddenreviews'])->name('hidden-reviews');
     Route::get('show-review/{id}', [DashboardController::class, 'showreview']);
@@ -135,7 +136,6 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 Route::middleware(['auth', 'isRetailer'])->group(function () {
     Route::get('retailer/dashboard', 'Retailer\FrontendController@index');
 
-    Route::get('retailer/orders', [RetailerFrontendController::class, 'orders'])->name('orders');
     Route::get('retailer/view-order/{id}', [RetailerFrontendController::class, 'view'])->name('view-order');
     Route::put('retailer/update-order/{id}', [RetailerFrontendController::class, 'updateorder']);
 });
@@ -143,9 +143,13 @@ Route::middleware(['auth', 'isRetailer'])->group(function () {
 Route::middleware(['auth', 'isCourier'])->group(function () {
     Route::get('courier/dashboard', 'CourierServices\FrontendController@index');
 
+    Route::get('courier/view-order/{id}', 'CourierServices\FrontendController@view');
+    Route::put('courier/update-order/{id}', 'CourierServices\FrontendController@update');
 });
 
 Route::middleware(['auth', 'isDelivery'])->group(function () {
     Route::get('delivery/dashboard', 'DeliveryMan\FrontendController@index');
 
+    Route::get('delivery/view-order/{id}', 'DeliveryMan\FrontendController@view');
+    Route::put('delivery/update-order/{id}', 'DeliveryMan\FrontendController@update');
 });

@@ -13,16 +13,9 @@ class FrontendController extends Controller
     public function index()
     {
         $corfirmed = Order::where('order_status', '0')->get();
-        return view('retailer.index', compact('corfirmed'));
-    }
+        $packed = Order::where('order_status', '1')->get();
+        return view('retailer.orders', compact('corfirmed', 'packed'));
 
-    public function orders()
-    {
-        $pending = Order::where('order_status', '0')->get();
-        $shipped = Order::where('order_status', '1')->get();
-        $delivered = Order::where('order_status', '2')->get();
-        $cancelled = Order::where('order_status', '3')->get();
-        return view('retailer.orders', compact('pending', 'shipped', 'delivered', 'cancelled'));
     }
 
     public function view($id)
@@ -35,10 +28,10 @@ class FrontendController extends Controller
     {
         $orders = Order::find($id);
         $orders->order_status = $request->input('order_status');
-        if ($orders->order_status == '1') {
+        if ($orders->order_status == '2') {
             Mail::to($orders->email)->send(new InvoiceMail());
         }
         $orders->update();
-        return redirect('retailer/orders')->with('timer', "Order Updated Successfully");
+        return redirect('retailer/dashboard')->with('timer', "Order Updated Successfully");
     }
 }

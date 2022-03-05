@@ -8,7 +8,7 @@
     {{-- CSRF Token --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Laptop World</title>
+    <title> @yield('title') | {{ config('app.name') }}</title>
     <link rel="shortcut icon" href="{{ asset('assets/uploads/logo/transFavicon(1).png') }}" type="image/png">
     {{-- <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" /> --}}

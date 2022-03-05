@@ -29,6 +29,7 @@ class WelcomeMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.welcome');
+        $subject = "Welcome to Laptop World!";
+        return $this->markdown('emails.welcome')->subject($subject);
     }
 }

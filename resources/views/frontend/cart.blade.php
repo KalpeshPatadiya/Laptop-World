@@ -99,7 +99,7 @@
                 @else
                     <div class="card-body text-center">
                         <h2 class="my-4">Your <i class="fa fa-shopping-cart text-success"></i> Cart is empty</h2>
-                        <a href="{{ url('collection') }}" class="btn btn-outline-primary btn-delete float-end">Continue
+                        <a href="{{ url('collection') }}" class="btn btn-outline-primary btn-delete mb-2 float-end">Continue
                             Shopping</a>
                     </div>
                 @endif

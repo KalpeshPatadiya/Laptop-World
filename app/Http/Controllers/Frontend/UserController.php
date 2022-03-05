@@ -148,7 +148,7 @@ class UserController extends Controller
     {
         $orders = Order::find($id);
         $orders->cancellation_reason = $request->input('cancel_reason');
-        $orders->order_status = "3";
+        $orders->order_status = "6";
         $orders->update();
 
         $orderitems = OrderItem::where('order_id', $id)->get();

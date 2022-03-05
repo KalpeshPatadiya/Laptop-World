@@ -1,23 +1,27 @@
 @extends('layouts.retailer')
 
+@section('title')
+    Retailer Dashboard
+@endsection
+
 @section('content')
     <div class="card">
         <div class="card-body">
             <div class="row">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending"
-                            type="button" role="tab" aria-controls="pending" aria-selected="true">Confirmed</button>
+                        <button class="nav-link active" id="confirmed-tab" data-bs-toggle="tab" data-bs-target="#confirmed"
+                            type="button" role="tab" aria-controls="confirmed" aria-selected="true">Confirmed</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="shipped-tab" data-bs-toggle="tab" data-bs-target="#shipped"
-                            type="button" role="tab" aria-controls="shipped" aria-selected="false">Packed</button>
+                        <button class="nav-link" id="packed-tab" data-bs-toggle="tab" data-bs-target="#packed"
+                            type="button" role="tab" aria-controls="packed" aria-selected="false">Packed</button>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+                    <div class="tab-pane fade show active" id="confirmed" role="tabpanel" aria-labelledby="confirmed-tab">
                         <div class="table-responsive mt-4">
-                            <table id="datatable_pending" data-order='[[ 0, "desc" ]]' class="table table-striped">
+                            <table id="datatable_confirmed" data-order='[[ 0, "desc" ]]' class="table table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Order ID</th>
@@ -29,12 +33,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($pending as $item)
+                                    @foreach ($corfirmed as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ date('d-m-y', strtotime($item->created_at)) }}</td>
                                             <td>{{ $item->tracking_no }}</td>
-                                            <td>₹ {{ number_format($item->total_price) }}</td>
+                                            <td>Rs. {{ number_format($item->total_price) }}</td>
                                             @if ($item->order_status == '0')
                                                 <td>Confirmed</td>
                                             @endif
@@ -48,9 +52,9 @@
                             </table>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="shipped" role="tabpanel" aria-labelledby="shipped-tab">
+                    <div class="tab-pane fade" id="packed" role="tabpanel" aria-labelledby="packed-tab">
                         <div class="table-responsive mt-4">
-                            <table id="datatable_shipped" data-order='[[ 0, "desc" ]]' class="table table-striped">
+                            <table id="datatable_packed" data-order='[[ 0, "desc" ]]' class="table table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Order ID</th>
@@ -62,12 +66,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($shipped as $item)
+                                    @foreach ($packed as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ date('d-m-y', strtotime($item->created_at)) }}</td>
                                             <td>{{ $item->tracking_no }}</td>
-                                            <td>₹ {{ number_format($item->total_price) }}</td>
+                                            <td>Rs. {{ number_format($item->total_price) }}</td>
                                             @if ($item->order_status == '1')
                                                 <td>Packed</td>
                                             @endif
@@ -90,8 +94,8 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-            $('#datatable_pending').DataTable();
-            $('#datatable_shipped').DataTable();
+            $('#datatable_confirmed').DataTable();
+            $('#datatable_packed').DataTable();
         });
     </script>
 @endsection

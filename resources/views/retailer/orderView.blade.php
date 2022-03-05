@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header pb-0 bg-secondary">
                         <h3 class="text-white">Order View
-                            <a href="{{ url('retailer/orders') }}" class="btn btn-warning float-end">Back</a>
+                            <a href="{{ url('retailer/dashboard') }}" class="btn btn-warning float-end">Back</a>
                         </h3>
                     </div>
                     <div class="card-body">
@@ -59,7 +59,7 @@
                                             <tr>
                                                 <td>{{ $item->products ? $item->products->name : '' }}</td>
                                                 <td>{{ $item->qty }}</td>
-                                                <td>₹ {{ number_format($item->price) }}</td>
+                                                <td>Rs. {{ number_format($item->price) }}</td>
                                                 <td>
                                                     <img src="{{ asset('assets/uploads/products/' . $item->products->image) }}"
                                                         alt="product img" width="100">
@@ -69,7 +69,7 @@
                                     </tbody>
                                 </table>
                                 <hr>
-                                <h4 class="px-2">Grand Total: <span class="float-end"><b>₹
+                                <h4 class="px-2">Grand Total: <span class="float-end"><b>Rs.
                                             {{ number_format($orders->total_price) }}</b></span></h4>
                                 <div class="mt-3 px-2">
                                     <label for="">Order Status:</label>
@@ -78,7 +78,8 @@
                                         @method('PUT')
                                         <select class="form-select" name="order_status">
                                             @if ($orders->order_status == '0')
-                                                <option {{ $orders->order_status == '0' ? 'selected' : '' }} value="0">
+                                                <option {{ $orders->order_status == '0' ? 'selected' : '' }} value="0"
+                                                    disabled>
                                                     Confirmed
                                                 </option>
                                                 <option {{ $orders->order_status == '1' ? 'selected' : '' }} value="1">
@@ -86,7 +87,8 @@
                                                 </option>
                                             @endif
                                             @if ($orders->order_status == '1')
-                                                <option {{ $orders->order_status == '1' ? 'selected' : '' }} value="1">
+                                                <option {{ $orders->order_status == '1' ? 'selected' : '' }} value="1"
+                                                    disabled>
                                                     Packed
                                                 </option>
                                                 <option {{ $orders->order_status == '2' ? 'selected' : '' }} value="2">

@@ -163,7 +163,6 @@
             </tbody>
         </table>
         <address>
-            <h5 class="heading">Payment Status : {{ $orders->status == '1' ? 'Shipped' : 'Delivered' }}</h5>
             <h5 class="heading">Payment Mode : Cash on Delivery </h5>
         </address>
         <table class="balance">

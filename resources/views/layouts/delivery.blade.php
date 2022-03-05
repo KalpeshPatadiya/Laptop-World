@@ -8,7 +8,7 @@
     {{-- CSRF Token --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Laptop World</title>
+    <title> @yield('title') | {{ config('app.name') }}</title>
     <link rel="shortcut icon" href="{{ asset('assets/uploads/logo/transFavicon(1).png') }}" type="image/png">
     {{-- <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" /> --}}
@@ -44,10 +44,8 @@
         <div></div>
     </div>
 
-    @include('layouts.include.Dsidebar')
-
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        @include('layouts.include.adminnav')
+        @include('layouts.include.deliverynav')
         <div class="content">
             <div class="container-fluid content1 py-4">
                 @yield('content')
