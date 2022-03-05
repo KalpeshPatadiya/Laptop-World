@@ -10,9 +10,9 @@
             <div class="col-md 12">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <h3>Reviews
+                        <h4>Reviews
                             <a href="{{ 'reviews' }}" class="btn btn-warning float-end">Shown Reviews</a>
-                        </h3>
+                        </h4>
                     </div>
                     <div class="card-body">
                         <table id="datatable_review" data-order='[[ 0, "desc" ]]' class="table table-striped">
@@ -31,7 +31,8 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->user->name }}</td>
                                         <td>{{ $item->product->name }}</td>
-                                        <td>{{ $item->user_review }}</td>
+                                        <td><textarea cols="50" rows="3" readonly>{{ $item->user_review }}</textarea>
+                                        </td>
                                         <td>
                                             <a href="{{ url('show-review/' . $item->id) }}" class="btn btn-danger">Show</a>
                                         </td>

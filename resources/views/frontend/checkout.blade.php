@@ -45,26 +45,28 @@
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="email_validate">Email</label>
+                                    <input type="hidden" id="email_validate" class="form-control px-2 glass"
+                                        value="{{ Auth::user()->email }}" name="email">
                                     <input type="text" id="email_validate" class="form-control px-2 glass"
-                                        value="{{ Auth::user()->email }}" name="email" required placeholder="Enter Email">
+                                        value="{{ Auth::user()->email }}" name="email" disabled>
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="phone_validate">Phone Number</label>
                                     <input type="text" id="phone_validate" class="form-control px-2 glass"
-                                        value="{{ Auth::user()->phone }}" name="phone" required
-                                        placeholder="Enter Phone Number">
+                                        value="{{ Auth::user()->phone }}" name="phone" minlength="10" maxlength="13"
+                                        required placeholder="Enter Phone Number">
                                 </div>
                                 <div class="col-md-6 mt-3">
-                                    <label for="add1_validate">Address 1</label>
+                                    <label for="add1_validate">Block no. & Street</label>
                                     <input type="text" id="add1_validate" class="form-control px-2 glass"
                                         value="{{ Auth::user()->address1 }}" name="address1" required
-                                        placeholder="Enter Address 1">
+                                        placeholder="Eg. 32, Maheshwari soc. Part-1">
                                 </div>
                                 <div class="col-md-6 mt-3">
-                                    <label for="add2_validate">Address 2</label>
+                                    <label for="add2_validate">Local Area</label>
                                     <input type="text" id="add2_validate" class="form-control px-2 glass"
                                         value="{{ Auth::user()->address2 }}" name="address2" required
-                                        placeholder="Enter Address 2">
+                                        placeholder="Eg. Rajvinagar, Odhav">
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="city_validate">City</label>
@@ -86,8 +88,8 @@
                                 <div class="col-md-6 mt-3">
                                     <label for="pin_validate">Pin Code</label>
                                     <input type="text" id="pin_validate" class="form-control px-2 glass"
-                                        value="{{ Auth::user()->pincode }}" name="pincode" required
-                                        placeholder="Enter Pin Code">
+                                        value="{{ Auth::user()->pincode }}" name="pincode" maxlength="6" minlength="6"
+                                        required placeholder="Enter Pin Code">
                                 </div>
                             </div>
                         </div>

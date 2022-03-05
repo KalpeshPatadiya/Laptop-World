@@ -1,13 +1,16 @@
 @component('mail::message')
-# Welcome to the {{ config('app.name') }}
+# Hello {{$user}}!
 
-Thanks for signing up, {{ $user }}!<br>
-visit the site and explore the features and products.
+We are delighted to have you on board<br>
+
+Enjoy yourself, and welcome to Laptop-World
 
 @component('mail::button', ['url' => 'http://localhost:8000/'])
-Visit Site
+Visit {{ config('app.name') }}
 @endcomponent
 
+If there is anything we can help you with, please contact us at laptopworld640@gmail.com.
+
 Thanks,<br>
-{{ config('app.name') }}
+{{ config('app.name') }} Team
 @endcomponent

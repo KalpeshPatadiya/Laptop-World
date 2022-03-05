@@ -9,9 +9,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <a href="{{ url('slider') }}" class="btn btn-warning m-1 float-end">Back</a>
-                        <h3 class="m-2">Add Slider</h3>
+                    <div class="card-header pb-0">
+                        <a href="{{ url('slider') }}" class="btn btn-warning float-end">Back</a>
+                        <h4>Add Slider</h4>
                     </div>
                     <div class="card-body">
                         <form action="{{ url('insert-slider') }}" method="POST" enctype="multipart/form-data">

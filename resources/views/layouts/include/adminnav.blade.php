@@ -5,12 +5,14 @@
         <nav aria-label="breadcrumb">
             <h5 class="font-weight-bolder mb-0">Dashboard</h5>
         </nav>
-        <a class="nav-visit ms-auto" href="{{ url('/') }}">
-            <h5 class="font-weight-bolder mb-0">
-                <i class="bi bi-laptop"></i> VisitSite
-            </h5>
-        </a>
-        <a class="nav-visit" href="{{ url('/admin-profile') }}">
+        @if (Auth::user()->role_as == '1')
+            <a class="nav-visit ms-auto" href="{{ url('/') }}">
+                <h5 class="font-weight-bolder mb-0">
+                    <i class="bi bi-laptop"></i> VisitSite
+                </h5>
+            </a>
+        @endif
+        <a class="nav-visit" href="@if (Auth::user()->role_as == '1') {{ url('/admin-profile') }} @endif">
             <h5 class="font-weight-bolder mb-0">
                 <i class="bi bi-person-circle"></i> {{ Auth::user()->name }}
             </h5>

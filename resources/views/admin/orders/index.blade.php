@@ -9,10 +9,8 @@
         <div class="row">
             <div class="col-md 12">
                 <div class="card">
-                    <div class="card-header pb-0">
-                        <h3>New Orders
-                            <a href="{{ 'order-history' }}" class="btn btn-warning float-end">Order History</a>
-                        </h3>
+                    <div class="card-header pb-1">
+                        <h4>Orders</h4>
                     </div>
                     <div class="card-body">
                         <table id="datatable_order" data-order='[[ 0, "desc" ]]' class="table table-striped">
@@ -34,13 +32,19 @@
                                         <td>{{ $item->tracking_no }}</td>
                                         <td>₹ {{ number_format($item->total_price) }}</td>
                                         @if ($item->order_status == '0')
-                                            <td>Pending</td>
+                                            <td>Confirmed</td>
                                         @elseif($item->order_status == '1')
-                                            <td>Shipped</td>
+                                            <td>Packed</td>
                                         @elseif($item->order_status == '2')
-                                            <td>Completed</td>
+                                            <td>Shipped</td>
+                                        @elseif($item->order_status == '3')
+                                            <td>Out for Delivery</td>
+                                        @elseif($item->order_status == '4')
+                                            <td class="text-success">Delivered</td>
+                                        @elseif($item->order_status == '5')
+                                            <td class="text-danger">Not Delivered</td>
                                         @else
-                                            <td>Cancelled</td>
+                                            <td class="text-danger">Cancelled</td>
                                         @endif
                                         <td>
                                             <a href="{{ url('admin/view-order/' . $item->id) }}"

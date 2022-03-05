@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\CancelOrderMail;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\User;
@@ -10,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Product;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -146,7 +148,7 @@ class UserController extends Controller
     {
         $orders = Order::find($id);
         $orders->cancellation_reason = $request->input('cancel_reason');
-        $orders->order_status = "3";
+        $orders->order_status = "6";
         $orders->update();
 
         $orderitems = OrderItem::where('order_id', $id)->get();
@@ -155,6 +157,8 @@ class UserController extends Controller
             $prod->quantity = $prod->quantity + $item->qty;
             $prod->update();
         }
+
+        Mail::to($orders->email)->send(new CancelOrderMail($orders, $orderitems));
 
         return redirect('my-orders')->with('success', 'Order Cancelled');
     }

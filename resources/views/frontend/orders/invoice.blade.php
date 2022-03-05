@@ -152,24 +152,23 @@
                 @foreach ($orders->orderitems as $item)
                     <tr>
                         <td>{{ $item->products->name }}</td>
-                        <td>₹ {{ number_format($item->price) }}</td>
+                        <td>Rs. {{ number_format($item->price) }}</td>
                         <td>{{ $item->qty }}</td>
                         @php
                             $prod_total = $item->price * $item->qty;
                         @endphp
-                        <td>₹ {{ number_format($prod_total) }}</td>
+                        <td>Rs. {{ number_format($prod_total) }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
         <address>
-            <h5 class="heading">Payment Status : {{ $orders->status == '1' ? 'Shipped' : 'Completed' }}</h5>
             <h5 class="heading">Payment Mode : Cash on Delivery </h5>
         </address>
         <table class="balance">
             <tr>
                 <th>Grand Total</th>
-                <td>{{ $orders->total_price }}</td>
+                <td>Rs. {{ number_format($orders->total_price) }}</td>
             </tr>
         </table>
     </article>

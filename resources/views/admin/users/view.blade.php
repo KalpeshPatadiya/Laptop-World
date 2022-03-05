@@ -12,11 +12,20 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <h4>Current Role : {{ $users->role_as == '1' ? 'Admin' : 'User' }}</h4>
+                        <h4>Current Role :
+                            @if ($users->role_as == 0)
+                                User
+                            @elseif ($users->role_as == 1)
+                                Admin
+                            @elseif ($users->role_as == 2)
+                                Manager
+                            @endif
+                        </h4>
                         <select name="role_as" id="custom-select" required id="inputGroup1">
                             <option value="">-- Select --</option>
-                            <option value="0">User</option>
+                            <option value="0">User (default)</option>
                             <option value="1">Admin</option>
+                            <option value="2">Manager</option>
                         </select>
                     </div>
                     <div class="modal-footer">
@@ -85,66 +94,68 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <label for="">Address 1</label>
-                                <div class="p-2 border">
-                                    @if ($users->address1 == null)
-                                        <span class="text-danger">Not Set</span>
-                                    @else
-                                        {{ $users->address1 }}
-                                    @endif
+                            @if ($users->role_as == '0')
+                                <div class="col-md-4">
+                                    <label for="">Address 1</label>
+                                    <div class="p-2 border">
+                                        @if ($users->address1 == null)
+                                            <span class="text-danger">Not Set</span>
+                                        @else
+                                            {{ $users->address1 }}
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="">Address 2</label>
-                                <div class="p-2 border">
-                                    @if ($users->address2 == null)
-                                        <span class="text-danger">Not Set</span>
-                                    @else
-                                        {{ $users->address2 }}
-                                    @endif
+                                <div class="col-md-4">
+                                    <label for="">Address 2</label>
+                                    <div class="p-2 border">
+                                        @if ($users->address2 == null)
+                                            <span class="text-danger">Not Set</span>
+                                        @else
+                                            {{ $users->address2 }}
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="">City</label>
-                                <div class="p-2 border">
-                                    @if ($users->city == null)
-                                        <span class="text-danger">Not Set</span>
-                                    @else
-                                        {{ $users->city }}
-                                    @endif
+                                <div class="col-md-4">
+                                    <label for="">City</label>
+                                    <div class="p-2 border">
+                                        @if ($users->city == null)
+                                            <span class="text-danger">Not Set</span>
+                                        @else
+                                            {{ $users->city }}
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="">State</label>
-                                <div class="p-2 border">
-                                    @if ($users->state == null)
-                                        <span class="text-danger">Not Set</span>
-                                    @else
-                                        {{ $users->state }}
-                                    @endif
+                                <div class="col-md-4">
+                                    <label for="">State</label>
+                                    <div class="p-2 border">
+                                        @if ($users->state == null)
+                                            <span class="text-danger">Not Set</span>
+                                        @else
+                                            {{ $users->state }}
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="">Country</label>
-                                <div class="p-2 border">
-                                    @if ($users->country == null)
-                                        <span class="text-danger">Not Set</span>
-                                    @else
-                                        {{ $users->country }}
-                                    @endif
+                                <div class="col-md-4">
+                                    <label for="">Country</label>
+                                    <div class="p-2 border">
+                                        @if ($users->country == null)
+                                            <span class="text-danger">Not Set</span>
+                                        @else
+                                            {{ $users->country }}
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="">Pin Code</label>
-                                <div class="p-2 border">
-                                    @if ($users->pincode == null)
-                                        <span class="text-danger">Not Set</span>
-                                    @else
-                                        {{ $users->pincode }}
-                                    @endif
+                                <div class="col-md-4">
+                                    <label for="">Pin Code</label>
+                                    <div class="p-2 border">
+                                        @if ($users->pincode == null)
+                                            <span class="text-danger">Not Set</span>
+                                        @else
+                                            {{ $users->pincode }}
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>

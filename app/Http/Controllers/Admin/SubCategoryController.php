@@ -40,7 +40,7 @@ class SubCategoryController extends Controller
         $subcategory->popular = $request->input('popular') == TRUE ? '1' : '0';
         $subcategory->save();
 
-        return redirect('sub-category')->with('timer', "Sub-Category Added Successfully");
+        return redirect('sub-category')->with('timer', "Brand Added Successfully");
     }
     public function edit($id)
     {
@@ -67,7 +67,7 @@ class SubCategoryController extends Controller
         $subcategory->status = $request->input('status') == TRUE ? '1' : '0';
         $subcategory->popular = $request->input('popular') == TRUE ? '1' : '0';
         $subcategory->update();
-        return redirect('sub-category')->with('timer', "Sub Category Updated Successfully");
+        return redirect('sub-category')->with('timer', "Brand Updated Successfully");
     }
     public function destroy($id)
     {
@@ -79,6 +79,6 @@ class SubCategoryController extends Controller
             }
         }
         $subcategory->delete();
-        return redirect('sub-category')->with('timer', "Sub Category Deleted Successfully");
+        return redirect('sub-category')->with('timer', "Brand Deleted Successfully");
     }
 }

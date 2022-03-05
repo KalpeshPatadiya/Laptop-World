@@ -9,11 +9,17 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-
     public function index()
     {
         $reviews = Review::where('review_status', '1')->get();
         return view('admin.review.index', compact('reviews'));
+    }
+
+    public function viewreview(Request $request)
+    {
+        $review_id = $request->input('review_id');
+        $review = Review::where('id', $review_id)->first();
+        return response()->json(['status' => $review->user_review ]);
     }
 
     public function hidereview($id)

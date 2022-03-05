@@ -31,11 +31,7 @@ class OrderMail extends Mailable
      */
     public function build()
     {
-        // return $this->view('view.name');
-
-        $from_name = "Laptop World";
-        $from_email = "laptopworld640@gmail.com";
-        $subject = "Laptop World: Thank you for purchasing";
-        return $this->from($from_email, $from_name)->view('emails.order')->subject($subject);
+        $subject = "Laptop World: Thank you for shopping with us";
+        return $this->markdown('emails.order')->subject($subject);
     }
 }

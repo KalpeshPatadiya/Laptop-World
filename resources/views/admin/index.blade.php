@@ -25,8 +25,8 @@
                 <div class="col-md-3 mb-4">
                     <div class="card">
                         <div class="card-body card-gradiant p-3">
-                            <p class="mb-0 fw-bold fs-4">Total Brands : {{ $totalSubcategories }}
-                                <i class="dash-icon bi-ui-checks-grid text-warning"></i>
+                            <p class="mb-0 fw-bold fs-4">Total Products : {{ $totalProducts }}
+                                <i class="dash-icon bi-clipboard-check text-danger"></i>
                             </p>
                         </div>
                     </div>
@@ -34,8 +34,8 @@
                 <div class="col-md-3 mb-4">
                     <div class="card">
                         <div class="card-body card-gradiant p-3">
-                            <p class="mb-0 fw-bold fs-4">Total Products : {{ $totalProducts }}
-                                <i class="dash-icon bi-clipboard-check text-danger"></i>
+                            <p class="mb-0 fw-bold fs-4">Total Brands : {{ $totalSubcategories }}
+                                <i class="dash-icon bi-ui-checks-grid text-warning"></i>
                             </p>
                         </div>
                     </div>

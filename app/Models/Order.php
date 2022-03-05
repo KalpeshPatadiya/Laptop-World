@@ -26,6 +26,7 @@ class Order extends Model
         'total_price',
         'order_status',
         'cancellation_reason',
+        'not_delivered_reason',
         'tracking_no',
     ];
 

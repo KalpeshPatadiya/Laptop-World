@@ -84,16 +84,8 @@ class CheckoutController extends Controller
 
         $order_data = [
             'fname' => $request->input('fname'),
-            'lname' => $request->input('lname'),
-            'email' => $request->input('email'),
-            'phone' => $request->input('phone'),
-            'address1' => $request->input('address1'),
-            'address2' => $request->input('address2'),
-            'city' => $request->input('city'),
-            'state' => $request->input('state'),
-            'country' => $request->input('country'),
-            'pincode' => $request->input('pincode'),
             'tracking_no' => $order->tracking_no,
+            'total_price' => $order->total_price,
         ];
 
         $user_email = $request->input('email');

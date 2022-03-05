@@ -84,6 +84,10 @@
                                 <div class="border glass">{{ $orders->pincode }}</div>
                             </div>
                             <div class="col-md-6 glass ms-2">
+                                @if ($orders->order_status == '0' || $orders->order_status == '1')
+                                    <a href="" class="btn btn-warning float-end" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">Cancel order</a>
+                                @endif
                                 <h4>Order Details</h4>
                                 <hr>
                                 <div class="order-details mb-3">
@@ -115,10 +119,6 @@
                                 </table>
                                 <h4 class="px-2">Grand Total: <span class="float-end"><b>₹
                                             {{ number_format($orders->total_price) }}</b></span></h4>
-                                @if ($orders->order_status == '0')
-                                    <a href="" class="btn btn-warning float-end" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">Cancel order</a>
-                                @endif
                             </div>
                         </div>
                     </div>
