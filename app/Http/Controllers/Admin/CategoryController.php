@@ -25,10 +25,9 @@ class CategoryController extends Controller
         $category = new Category();
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $ext = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $ext;
-            $file->move('assets/uploads/category/', $filename);
-            $category->image = $filename;
+            $imgname = $file->getClientOriginalName();
+            $file->move('assets/uploads/category/', $imgname);
+            $category->image = $imgname;
         }
 
         $category->name = $request->input('name');
@@ -55,10 +54,9 @@ class CategoryController extends Controller
                 File::delete($path);
             }
             $file = $request->file('image');
-            $ext = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $ext;
-            $file->move('assets/uploads/category/', $filename);
-            $category->image = $filename;
+            $imgname = $file->getClientOriginalName();
+            $file->move('assets/uploads/category/', $imgname);
+            $category->image = $imgname;
         }
         $category->name = $request->input('name');
         $category->slug = $request->input('slug');

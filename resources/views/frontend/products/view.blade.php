@@ -148,19 +148,9 @@
                     </div>
                     <div class="col-md-12">
                         <hr>
-                        @if ($products->high_heading != '')
-                            <div class="card glass-card my-3">
-                                <details open>
-                                    <summary class="card-header fs-3">{{ $products->high_heading }}</summary>
-                                    <div class="card-body">
-                                        {!! $products->highlights !!}
-                                    </div>
-                                </details>
-                            </div>
-                        @endif
                         @if ($products->des_heading != '')
                             <div class="card glass-card my-3">
-                                <details>
+                                <details open>
                                     <summary class="card-header fs-3">{{ $products->des_heading }}</summary>
                                     <div class="card-body">
                                         {!! $products->description !!}

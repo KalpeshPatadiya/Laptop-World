@@ -35,17 +35,15 @@ class ProductController extends Controller
         $products = new Product();
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $ext = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $ext;
-            $file->move('assets/uploads/products/', $filename);
-            $products->image = $filename;
+            $imgname = $file->getClientOriginalName();
+            $file->move('assets/uploads/products/', $imgname);
+            $products->image = $imgname;
         }
         $products->cat_id = $request->input('cat_id');
         $products->subcat_id = $request->input('subcat_id');
         $products->name = $request->input('name');
         $products->slug = $request->input('slug');
         $products->small_description = $request->input('small_description');
-        $products->high_heading = $request->input('high_heading');
         $products->highlights = $request->input('highlights');
         $products->des_heading = $request->input('des_heading');
         $products->description = $request->input('description');
@@ -77,15 +75,13 @@ class ProductController extends Controller
                 File::delete($path);
             }
             $file = $request->file('image');
-            $ext = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $ext;
-            $file->move('assets/uploads/products/', $filename);
-            $products->image = $filename;
+            $imgname = $file->getClientOriginalName();
+            $file->move('assets/uploads/products/', $imgname);
+            $products->image = $imgname;
         }
         $products->name = $request->input('name');
         $products->slug = $request->input('slug');
         $products->small_description = $request->input('small_description');
-        $products->high_heading = $request->input('high_heading');
         $products->highlights = $request->input('highlights');
         $products->des_heading = $request->input('des_heading');
         $products->description = $request->input('description');

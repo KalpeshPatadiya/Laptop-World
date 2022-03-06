@@ -18,14 +18,20 @@
                             @elseif ($users->role_as == 1)
                                 Admin
                             @elseif ($users->role_as == 2)
-                                Manager
+                                Retailer
+                            @elseif ($users->role_as == 3)
+                                Courier
+                            @elseif ($users->role_as == 4)
+                                Delivery Guy
                             @endif
                         </h4>
                         <select name="role_as" id="custom-select" required id="inputGroup1">
                             <option value="">-- Select --</option>
                             <option value="0">User (default)</option>
                             <option value="1">Admin</option>
-                            <option value="2">Manager</option>
+                            <option value="2">Retailer</option>
+                            <option value="3">Courier</option>
+                            <option value="4">Delivery Guy</option>
                         </select>
                     </div>
                     <div class="modal-footer">
@@ -52,7 +58,19 @@
                             <div class="col-md-4">
                                 <label for="">Role</label><a href="" class="btn btn-sm p-1 mb-0 btn-success float-end"
                                     data-bs-toggle="modal" data-bs-target="#exampleModal">Change Role</a>
-                                <div class="py-2 border">{{ $users->role_as == '0' ? 'User' : 'Admin' }}</div>
+                                <div class="py-2 border">
+                                    @if ($users->role_as == 0)
+                                        User
+                                    @elseif ($users->role_as == 1)
+                                        Admin
+                                    @elseif ($users->role_as == 2)
+                                        Retailer
+                                    @elseif ($users->role_as == 3)
+                                        Courier
+                                    @elseif ($users->role_as == 4)
+                                        Delivery Guy
+                                    @endif
+                                </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="">First Name</label>

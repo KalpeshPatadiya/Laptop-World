@@ -9,9 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title> @yield('title') | {{ config('app.name') }}</title>
-    <link rel="shortcut icon" href="{{ asset('assets/uploads/logo/transFavicon(1).png') }}" type="image/png">
-    {{-- <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" /> --}}
+    <link rel="shortcut icon" href="{{ asset('assets/logo/transFavicon.png') }}" type="image/png">
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 

@@ -45,7 +45,7 @@
                 <div class="col-md-5">
                     <table class="table table-striped">
                         <thead class="table-secondary">
-                            <h4>Admin List</h4>
+                            <h4>Admins</h4>
                         </thead>
                         <tbody>
                             <tr class="table-info">
@@ -83,7 +83,66 @@
                 </div>
             </div>
             <div class="row">
-                @if ($products->count() > 0)
+                <div class="col-md-4">
+                    <table class="table table-striped">
+                        <thead class="table-secondary">
+                            <h4>Retailers</h4>
+                        </thead>
+                        <tbody>
+                            <tr class="table-danger">
+                                <th>Retailer Id</th>
+                                <th>Name</th>
+                            </tr>
+                            @foreach ($isRetailer as $item)
+                            <tr>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->name }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <table class="table table-striped">
+                        <thead class="table-secondary">
+                            <h4>Courier Service Providers</h4>
+                        </thead>
+                        <tbody>
+                            <tr class="table-warning">
+                                <th>Courier Id</th>
+                                <th>Name</th>
+                            </tr>
+                            @foreach ($isCourier as $item)
+                            <tr>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->name }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <table class="table table-striped">
+                        <thead class="table-secondary">
+                            <h4>Delivery Persons</h4>
+                        </thead>
+                        <tbody>
+                            <tr class="table-success">
+                                <th>Delivery Id</th>
+                                <th>Name</th>
+                            </tr>
+                            @foreach ($isDeliveryMan as $item)
+                            <tr>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->name }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                @if ($neworders->count() > 0)
                     <div class="col-md-6">
                         <table class="table table-striped">
                             <thead class="table-secondary">
@@ -92,14 +151,14 @@
                             <tbody>
                                 <tr class="table-success">
                                     <th>Order Id</th>
-                                    <th>Product Name</th>
-                                    <th>Quantity</th>
+                                    <th>Tracking No</th>
+                                    <th>Order Status</th>
                                 </tr>
                                 @foreach ($neworders as $item)
                                     <tr>
-                                        <td>{{ $item->order_id }}</td>
-                                        <td>{{ $item->products->name }}</td>
-                                        <td>{{ $item->qty }}</td>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->tracking_no }}</td>
+                                        <td>{{ $item->order_status == '0' ? 'Confirmed' : 'Packed' }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

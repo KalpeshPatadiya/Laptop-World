@@ -85,7 +85,7 @@
                                                     <h4>{{ $prod->name }}</h4>
                                                 </div>
                                             </a>
-                                            <div class="">
+                                            <div>
                                                 <h5 class="text-dark mb-0">{!! $prod->highlights !!}</h5>
                                             </div>
                                         </div>

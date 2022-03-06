@@ -22,7 +22,7 @@
                                     <th>ID</th>
                                     <th>User Name</th>
                                     <th>Product Name</th>
-                                    <th>Product Name</th>
+                                    <th>Review</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

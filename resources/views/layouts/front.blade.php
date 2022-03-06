@@ -93,6 +93,28 @@
         $(function() {
             $(document).tooltip();
         });
+
+        $(document).ready(function() {
+            src = "{{ route('searchproductajax') }}";
+            $("#search_text").autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        url: src,
+                        data: {
+                            term: request.term
+                        },
+                        dataType: "json",
+                        success: function(data) {
+                            response(data);
+                        }
+                    });
+                },
+                minLength: 1,
+            });
+            $(document).on('click', '.ui-menu-item', function() {
+                $('#search-form').submit();
+            });
+        });
     </script>
 
     @yield('scripts')
