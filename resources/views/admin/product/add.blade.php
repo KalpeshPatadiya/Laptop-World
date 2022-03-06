@@ -76,12 +76,8 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="profile" role="tabpanel">
-                                    <div class="form-group col-md-6 mt-3 mb-3">
-                                        <label for="name">Highlights</label>
-                                        <input type="text" name="high_heading" class="form-control">
-                                    </div>
                                     <div class="form-group col-md-12 mb-3">
-                                        <label for="">Highlights Description</label>
+                                        <label for="">Highlights</label>
                                         <textarea name="highlights" id="sumnote_highlight" rows="4"
                                             class="form-control"></textarea>
                                     </div>
@@ -135,9 +131,45 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-            $("#sumnote_desc").summernote();
-            $("#sumnote_highlight").summernote();
-            $("#sumnote_prod_desc").summernote();
+            $("#sumnote_desc").summernote({
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+            $("#sumnote_highlight").summernote({
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+            $("#sumnote_prod_desc").summernote({
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
             $("#sumnote_detail").summernote();
         });
 

@@ -79,7 +79,7 @@
                                             <tr>
                                                 <td>{{ $item->products ? $item->products->name : '' }}</td>
                                                 <td>{{ $item->qty }}</td>
-                                                <td>₹ {{ number_format($item->price) }}</td>
+                                                <td>Rs. {{ number_format($item->price) }}</td>
                                                 <td>
                                                     <img src="{{ asset('assets/uploads/products/' . $item->products->image) }}"
                                                         alt="product img" width="100">
@@ -89,7 +89,7 @@
                                     </tbody>
                                 </table>
                                 <hr>
-                                <h4 class="px-2">Grand Total: <span class="float-end"><b>₹
+                                <h4 class="px-2">Grand Total: <span class="float-end"><b>Rs.
                                             {{ number_format($orders->total_price) }}</b></span></h4>
                             </div>
                         </div>

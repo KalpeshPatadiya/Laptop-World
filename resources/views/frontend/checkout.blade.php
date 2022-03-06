@@ -23,7 +23,7 @@
             {{ csrf_field() }}
             <div class="row">
                 <div class="mb-3">
-                    <a href="{{ url('cart') }}" class="btn btn-warning float-end">Back</a>
+                    <a href="{{ url('cart') }}" class="btn btn-warning float-end" title="Back to Cart">Back</a>
                 </div>
                 <div class="col-md-7">
                     <div class="card p-1 glass">
@@ -117,7 +117,7 @@
                                             <tr>
                                                 <td>{{ $item->products->name }}</td>
                                                 <td>{{ $item->prod_qty }}</td>
-                                                <td>{{ number_format($item->products->price) }}</td>
+                                                <td>₹ {{ number_format($item->products->price) }}</td>
                                             </tr>
                                             @php
                                                 $total += $item->products->price * $item->prod_qty;
@@ -125,7 +125,7 @@
                                         @endforeach
                                         <tr>
                                             <td colspan="2" class="fw-bold">Total</td>
-                                            <td class="fw-bold">{{ number_format($total) }}</td>
+                                            <td class="fw-bold">₹ {{ number_format($total) }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

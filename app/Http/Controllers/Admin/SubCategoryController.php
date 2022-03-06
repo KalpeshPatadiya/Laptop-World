@@ -27,10 +27,9 @@ class SubCategoryController extends Controller
         $subcategory = new SubCategory();
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $ext = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $ext;
-            $file->move('assets/uploads/sub-category/', $filename);
-            $subcategory->image = $filename;
+            $imgname = $file->getClientOriginalName();
+            $file->move('assets/uploads/sub-category/', $imgname);
+            $subcategory->image = $imgname;
         }
         $subcategory->cat_id = $request->input('cat_id');
         $subcategory->name = $request->input('name');
@@ -56,10 +55,9 @@ class SubCategoryController extends Controller
                 File::delete($path);
             }
             $file = $request->file('image');
-            $ext = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $ext;
-            $file->move('assets/uploads/sub-category/', $filename);
-            $subcategory->image = $filename;
+            $imgname = $file->getClientOriginalName();
+            $file->move('assets/uploads/sub-category/', $imgname);
+            $subcategory->image = $imgname;
         }
         $subcategory->name = $request->input('name');
         $subcategory->slug = $request->input('slug');

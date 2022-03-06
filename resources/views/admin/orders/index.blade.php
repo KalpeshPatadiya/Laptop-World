@@ -30,7 +30,7 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ date('d-m-y', strtotime($item->created_at)) }}</td>
                                         <td>{{ $item->tracking_no }}</td>
-                                        <td>₹ {{ number_format($item->total_price) }}</td>
+                                        <td>Rs. {{ number_format($item->total_price) }}</td>
                                         @if ($item->order_status == '0')
                                             <td>Confirmed</td>
                                         @elseif($item->order_status == '1')

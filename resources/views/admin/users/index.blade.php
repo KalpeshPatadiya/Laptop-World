@@ -11,7 +11,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table id="datatable_user" class="table table-striped">
+                        <table id="datatable_user" data-order='[[ 0, "desc" ]]' class="table table-striped">
                             <thead class="table-dark">
                                 <tr>
                                     <th>Id</th>
@@ -33,7 +33,11 @@
                                             @elseif ($item->role_as == 1)
                                                 Admin
                                             @elseif ($item->role_as == 2)
-                                                Manager
+                                                Retailer
+                                            @elseif ($item->role_as == 3)
+                                                Courier
+                                            @elseif ($item->role_as == 4)
+                                                Delivery Guy
                                             @endif
                                         <td>
                                             <a href="{{ url('view-user/' . $item->id) }}" class="btn btn-primary">View</a>

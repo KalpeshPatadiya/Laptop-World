@@ -52,7 +52,7 @@ class FrontendController extends Controller
                 $sort = Request::get('sort');
                 if ($sort == 'price_asc') {
                     $products = Product::where('subcat_id', $subcategory->id)->orderBy('price', 'asc')->where('status', '1')->get();
-                } elseif ($sort == 'price_asc') {
+                } elseif ($sort == 'price_desc') {
                     $products = Product::where('subcat_id', $subcategory->id)->orderBy('price', 'desc')->where('status', '1')->get();
                 } elseif ($sort == 'newest') {
                     $products = Product::where('subcat_id', $subcategory->id)->orderBy('created_at', 'desc')->where('status', '1')->get();

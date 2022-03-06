@@ -12,7 +12,7 @@
             <form id="search-form" action="{{ url('/searching') }}" method="POST">
                 @csrf
                 <div class="input-group">
-                    <input type="text" name="search_product" id="search_text" class="form-control"
+                    <input type="search" name="search_product" id="search_text" class="form-control"
                         placeholder="Search here">
                     <div class="input-group-append">
                         <button name="searchbtn" class="btn btn-outline-warning text-black" type="submit"><i
@@ -30,7 +30,8 @@
                     <a class="nav-link" href="{{ url('collection') }}">Collection</a>
                 </li>
                 <li class="nav-item {{ Request::is('cart') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ url('cart') }}" title="View Cart"><i class="fas fa-shopping-cart text-success"></i> Cart
+                    <a class="nav-link" href="{{ url('cart') }}" title="View Cart"><i
+                            class="fas fa-shopping-cart text-success"></i> Cart
                         <span class="badge badge-pill cart-count">0</span>
                     </a>
                 </li>

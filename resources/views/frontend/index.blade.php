@@ -82,33 +82,7 @@
                                         src="{{ asset('assets/uploads/sub-category/' . $item->image) }}"
                                         alt="subcategory image">
                                     <div class="card-body">
-                                        <h5>{{ $item->name }}</h5>
-                                        <p class="card-text">{{ $item->description }}</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="py-4">
-        <div class="container glass">
-            <div class="row">
-                <h2>Trending Categories</h2>
-                <div class="owl-carousel trending-carousel owl-theme">
-                    @foreach ($trending_category as $tcategory)
-                        <div class="item">
-                            <a href="{{ url('collection/' . $tcategory->slug) }}">
-                                <div class="card card-effect card-shadow m-2 glass-card">
-                                    <img class="category-img"
-                                        src="{{ asset('assets/uploads/category/' . $tcategory->image) }}"
-                                        alt="product image">
-                                    <div class="card-body">
-                                        <h5>{{ $tcategory->name }}</h5>
-                                        <p class="card-text">{{ $tcategory->description }}</p>
+                                        <h5 class="text-center">{{ $item->name }}</h5>
                                     </div>
                                 </div>
                             </a>
@@ -187,24 +161,6 @@
                 },
                 1000: {
                     items: 4
-                }
-            }
-        });
-
-        $('.trending-carousel').owlCarousel({
-            loop: false,
-            margin: 10,
-            nav: false,
-            dots: false,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 3
-                },
-                1000: {
-                    items: 3
                 }
             }
         });

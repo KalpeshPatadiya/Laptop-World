@@ -192,28 +192,6 @@ $(document).ready(function () {
     });
 });
 
-$(document).ready(function () {
-    src = "{{ route('searchproductajax') }}";
-    $("#search_text").autocomplete({
-        source: function (request, response) {
-            $.ajax({
-                url: src,
-                data: {
-                    term: request.term
-                },
-                dataType: "json",
-                success: function (data) {
-                    response(data);
-                }
-            });
-        },
-        minLength: 1,
-    });
-    $(document).on('click', '.ui-menu-item', function () {
-        $('#search-form').submit();
-    });
-});
-
 // loader
 $(window).on('load', function () {
     $('.loader').fadeOut(500);
