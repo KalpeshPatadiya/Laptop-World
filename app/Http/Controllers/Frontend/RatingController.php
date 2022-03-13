@@ -22,7 +22,15 @@ class RatingController extends Controller
             $verified_purchase = Order::where('orders.user_id', Auth::id())
                 ->join('order_items', 'orders.id', 'order_items.order_id')
                 ->where('order_items.prod_id', $product_id)->get();
-            if ($verified_purchase->count() > 0) {
+            $delivered_order = Order::where('orders.user_id', Auth::id())
+                ->join('order_items', 'orders.id', 'order_items.order_id')
+                ->where('order_items.prod_id', $product_id)
+                ->where('orders.order_status', '4')->get();
+            $cancelled_order = Order::where('orders.user_id', Auth::id())
+                ->join('order_items', 'orders.id', 'order_items.order_id')
+                ->where('order_items.prod_id', $product_id)
+                ->where('orders.order_status', '6')->get();
+            if ($delivered_order->count() > 0) {
                 $existing_rating = Rating::where('user_id', Auth::id())->where('prod_id', $product_id)->first();
                 if ($existing_rating) {
                     $existing_rating->stars_rated = $stars_rated;
@@ -34,9 +42,13 @@ class RatingController extends Controller
                         'stars_rated' => $stars_rated
                     ]);
                 }
-                return redirect()->back()->with('success', 'Thank you for rating this product');
+                return redirect()->back()->with('success', 'Thank you for rating ' . $product_check->name );
+            } elseif ($cancelled_order->count() > 0) {
+                return redirect()->back()->with('error', 'You cannot rate ' . $product_check->name . ' now, your has been cancelled.');
+            } elseif ($verified_purchase->count() > 0) {
+                return redirect()->back()->with('error', 'You cannot rate ' . $product_check->name . ' yet, Please wait for the delivery.');
             } else {
-                return redirect()->back()->with('error', "You cannot rate a product without purchase");
+                return redirect()->back()->with('error', 'You cannot rate ' . $product_check->name . ' without purchase');
             }
         } else {
             return redirect()->back()->with('error', "The link was broken");

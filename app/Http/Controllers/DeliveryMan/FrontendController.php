@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\DeliveryMan;
 
 use App\Http\Controllers\Controller;
+use App\Mail\DeliveryMail;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use Illuminate\Support\Facades\Mail;
 
 class FrontendController extends Controller
 {
@@ -26,7 +28,10 @@ class FrontendController extends Controller
         $orders = Order::find($id);
         $orders->order_status = $request->input('order_status');
         $orders->not_delivered_reason = $request->input('not_delivered_reason');
-
+        $order_data = ['tracking_no' => $orders->tracking_no,];
+        if ($orders->order_status == '4') {
+            Mail::to($orders->email)->send(new DeliveryMail($order_data));
+        }
         $orders->update();
         return redirect('delivery/dashboard')->with('timer', "Order Updated Successfully");
     }

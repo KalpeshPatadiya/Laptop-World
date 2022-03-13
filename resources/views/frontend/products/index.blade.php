@@ -8,7 +8,7 @@
     <div class="py-2 shadow-lg bg-info">
         <div class="container">
             <h6 class="mb-0">
-                <a href="{{ url('collection') }}">
+                <a href="{{ url('/') }}">
                     Collection
                 </a> /
                 <a href="{{ url('collection/' . $subcategory->category->name) }}">
@@ -94,6 +94,9 @@
                                                 @if ($prod->trending == '1')
                                                     <label style="font-size: 14px;"
                                                         class="float-end badge bg-danger trending_tag m-3">Trending</label>
+                                                @elseif ($prod->new_arrivals == '1')
+                                                    <label style="font-size: 14px;"
+                                                        class="float-end badge bg-info new_tag m-3">&nbsp;New&nbsp;</label>
                                                 @elseif ($prod->trending == '0')
                                                     <span style="font-size: 14px;" class="badge m-3"> </span>
                                                 @endif

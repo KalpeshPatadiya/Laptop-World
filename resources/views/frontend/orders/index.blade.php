@@ -49,7 +49,7 @@
                                             @elseif($item->order_status == '3' || $item->order_status == '5')
                                                 <td>Out for Delivery</td>
                                             @elseif($item->order_status == '4')
-                                                <td class="text-success">Delivered</td>
+                                                <td style="width: 250px" class="text-success">Delivered on {{ date('d-m-y', strtotime($item->updated_at)) }}</td>
                                             @else
                                                 <td class="text-danger">Cancelled</td>
                                             @endif

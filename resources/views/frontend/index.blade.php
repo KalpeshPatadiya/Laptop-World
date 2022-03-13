@@ -143,7 +143,7 @@
         });
 
         $('.popular-brands').owlCarousel({
-            loop: false,
+            loop: true,
             margin: 10,
             nav: true,
             dots: false,

@@ -33,7 +33,12 @@
                                             <img src="{{ asset('assets/uploads/slider/' . $item->image) }}"
                                                 class="cate-img" alt="">
                                         </td>
-                                        <td>{{ $item->status == 1 ? 'Visible' : 'Hidden' }}</td>
+                                        <td>@if ($item->status == 1)
+                                            <span class="badge bg-success">Visible</span>
+                                            @else
+                                            <span class="badge bg-danger">Hidden</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ url('edit-slider/' . $item->id) }}"
                                                 class="btn btn-primary">Edit</a>

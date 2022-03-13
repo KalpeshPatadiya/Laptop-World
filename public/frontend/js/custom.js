@@ -99,7 +99,7 @@ $(document).ready(function () {
         var inc_value = $(this).closest('.product_data').find('.qty-input').val();
         var value = parseInt(inc_value, 10);
         value = isNaN(value) ? 0 : value;
-        if (value < max_qty) {
+        if (value < max_qty && value < 7) {
             value++;
             $(this).closest('.product_data').find('.qty-input').val(value);
         } else {
