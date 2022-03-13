@@ -38,7 +38,6 @@
 
     <!-- Alertify CSS -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
-
 </head>
 
 <body>

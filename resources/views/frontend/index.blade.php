@@ -6,7 +6,7 @@
 
 @section('content')
     @include('layouts.include.slider')
-
+{{--
     <div class="py-4">
         <div class="container-fluid glass">
             <div class="row">
@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 
 @section('scripts')

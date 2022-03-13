@@ -47,6 +47,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('load-cart-data', [CartController::class, 'cartcount']);
 Route::get('load-wishlist-data', [WishlistController::class, 'wishlistcount']);
+Route::post('add-to-cart', [CartController::class, 'addToCart']);
 
 // mail
 Route::get('/email', [InvoiceMail::class, 'invoice']);

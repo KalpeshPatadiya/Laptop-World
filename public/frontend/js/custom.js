@@ -97,9 +97,9 @@ $(document).ready(function () {
         e.preventDefault();
         let max_qty = $(this).data('max-qty');
         var inc_value = $(this).closest('.product_data').find('.qty-input').val();
-        var value = parseInt(inc_value, 10);
+        var value = parseInt(inc_value, 0);
         value = isNaN(value) ? 0 : value;
-        if (value < max_qty) {
+        if (value < max_qty && value < 7) {
             value++;
             $(this).closest('.product_data').find('.qty-input').val(value);
         } else {

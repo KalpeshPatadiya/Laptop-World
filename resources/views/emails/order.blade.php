@@ -14,6 +14,7 @@ Tracking no. : {{ $order_data['tracking_no'] }}<br>
 | {{ $item->products->name }} | {{ $item->prod_qty }} | {{ $item->products->price }} |
 @endforeach
 @endcomponent
+
 # Sub Total : {{ $order_data['total_price'] }}
 
 Your order hasn't been shipped yet, but we'll send you an email when it does.

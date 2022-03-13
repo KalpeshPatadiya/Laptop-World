@@ -28,8 +28,11 @@ class FrontendController extends Controller
     {
         $orders = Order::find($id);
         $orders->order_status = $request->input('order_status');
+        $order_data = [
+            'tracking_no' => $orders->tracking_no,
+        ];
         if ($orders->order_status == '2') {
-            Mail::to($orders->email)->send(new InvoiceMail());
+            Mail::to($orders->email)->send(new InvoiceMail($order_data));
         }
         $orders->update();
         return redirect('retailer/dashboard')->with('timer', "Order Updated Successfully");

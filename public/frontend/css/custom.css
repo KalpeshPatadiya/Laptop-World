@@ -169,10 +169,10 @@ footer a:hover {
     width: 190px;
     height: 175px;
     object-fit: scale-down;
-    border: rgb(36, 53, 56) 2px solid;
+    /* border: rgb(36, 53, 56) 2px solid; */
     border-radius: 8%;
     margin-bottom: 10px;
-    box-shadow: 4px 3px #555555;
+    /* box-shadow: 4px 3px #555555; */
 }
 
 /* rating */
@@ -326,4 +326,8 @@ li.active {
 .property-card:hover .property-description {
     height: 69px;
     width: 16em;
+}
+
+.w-5 {
+    display: none;
 }

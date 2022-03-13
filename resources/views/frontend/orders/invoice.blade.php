@@ -173,9 +173,9 @@
         </table>
     </article>
     <aside>
-        <h1>Additional Notes</h1>
+        <h1>Thank You</h1>
         <div>
-            <p>A finance charge of 1.5% will be made on unpaid balances after 30 days.</p>
+            <p>Thank you for shopping with us, we really appreciate it.</p>
         </div>
     </aside>
 </body>

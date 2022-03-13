@@ -45,7 +45,7 @@ class ReviewController extends Controller
             $sub_category_slug = $product->subcategory->slug;
             $prod_slug = $product->slug;
             if ($new_review) {
-                return redirect('collection/' . $category_slug . '/' . $sub_category_slug . '/' . $prod_slug)->with('success', "Thank you for your thoughts");
+                return redirect('collection/' . $category_slug . '/' . $sub_category_slug . '/' . $prod_slug)->with('success', "Thank you for writing your thoughts about " . $product->name);
             }
         } else {
             return redirect()->back()->with('error', "The link was broken");
