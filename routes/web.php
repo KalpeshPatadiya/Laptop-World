@@ -33,7 +33,6 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 Route::get('/', [FrontendController::class, 'index']);
-Route::get('collection', [FrontendController::class, 'category']);
 Route::get('collection/{cat_slug}', [FrontendController::class, 'viewcategory']);
 Route::get('collection/{cat_slug}/{subcat_slug}', [FrontendController::class, 'subcatview']);
 Route::get('collection/{cat_slug}/{subcat_slug}/{prod_slug}', [FrontendController::class, 'productview']);
@@ -52,14 +51,15 @@ Route::post('add-to-cart', [CartController::class, 'addToCart']);
 // mail
 Route::get('/email', [InvoiceMail::class, 'invoice']);
 
+Route::post('add-to-cart', [CartController::class, 'addToCart']);
+Route::post('add-to-wishlist', [WishlistController::class, 'add']);
+
 Route::middleware(['auth', 'isUser'])->group(function () {
     Route::get('cart', [CartController::class, 'viewcart']);
-    Route::post('add-to-cart', [CartController::class, 'addToCart']);
     Route::post('delete-cart-item', [CartController::class, 'deleteCartItem']);
     Route::post('update-cart', [CartController::class, 'updateCart']);
 
     Route::get('wishlist', [WishlistController::class, 'index']);
-    Route::post('add-to-wishlist', [WishlistController::class, 'add']);
     Route::post('delete-wishlist-item', [WishlistController::class, 'deleteitem']);
 
     Route::get('checkout', [CheckoutController::class, 'index']);

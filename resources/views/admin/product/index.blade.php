@@ -18,6 +18,7 @@
                                     <th>Name</th>
                                     <th>Price</th>
                                     <th>Image</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -32,6 +33,11 @@
                                             <img src="{{ asset('assets/uploads/products/' . $item->image) }}"
                                                 class="cate-img" alt="">
                                         </td>
+                                        <td>@if ($item->status == 1)
+                                            <span class="badge bg-success">Active</span>
+                                            @else
+                                            <span class="badge bg-danger">Inactive</span>
+                                            @endif
                                         <td>
                                             <a href="{{ url('edit-product/' . $item->id) }}"
                                                 class="btn btn-primary">Edit</a>

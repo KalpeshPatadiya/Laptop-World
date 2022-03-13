@@ -173,7 +173,7 @@
         </table>
     </article>
     <aside>
-        <h1>Thank You</h1>
+        <h1>Thank You!</h1>
         <div>
             <p>Thank you for shopping with us, we really appreciate it.</p>
         </div>

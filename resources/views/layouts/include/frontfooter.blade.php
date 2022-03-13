@@ -17,16 +17,19 @@
                         Companies
                     </h6>
                     <p>
-                        <a href="https://www.lenovo.com/in/en/" target="_blank" class="text-reset">Lenovo</a>
+                        <a href="http://localhost:8000/collection/laptops/lenovo" class="text-reset">Lenovo</a>
                     </p>
                     <p>
-                        <a href="https://www.apple.com/in/" target="_blank" class="text-reset">Apple</a>
+                        <a href="http://localhost:8000/collection/laptops/apple" class="text-reset">Apple</a>
                     </p>
                     <p>
-                        <a href="https://www.dell.com/en-in" target="_blank" class="text-reset">Dell</a>
+                        <a href="http://localhost:8000/collection/laptops/dell" class="text-reset">Dell</a>
                     </p>
                     <p>
-                        <a href="https://www.asus.com/in/" target="_blank" class="text-reset">Asus</a>
+                        <a href="http://localhost:8000/collection/laptops/asus" class="text-reset">Asus</a>
+                    </p>
+                    <p>
+                        <a href="http://localhost:8000/collection/laptops/hp" class="text-reset">HP</a>
                     </p>
                 </div>
 
@@ -37,6 +40,9 @@
                     </h6>
                     <p>
                         <a href="https://www.flipkart.com/" target="_blank" class="text-reset">Flipkart</a>
+                    </p>
+                    <p>
+                        <a href="https://www.amazon.in/" target="_blank" class="text-reset">Amazon</a>
                     </p>
                     <p>
                         <a href="https://www.php.net/" target="_blank" class="text-reset">PHP</a>

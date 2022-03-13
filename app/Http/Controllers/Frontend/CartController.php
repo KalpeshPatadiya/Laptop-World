@@ -8,7 +8,6 @@ use App\Models\Product;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 
-
 class CartController extends Controller
 {
     public function addToCart(Request $request)
@@ -17,19 +16,23 @@ class CartController extends Controller
         $product_qty = $request->input('product_qty');
 
         if (Auth::check()) {    // if user is logged in
-            $prod_check = Product::where('id', $product_id)->first();
+            if (Auth::user()->role_as == '0') {    // if user is guest
+                $prod_check = Product::where('id', $product_id)->first();
 
-            if ($prod_check) {  // if product exists
-                if (Cart::where('prod_id', $product_id)->where('user_id', Auth::id())->exists()) {    // if product already in cart
-                    return response()->json(['status' => $prod_check->name . " already in cart"]);
-                } else {    // if cart is empty
-                    $cartItem = new Cart;
-                    $cartItem->user_id = Auth::id();
-                    $cartItem->prod_id = $product_id;
-                    $cartItem->prod_qty = $product_qty;
-                    $cartItem->save();
-                    return response()->json(['status' => $prod_check->name . " added to cart"]);
+                if ($prod_check) {  // if product exists
+                    if (Cart::where('prod_id', $product_id)->where('user_id', Auth::id())->exists()) {    // if product already in cart
+                        return response()->json(['status' => $prod_check->name . " already in cart"]);
+                    } else {    // if cart is empty
+                        $cartItem = new Cart;
+                        $cartItem->user_id = Auth::id();
+                        $cartItem->prod_id = $product_id;
+                        $cartItem->prod_qty = $product_qty;
+                        $cartItem->save();
+                        return response()->json(['status' => $prod_check->name . " added to cart"]);
+                    }
                 }
+            } else {
+                return response()->json(['status' => "Access denied!"]);
             }
         } else {    // if user is not logged in
             return response()->json(['status' => "Please login to add product to cart"]);

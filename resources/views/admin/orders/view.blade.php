@@ -56,13 +56,13 @@
                                     @elseif($orders->order_status == '3')
                                         <div class="border">Out for Delivery</div>
                                     @elseif($orders->order_status == '4')
-                                        <div class="border text-success">Delivered</div>
+                                        <div class="border text-success">Delivered on {{ date('d-m-y', strtotime($orders->updated_at)) }}</div>
                                     @elseif($orders->order_status == '5')
                                         <div class="border text-danger">Not Delivered</div>
-                                        <div class="border">Customer not avalilable</div>
+                                        <div class="border mt-2">{{ $orders->not_delivered_reason }}</div>
                                     @else
                                         <div class="border text-danger">Cancelled</div>
-                                        <div class="border">Delayed Order</div>
+                                        <div class="border mt-2">{{ $orders->cancellation_reason }}</div>
                                     @endif
                                 </div>
                                 <table class="table table-striped">

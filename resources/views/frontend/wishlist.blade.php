@@ -42,8 +42,10 @@
                         @foreach ($wishlist as $item)
                             <div class="row product_data d-flex justify-content-between">
                                 <div class="col-md-2">
-                                    <img src="{{ asset('assets/uploads/products/' . $item->products->image) }}" alt=""
-                                        class="cart-img">
+                                    <a
+                                        href="{{ url('collection/' .$item->products->subcategory->category->slug .'/' .$item->products->subcategory->slug .'/' .$item->products->slug) }}">
+                                        <img src="{{ asset('assets/uploads/products/' . $item->products->image) }}" alt="" class="cart-img">
+                                    </a>
                                 </div>
                                 <div class="col-md-3 my-auto">
                                     <a
@@ -68,16 +70,15 @@
                                             class="fa fa-shopping-cart"></i>
                                         Add to Cart</button>
                                 </div>
-                                <div class="col-md-auto my-auto">
-                                    <button class="btn btn-danger remove-wishlist-item"><i class="fa fa-trash"></i>
-                                        Remove</button>
+                                <div class="col-md-1 my-auto">
+                                    <button class="btn btn-outline-danger remove-wishlist-item"><i class="fa fa-trash"></i></button>
                                 </div>
                             </div>
                         @endforeach
                     @else
-                        <div class="card-body text-center">
+                        <div class="card-body text-center p-0">
                             <h2 class="my-4">Your <i class="fa fa-heart text-danger"></i> Wishlist is empty</h2>
-                            <a href="{{ url('/') }}" class="btn btn-outline-primary btn-delete float-end">Explore
+                            <a href="{{ url('/') }}" class="btn btn-outline-primary btn-delete mb-2 float-end">Explore
                                 products</a>
                         </div>
                     @endif

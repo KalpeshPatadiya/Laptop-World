@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content glass p-0 text-white">
                 <form action="{{ url('cancel-order/' . $orders->id) }}" method="POST">
                     @csrf
@@ -23,7 +23,7 @@
                     <div class="modal-body">
                         Are you sure? <br />
                         If yes, please state Cancellation Reason :
-                        <select name="cancel_reason" id="custom-select" required id="inputGroup1">
+                        <select name="cancel_reason" id="custom-select" required id="inputGroup1" class="glass p-0">
                             <option value="">-- Select --</option>
                             <option value="Accidentally placed order">Accidentally placed order</option>
                             <option value="Delayed order">Delayed order</option>
@@ -93,6 +93,10 @@
                                 <div class="order-details mb-3">
                                     <label>Tracking No. </label>
                                     <div class="border glass">{{ $orders->tracking_no }}</div>
+                                </div>
+                                <div class="order-details mb-3">
+                                    <label>Order Date </label>
+                                    <div class="border glass">{{ date('d-m-y', strtotime($orders->created_at)) }}</div>
                                 </div>
                                 <table class="table table-bordered glass-card">
                                     <thead class="table-info">

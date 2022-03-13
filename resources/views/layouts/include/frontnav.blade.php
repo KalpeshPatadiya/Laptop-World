@@ -26,8 +26,15 @@
                 <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ url('/') }}">Home</a>
                 </li>
-                <li class="nav-item {{ Request::is('collection') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ url('collection') }}">Collection</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Collection
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li class="nav-item"><a class="dropdown-item btn-user" href="{{ url('collection/laptops') }}">Laptops</a></li>
+                        <li class="nav-item"><a class="dropdown-item btn-user" href="{{ url('collection/accessories') }}">Accessories</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item {{ Request::is('cart') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ url('cart') }}" title="View Cart"><i
