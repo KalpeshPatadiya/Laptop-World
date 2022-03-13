@@ -7,7 +7,7 @@
     <div class="py-2 shadow-sm bg-info border-top">
         <div class="container">
             <h6 class="mb-0">
-                <a href="{{ url('collection') }}">
+                <a href="{{ url('/') }}">
                     Collection
                 </a> /
                 <a href="{{ url('collection/' . $review->product->subcategory->category->slug) }}">

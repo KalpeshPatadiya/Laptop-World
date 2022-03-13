@@ -8,7 +8,7 @@
     <div class="py-2 shadow-lg bg-info">
         <div class="container">
             <h6 class="mb-0">
-                <a href="{{ url('collection') }}">
+                <a href="{{ url('/') }}">
                     Collection
                 </a> /
                 <a href="{{ url('collection/' . $category->name) }}">

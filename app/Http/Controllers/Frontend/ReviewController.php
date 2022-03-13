@@ -20,10 +20,18 @@ class ReviewController extends Controller
             if ($review) {
                 return view('frontend.reviews.edit', compact('review'));
             } else {
+                $delivered_order = Order::where('orders.user_id', Auth::id())
+                    ->join('order_items', 'orders.id', 'order_items.order_id')
+                    ->where('order_items.prod_id', $product_id)
+                    ->where('orders.order_status', '4')->get();
                 $verified_purchase = Order::where('orders.user_id', Auth::id())
                     ->join('order_items', 'orders.id', 'order_items.order_id')
                     ->where('order_items.prod_id', $product_id)->get();
-                return view('frontend.reviews.index', compact('product', 'verified_purchase'));
+                $cancelled_order = Order::where('orders.user_id', Auth::id())
+                    ->join('order_items', 'orders.id', 'order_items.order_id')
+                    ->where('order_items.prod_id', $product_id)
+                    ->where('orders.order_status', '6')->get();
+                return view('frontend.reviews.index', compact('product', 'verified_purchase', 'delivered_order', 'cancelled_order'));
             }
         } else {
             return redirect()->back()->with('error', "The link was broken");
@@ -45,7 +53,7 @@ class ReviewController extends Controller
             $sub_category_slug = $product->subcategory->slug;
             $prod_slug = $product->slug;
             if ($new_review) {
-                return redirect('collection/' . $category_slug . '/' . $sub_category_slug . '/' . $prod_slug)->with('success', "Thank you for your thoughts");
+                return redirect('collection/' . $category_slug . '/' . $sub_category_slug . '/' . $prod_slug)->with('success', "Thank you for your thoughts about " . $product->name);
             }
         } else {
             return redirect()->back()->with('error', "The link was broken");

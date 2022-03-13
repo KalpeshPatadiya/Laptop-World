@@ -3,14 +3,14 @@
 @section('title', $products->name)
 
 @section('content')
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" id="RatingModal" tabindex="-1" aria-labelledby="RatingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content glass-card text-white">
                 <form action="{{ url('/add-rating') }}" method="POST">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $products->id }}">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Rate {{ $products->name }}</h5>
+                        <h5 class="modal-title" id="RatingModalLabel">Rate {{ $products->name }}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -43,8 +43,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </form>
             </div>
@@ -54,7 +54,7 @@
     <div class="py-2 mb-4 shadow-sm bg-info border-top">
         <div class="container">
             <h6 class="mb-0">
-                <a href="{{ url('collection') }}">
+                <a href="{{ url('/') }}">
                     Collection
                 </a> /
                 <a href="{{ url('collection/' . $products->subcategory->category->slug) }}">
@@ -77,13 +77,15 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4 pt-4">
-                        <img src="{{ asset('assets/uploads/products/' . $products->image) }}" alt="">
+                        <img style="width: 420px; justify-content: center;" src="{{ asset('assets/uploads/products/' . $products->image) }}" alt="">
                     </div>
                     <div class="col-md-8">
                         <h2 class="mb-0">{{ $products->name }}
                             @if ($products->trending == '1')
                                 <label style="font-size: 16px;"
                                     class="float-end badge bg-danger trending_tag">Trending</label>
+                            @elseif ($products->new_arrivals == '1')
+                                <label style="font-size: 16px;" class="float-end badge bg-info new_tag">New</label>
                             @endif
                         </h2>
                         <hr>
@@ -110,7 +112,7 @@
                             $discount = (($products->MRP - $products->price) / $products->MRP) * 100;
                         @endphp
                         <label class="me-3 text-success fw-bold">{{ number_format($discount) }}% off</label>
-                        @if ($products->quantity < 5)
+                        @if ($products->quantity < 5 && $products->quantity > 0)
                             <br><span class="text-danger">Hurry, only {{ $products->quantity }} left!!!</span>
                         @endif
                         <p class="mt-3">
@@ -174,18 +176,18 @@
 
                 <div class="row">
                     <div class="col-md-4">
-                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#RatingModal">
                             Rate this product
                         </button>
-                        <button type="button" class="btn btn-info" style="padding: unset; margin-left: 20px;">
+                        <button type="button" class="btn btn-info ms-4" style="padding: unset;">
                             <a href="{{ url('add-review/' . $products->slug . '/userreview') }}" class="btn btn-link">
                                 Write a review
                             </a>
                         </button>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8 @if ($reviews->count() >= 4) user-review @endif">
                         @foreach ($reviews as $item)
-                            <div class="user-review">
+                            <div>
                                 @if ($item->review_status == '1')
                                     <label
                                         class="fw-bold">{{ $item->user->name . ' ' . $item->user->lname }}</label>
@@ -234,6 +236,7 @@
                 <div class="owl-carousel related-carousel owl-theme">
                     @foreach ($products->subcategory->category->products as $item)
                         @if ($item->id != $products->id)
+                        @if ($item->price <= $products->price*2 && $item->price >= $products->price/2)
                             <div class="item">
                                 <div class="card card-effect card-none card-shadow m-2 glass-card">
                                     <a
@@ -256,6 +259,7 @@
                                     </a>
                                 </div>
                             </div>
+                        @endif
                         @endif
                     @endforeach
                 </div>

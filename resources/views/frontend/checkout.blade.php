@@ -11,7 +11,7 @@
                 <a href="{{ url('/') }}">
                     Home
                 </a> /
-                <a href="{{ url('collaction') }}">
+                <a href="{{ url('checkout') }}">
                     Checkout
                 </a>
             </h6>
@@ -60,13 +60,13 @@
                                     <label for="add1_validate">Block no. & Street</label>
                                     <input type="text" id="add1_validate" class="form-control px-2 glass"
                                         value="{{ Auth::user()->address1 }}" name="address1" required
-                                        placeholder="Eg. 32, Maheshwari soc. Part-1">
+                                        placeholder="Eg. A/1, XYZ soc. Part-1">
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="add2_validate">Local Area</label>
                                     <input type="text" id="add2_validate" class="form-control px-2 glass"
                                         value="{{ Auth::user()->address2 }}" name="address2" required
-                                        placeholder="Eg. Rajvinagar, Odhav">
+                                        placeholder="Eg. Nikol, Naroda">
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="city_validate">City</label>

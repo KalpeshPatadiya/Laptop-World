@@ -7,22 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class CancelOrderMail extends Mailable
+class DeliveryMail extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $orders;
-    public $orderitems;
+    public $order_data;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($orders, $orderitems)
+    public function __construct($order_data)
     {
-        $this->orders = $orders;
-        $this->orderitems = $orderitems;
+        $this->order_data = $order_data;
     }
 
     /**
@@ -32,7 +29,7 @@ class CancelOrderMail extends Mailable
      */
     public function build()
     {
-        $subject = "Laptop World: Order Cancelled";
-        return $this->markdown('emails.cancelOrder')->subject($subject);
+        $subject = "Laptop World: Order delivered";
+        return $this->markdown('emails.delivery')->subject($subject);
     }
 }

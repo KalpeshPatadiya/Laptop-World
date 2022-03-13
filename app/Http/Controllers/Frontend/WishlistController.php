@@ -20,19 +20,23 @@ class WishlistController extends Controller
     public function add(Request $request)
     {
         if (Auth::check()) {
-            $product_id = $request->input('product_id');
-            $prod_check = Product::where('id', $product_id)->first();
+            if (Auth::user()->role_as == '0') {    // if user is guest
+                $product_id = $request->input('product_id');
+                $prod_check = Product::where('id', $product_id)->first();
 
-            if ($prod_check) {  // if product exists
-                if (Wishlist::where('prod_id', $product_id)->where('user_id', Auth::id())->exists()) {    // if product already in wishlist
-                    return response()->json(['status' => $prod_check->name . " already in wishlist"]);
-                } else {    // if wishlist is empty
-                    $wish = new Wishlist();
-                    $wish->prod_id = $product_id;
-                    $wish->user_id = Auth::id();
-                    $wish->save();
-                    return response()->json(['status' => $prod_check->name . " added to wishlist"]);
+                if ($prod_check) {  // if product exists
+                    if (Wishlist::where('prod_id', $product_id)->where('user_id', Auth::id())->exists()) {    // if product already in wishlist
+                        return response()->json(['status' => $prod_check->name . " already in wishlist"]);
+                    } else {    // if wishlist is empty
+                        $wish = new Wishlist();
+                        $wish->prod_id = $product_id;
+                        $wish->user_id = Auth::id();
+                        $wish->save();
+                        return response()->json(['status' => $prod_check->name . " added to wishlist"]);
+                    }
                 }
+            } else {
+                return response()->json(['status' => "Access denied!"]);
             }
         } else {
             return response()->json(['status' => "Please login to add product to wishlist"]);

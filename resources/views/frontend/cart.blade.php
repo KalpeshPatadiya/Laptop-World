@@ -22,7 +22,7 @@
         <div class="col-md-12">
             <h3><strong>My Cart</strong></h3>
         </div>
-        <div class="card p-0 shadhow glass">
+        <div class="card glass shadhow p-0">
             <div class="cartitemsR">
                 @if ($cartItems->count() > 0)
                     <div class="card-body">
@@ -84,9 +84,9 @@
                                     @endphp
                                     <h6><strong>₹ {{ number_format($prod_total) }}</strong></h6>
                                 </div>
-                                <div class="col-md-auto my-auto">
-                                    <button class="btn btn-danger delete-cart-item"><i class="fa fa-trash"></i>
-                                        Remove</button>
+                                <div class="col-md-1 my-auto">
+                                    <button class="btn btn-outline-danger delete-cart-item"><i class="fa fa-trash"></i>
+                                        </button>
                                 </div>
                             </div>
                         @endforeach

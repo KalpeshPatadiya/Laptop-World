@@ -17,8 +17,8 @@
             </h6>
         </div>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" id="DeleteAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content glass-card p-0 text-white">
                 <form action= "{{ url('my-profile/delete/' . $profile->id)}}"  method="POST">
                     @csrf
@@ -30,8 +30,8 @@
                         Are you sure?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Yes</button>
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Yes</button>
                     </div>
                 </form>
             </div>
@@ -43,7 +43,7 @@
                 <div class="card glass p-0">
                     <div class="card-header">
                         <a class="btn btn-danger text-white m-2 float-end btn-delete" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Delete Account</a>
+                            data-bs-target="#DeleteAccountModal">Delete Account</a>
                         <a href="{{ url('my-profile/edit') }}" class="btn btn-warning btn-back m-2 float-end">Edit Profile</a>
                         <h3 class="m-2">My Profile</h3>
                     </div>
