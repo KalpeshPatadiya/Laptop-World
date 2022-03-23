@@ -58,7 +58,7 @@
                                                     class="btn btn-primary btn-delete">View</a>
                                                 @if ($item->order_status != '0' && $item->order_status != '1' && $item->order_status != '6')
                                                     <a href="{{ url('generate-invoice/' . $item->id) }}"
-                                                        class="btn btn-success ms-2 btn-delete">Generate Invoice</a>
+                                                        class="btn btn-success ms-2 btn-delete">Download Invoice</a>
                                                 @endif
                                             </td>
                                         </tr>

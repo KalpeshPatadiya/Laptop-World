@@ -10,7 +10,7 @@
     <div class="py-4">
         <div class="container-fluid glass">
             <div class="row">
-                <h2 class="px-5">Featured Products</h2>
+                <h2 class="px-4">Featured Products</h2>
                 <div class="owl-carousel featured-carousel owl-theme">
                     @foreach ($featured_products as $prod)
                         <div class="item">
@@ -41,7 +41,7 @@
     <div class="py-4">
         <div class="container glass">
             <div class="row">
-                <h2>New Arrived</h2>
+                <h2 class="px-4">New Arrived</h2>
                 <div class="owl-carousel new-products owl-theme">
                     @foreach ($new_products as $item)
                         <div class="item">
@@ -72,7 +72,7 @@
     <div class="py-4">
         <div class="container glass">
             <div class="row">
-                <h2>Popular Brands</h2>
+                <h2 class="px-4">Popular Brands</h2>
                 <div class="owl-carousel popular-brands owl-theme">
                     @foreach ($popular_brand as $item)
                         <div class="item">
@@ -120,7 +120,7 @@
         });
 
         $('.new-products').owlCarousel({
-            loop: false,
+            loop: true,
             margin: 10,
             nav: true,
             dots: false,

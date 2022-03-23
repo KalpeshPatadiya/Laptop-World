@@ -7,7 +7,7 @@
                         <i class="fas fa-laptop me-3"></i>Laptop World
                     </h6>
                     <p>
-                        Best website for laptops and their accessories
+                        Ecommerce website specifically for Laptops and Their Accessories
                     </p>
                 </div>
 
