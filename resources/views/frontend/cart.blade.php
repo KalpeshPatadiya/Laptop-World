@@ -67,7 +67,7 @@
                                         <div class="input-group mb-3" style="width: 60%;">
                                             <button class="input-group-text changeQuantity decrement-btn">-</button>
                                             <input type="text" name="quantity" value="{{ $item->prod_qty }}"
-                                                class="form-control qty-input glass-card">
+                                                class="form-control qty-input glass-card" readonly>
                                             <button class="input-group-text changeQuantity increment-btn"
                                                 data-max-qty="{{ $item->products->quantity }}">+</button>
                                         </div>

@@ -44,7 +44,7 @@ class RatingController extends Controller
                 }
                 return redirect()->back()->with('success', 'Thank you for rating ' . $product_check->name );
             } elseif ($cancelled_order->count() > 0) {
-                return redirect()->back()->with('error', 'You cannot rate ' . $product_check->name . ' now, your has been cancelled.');
+                return redirect()->back()->with('error', 'You cannot rate ' . $product_check->name . ' now, your order has been cancelled.');
             } elseif ($verified_purchase->count() > 0) {
                 return redirect()->back()->with('error', 'You cannot rate ' . $product_check->name . ' yet, Please wait for the delivery.');
             } else {

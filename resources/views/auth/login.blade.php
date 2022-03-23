@@ -61,15 +61,9 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
-                                <div class="col-md-6 offset-md-4">
-                                    Need an account? <a href="{{ route('register') }}"><u>Register now!</u></a>
-                                </div>
-                            </div>
-
                             <div class="row mb-0">
                                 <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-dark">
+                                    <button type="submit" class="btn btn-dark px-4">
                                         {{ __('Login') }}
                                     </button>
 
@@ -80,6 +74,13 @@
                                     @endif
                                 </div>
                             </div>
+
+                            <div class="row mt-3">
+                                <div class="col-md-6 offset-md-4">
+                                    Need an account? <a href="{{ route('register') }}"><u>Register now!</u></a>
+                                </div>
+                            </div>
+
                         </form>
                     </div>
                 </div>

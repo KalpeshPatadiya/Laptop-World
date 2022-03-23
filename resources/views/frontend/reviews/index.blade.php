@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="py-3 shadow-sm bg-info border-top">
+    <div class="py-2 shadow-sm bg-info border-top">
         <div class="container">
             <h6 class="mb-0">
                 <a href="{{ url('/') }}">

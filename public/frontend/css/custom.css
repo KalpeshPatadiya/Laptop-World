@@ -18,6 +18,15 @@
     border-radius: 10px;
 }
 
+#btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    background-color: cornflowerblue;
+    z-index: 9999;
+}
+
 .content {
     display: none;
 }
@@ -25,20 +34,6 @@
 body {
     background: url('../../assets/pictures/Teal\ and\ White\ Gradient\ Tech\ and\ Gaming\ Retail\ Website.png');
     background-size: 100% 100%;
-}
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
 }
 
 footer {
@@ -57,7 +52,6 @@ footer {
 
 .glass-card {
     background: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(10px) !important;
 }
 
 .login {
@@ -216,21 +210,15 @@ footer a:hover {
 
 /* Button Section */
 .btn-effect {
-    border: none;
-    color: #090909;
-    padding: 0.7em 1.7em;
-    font-size: 18px;
-    border-radius: 0.5em;
-    background: #e8e8e8;
-    border: 1px solid #e8e8e8;
-    transition: all .3s;
-    box-shadow: 6px 6px 12px #c5c5c5;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px 0 !important;
+    color: rgba(0, 0, 0, 0.65)  !important;
 }
 
-.btn-effect:hover,
-.btn-effect:focus {
-    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px 0 !important;
-    color: rgba(0, 0, 0, 0.65);
+.btn-effect:hover {
+    border: none;
+    border: 1px solid #c5c5c5;
+    transition: all .3s;
+    box-shadow: 6px 6px 12px #c5c5c5 !important;
 }
 
 .btn-user:active {

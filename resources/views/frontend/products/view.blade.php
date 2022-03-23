@@ -130,7 +130,7 @@
                                 <label for="Quantity">Quantity</label>
                                 <div class="input-group text-center mb-3">
                                     <button class="input-group-text decrement-btn">-</button>
-                                    <input type="text" name="quantity" value="1" class="form-control glass-card qty-input">
+                                    <input type="text" name="quantity" value="1" class="form-control glass-card qty-input" readonly>
                                     <button class="input-group-text increment-btn"
                                         data-max-qty="{{ $products->quantity }}">+</button>
                                 </div>
@@ -230,7 +230,7 @@
 
     <section class="py-4 container glass">
         <div class="row">
-            <div class="col-md 12">
+            <div class="col-md-12">
                 <h4 class="fw-bold">Related Products</h4>
                 <hr>
                 <div class="owl-carousel related-carousel owl-theme">
@@ -277,7 +277,7 @@
             dots: false,
             autoplay: true,
             autoplayTimeout: 3000,
-            autoplayHoverPause: true,
+            autoplayHoverPause: false,
             smartSpeed: 1500,
             responsive: {
                 0: {

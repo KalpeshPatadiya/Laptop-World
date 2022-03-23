@@ -77,19 +77,20 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-dark px-4">
+                                        {{ __('Register') }}
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
                                 <div class="col-md-6 offset-md-4">
                                     Already have account? <a href="{{ route('login') }}"><u>Login here!</u></a>
                                 </div>
                             </div>
 
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-dark">
-                                        {{ __('Register') }}
-                                    </button>
-                                </div>
-                            </div>
                         </form>
                     </div>
                 </div>
